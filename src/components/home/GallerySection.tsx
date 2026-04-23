@@ -15,9 +15,23 @@ import ChevronRightIcon from "@mui/icons-material/ChevronRight";
 import CloseIcon from "@mui/icons-material/Close";
 import { useTheme } from "@mui/material/styles";
 import { AnimatePresence, motion } from "framer-motion";
+import { literata } from "@/lib/fonts";
 
 // ✅ Dummy images you already have:
-const IMAGES = ["/images/gal1.png", "/images/gal2.png", "/images/gal3.png"];
+// const IMAGES = ["https://res.cloudinary.com/medcon-dam/image/upload/v1773726218/ehs-ckm-2026/Frontend/gal1_p606vs.png", "https://res.cloudinary.com/medcon-dam/image/upload/v1773726218/ehs-ckm-2026/Frontend/gal2_orkjy2.png", "https://res.cloudinary.com/medcon-dam/image/upload/v1773726218/ehs-ckm-2026/Frontend/gal3_ue3mxj.png"];
+
+const IMAGES = ["https://res.cloudinary.com/medcon-dam/image/upload/q_auto/f_auto/v1776423983/ehs-ckm-2026/Frontend/gallery/img1_arnqk4.png", 
+  "https://res.cloudinary.com/medcon-dam/image/upload/q_auto/f_auto/v1776423983/ehs-ckm-2026/Frontend/gallery/img2_usvo54.png", 
+  "https://res.cloudinary.com/medcon-dam/image/upload/q_auto/f_auto/v1776423983/ehs-ckm-2026/Frontend/gallery/img3_ewfa8c.png",
+  "https://res.cloudinary.com/medcon-dam/image/upload/q_auto/f_auto/v1776423984/ehs-ckm-2026/Frontend/gallery/img4_cisdro.png",
+  "https://res.cloudinary.com/medcon-dam/image/upload/q_auto/f_auto/v1776423985/ehs-ckm-2026/Frontend/gallery/img5_uzyfae.png",
+  "https://res.cloudinary.com/medcon-dam/image/upload/q_auto/f_auto/v1776423984/ehs-ckm-2026/Frontend/gallery/img6_uw9rmk.png",
+  "https://res.cloudinary.com/medcon-dam/image/upload/q_auto/f_auto/v1776423985/ehs-ckm-2026/Frontend/gallery/img7_rauwtd.png",
+  "https://res.cloudinary.com/medcon-dam/image/upload/q_auto/f_auto/v1776423985/ehs-ckm-2026/Frontend/gallery/img8_h1rssr.png",
+  "https://res.cloudinary.com/medcon-dam/image/upload/q_auto/f_auto/v1776423986/ehs-ckm-2026/Frontend/gallery/img9_v21xi3.png",
+  "https://res.cloudinary.com/medcon-dam/image/upload/q_auto/f_auto/v1776423986/ehs-ckm-2026/Frontend/gallery/img10_lxbb9h.png",
+  "https://res.cloudinary.com/medcon-dam/image/upload/q_auto/f_auto/v1776423987/ehs-ckm-2026/Frontend/gallery/img11_volrvo.png",
+];
 
 // ✅ Multiple conferences so arrows work
 const conferences = [
@@ -25,14 +39,14 @@ const conferences = [
     title: "The 4th EHS Cardiorenal  and Metabolic Conference",
     images: IMAGES,
   },
-  {
-    title: "The 3rd EHS Cardiorenal  and Metabolic Conference",
-    images: [...IMAGES].reverse(),
-  },
-  {
-    title: "The 2nd EHS Cardiorenal  and Metabolic Conference",
-    images: [IMAGES[1], IMAGES[2], IMAGES[0]],
-  },
+  // {
+  //   title: "The 3rd EHS Cardiorenal  and Metabolic Conference",
+  //   images: [...IMAGES].reverse(),
+  // },
+  // {
+  //   title: "The 2nd EHS Cardiorenal  and Metabolic Conference",
+  //   images: [IMAGES[1], IMAGES[2], IMAGES[0]],
+  // },
 ];
 
 function clampIndex(i: number, len: number) {
@@ -78,6 +92,8 @@ function MotionImg(props: any) {
     />
   );
 }
+
+
 
 export default function GallerySection() {
   const [confIndex, setConfIndex] = React.useState(0);
@@ -144,9 +160,10 @@ export default function GallerySection() {
         {/* Title */}
         <Typography
           variant="h4"
-          sx={{ fontWeight: 500, color: "#2F5E7A", mb: 2 }}
+          sx={{ fontWeight: 500, color: "#2F5E7A", mb: 2,fontFamily: `${literata.style.fontFamily}, serif`, }}
+          className={literata.className}
         >
-          Gallery from previous conferences:
+          Gallery from Previous Conferences:
         </Typography>
 
         {/* Thick line like screenshot */}
@@ -174,19 +191,21 @@ export default function GallerySection() {
                 fontSize: { xs: 22, md: 34 },
                 fontWeight: 400,
                 color: "#111",
+                fontFamily: `${literata.style.fontFamily}, serif`,
               }}
+              className={literata.className}
             >
               {conf.title}
             </Typography>
 
-            <Stack direction="row" gap={1.5}>
+            {/* <Stack direction="row" gap={1.5}>
               <RoundNavButton onClick={goPrevConf}>
                 <ChevronLeftIcon />
               </RoundNavButton>
               <RoundNavButton onClick={goNextConf}>
                 <ChevronRightIcon />
               </RoundNavButton>
-            </Stack>
+            </Stack> */}
           </Stack>
 
           {/* Main image (click to open popup) */}
@@ -204,7 +223,8 @@ export default function GallerySection() {
                 exit={{ opacity: 0, y: -10, filter: "blur(2px)" }}
                 style={{
                   width: "100%",
-                  height: fullScreen ? 240 : 360,
+                  // height: fullScreen ? 240 : 360,
+                  height: "100%",
                   objectFit: "cover",
                   borderRadius: 6,
                   cursor: "zoom-in",
@@ -311,8 +331,8 @@ export default function GallerySection() {
               top: 14,
               right: 14,
               zIndex: 3,
-              bgcolor: "rgba(133, 162, 195, 0.14)",
-              color: "#2F5E7A",
+              bgcolor: "rgba(1, 9, 18, 0.14)",
+              color: "#020d13",
               "&:hover": { bgcolor: "rgba(255,255,255,0.22)" },
             }}
           >

@@ -52,7 +52,7 @@ export default function RegisterPage() {
 
   const isNonEhs = registerForm.registrationCategory === "Non EHS Attendee";
   const requiresPayment = isNonEhs && registerForm.codeChoice === "no-code";
-  const amount = 2;
+  const amount = 250;
 
   React.useEffect(() => {
     const syncAuthState = () => {
@@ -298,7 +298,11 @@ export default function RegisterPage() {
               onSubmit={handleRegistrationSubmit}
               onPaymentSuccess={handlePaymentSuccess}
             />
-
+            {generalError && (
+          <Alert severity="error" sx={{ mb: 3, borderRadius: 2 }}>
+            {generalError}
+          </Alert>
+        )}
             <LoginForm
               form={loginForm}
               errors={loginErrors}

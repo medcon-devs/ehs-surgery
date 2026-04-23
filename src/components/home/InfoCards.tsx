@@ -2,6 +2,7 @@ import { Box, Button, Card, CardContent, Container, Stack, Typography } from "@m
 import CalendarMonthIcon from "@mui/icons-material/CalendarMonth";
 import PlaceIcon from "@mui/icons-material/Place";
 import { motion } from "framer-motion";
+import { literata } from "@/lib/fonts";
 
 function InfoCard({
   icon,
@@ -33,7 +34,7 @@ function InfoCard({
           >
             {icon}
           </Box>
-          <Typography sx={{ fontSize:25,fontWeight: 400, color: "#2F5E7A" }}>{title}</Typography>
+          <Typography sx={{ fontSize:25,fontWeight: 400, color: "#2F5E7A", fontFamily: `${literata.style.fontFamily}, serif`, }} className={literata.className}>{title}</Typography>
         </Stack>
       </Box>
 
@@ -63,14 +64,14 @@ export default function InfoCards() {
   "&text=The%205th%20EHS%20Cardiorenal%20and%20Metabolic%20Conference" +
   "&dates=20260509T050000Z/20260510T140000Z" +
   "&details=Join%20the%205th%20EHS%20Cardiorenal%20and%20Metabolic%20Conference%20in%20Fujairah." +
-  "&location=DoubleTree%20by%20Hilton%20Fujairah%20City%20Hotel";
+  "&location=DoubleTree%20by%20Hilton%20Fujairah,%20UAE";
   return (
     <Container maxWidth="md">
       <motion.div initial={{ opacity: 0, y: 14 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
         <Stack direction={{ xs: "column", md: "row" }} gap={3} sx={{ mt: 5 }}>
           <Box sx={{ flex: 1 }}>
             <InfoCard
-              icon={<img src={"/images/calander.png"} />}
+              icon={<img src={"https://res.cloudinary.com/medcon-dam/image/upload/v1773726216/ehs-ckm-2026/Frontend/calander_qh2km6.png"} />}
               title="Save the Date"
               rows={[
                 { label: "Starting From:", value: "9th May 2026" },
@@ -84,7 +85,7 @@ export default function InfoCards() {
 
           <Box sx={{ flex: 1 }}>
             <InfoCard
-              icon={<img src={"/images/location.png"}/>}
+              icon={<img src={"https://res.cloudinary.com/medcon-dam/image/upload/v1773726218/ehs-ckm-2026/Frontend/location_ft2zc8.png"}/>}
               title="Venue Location"
               rows={[
                 { label: "Hotel:", value: "DoubleTree by Hilton" },

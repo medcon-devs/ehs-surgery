@@ -25,9 +25,10 @@ export default function Footer() {
     //   />
    
     // </Box>
-    <Box width={1} position={"relative"} height={{md:"auto",xs:100}}
+    <Box width={1} position={"relative"} height={{md:"auto",xs:100}} 
     
     sx={{
+      
       // bgcolor:"red"
       // backgroundImage: "url(/images/footer.png)",
       //       backgroundSize: "cover",
@@ -41,27 +42,27 @@ export default function Footer() {
        }}
       > */}
 
-        <img src={"/images/footer.png"}  />
-        <Box  width={1} height={80} position={"absolute"} top={-40} right={0}>
+        <img src={"https://res.cloudinary.com/medcon-dam/image/upload/v1773726217/ehs-ckm-2026/Frontend/footer_f34ffo.png"}  />
+        {/* <Box  width={1} height={80} position={"absolute"} top={-40} right={0}>
           <Container maxWidth="lg"  sx={{justifyItems:"flex-end",textAlign:"end"}} >
-            {/* <Box height={100} width={100}></Box> */}
-            <Box minWidth={80} width={"12%"}
-            // width={{md:150,sm:100,xs:100}}
+            
+            <Box minWidth={80} width={"18%"}
+            
             >
-            <img src={"/images/hero-organ.png"} />
+            <img src={"https://res.cloudinary.com/medcon-dam/image/upload/v1773726217/ehs-ckm-2026/Frontend/Cardiorenal-footer_nuaiwn.png"} />
             </Box>
           </Container>
-        </Box>
+        </Box> */}
       {/* </Box> */}
       <Box width={1} height={{xs:50,md:50}} position={"absolute"} bottom={0} bgcolor={"#315A7B"} py={2}>
          <Container maxWidth="lg" >
          <Stack direction="row" alignItems="center" justifyContent="space-between" gap={2}>
            <Stack direction="row" alignItems="center" gap={1}>
-             <Box component="img" src="/images/medcon_logo.png" alt="Medcon" sx={{ height: 22 }} />
+             <Box component="img" src="https://res.cloudinary.com/medcon-dam/image/upload/v1773726218/ehs-ckm-2026/Frontend/medcon_logo_pqtudt.png" alt="Medcon" sx={{ height: 22 }} />
            </Stack>
 
            <Stack direction="row" gap={2} alignItems="center">
-             <MuiLink href="https://www.medcon.ae/privacy.html" underline="hover" color="white" sx={{ fontSize: 13 }}>
+             <MuiLink href="/privacy" underline="hover" color="white" sx={{ fontSize: 13 }}>
                Privacy Policy
              </MuiLink>
              <Typography sx={{ opacity: 0.5,color:"white" }}> | </Typography>

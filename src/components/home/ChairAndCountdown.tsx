@@ -2,19 +2,21 @@ import { Box, Button, Card, CardContent, Container, Divider, Stack, Typography }
 import { motion } from "framer-motion";
 import AnimatedNumber from "@/components/home/AnimatedNumber";
 import { useDubaiCountdown } from "@/hooks/useDubaiCountdown";
+import { literata } from "@/lib/fonts";
+
 function SectionCard({ title, children, withtImg }: { title: string; children: React.ReactNode; withtImg: boolean }) {
     return (
         <Card sx={{
-            borderRadius: 2, boxShadow: "0 10px 30px rgba(16,24,40,0.10)", width: { md: "80%",xs:400 }, bgcolor: "#F2F2F2", height: 395, backgroundImage: withtImg ? "url(/images/countdownimage.png)" : null,
+            borderRadius: 2, boxShadow: "0 10px 30px rgba(16,24,40,0.10)", width: { md: "80%",xs:400 }, bgcolor: "#F2F2F2", height: 345, backgroundImage: withtImg ? "url(https://res.cloudinary.com/medcon-dam/image/upload/q_auto/f_auto/v1775645697/ehs-ckm-2026/Frontend/Mask_Group_2_logrka.png)" : null,
             backgroundSize: "cover",
-            backgroundPosition: "center",
+            // backgroundPosition: "center",
             backgroundRepeat: "no-repeat",
             // minWidth: 400,
             maxWidth:"90%",
             mx:{xs:"auto"}
         }}>
-            <CardContent sx={{ p: 2 }}>
-                <Typography variant="h4" sx={{ textAlign: "center", fontWeight: 500, color: "#2F5E7A" }}>
+            <CardContent sx={{ pt:2 }}>
+                <Typography variant="h4" sx={{ textAlign: "center", fontWeight: 500, color: "#2F5E7A", fontFamily: `${literata.style.fontFamily}, serif`, }} className={literata.className}>
                     {title}
                 </Typography>
                 <Box sx={{ mt: 0 }}>{children}</Box>
@@ -29,12 +31,12 @@ export default function ChairAndCountdown() {
         <Container maxWidth="lg" sx={{bgcolor:"#fff"}} >
             <motion.div initial={{ opacity: 0, y: 14 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
                 <Stack direction={{ xs: "column", md: "row" }} gap={4} >
-                    <Box sx={{ flex: 1 }}  justifyItems={{ md: "flex-end", xs: "center" }} >
+                    {/* <Box sx={{ flex: 1 }}  justifyItems={{ md: "flex-end", xs: "center" }} >
                         <SectionCard title="Conference Chairperson" withtImg={false}>
                             <Stack alignItems="center" gap={.5}>
                                 <Box
                                     component="img"
-                                    src="/images/chairperson.png"
+                                    src="https://res.cloudinary.com/medcon-dam/image/upload/v1773726216/ehs-ckm-2026/Frontend/chairperson_fg0wif.png"
                                     alt="Chairperson"
                                     sx={{ width: 210, objectFit: "cover" }}
                                 />
@@ -43,13 +45,12 @@ export default function ChairAndCountdown() {
                                     Associated professor RAK Medical & Health Sciences University • Consultant in Nephrology • Head of
                                     Medical Department, Dibba Hospital
                                 </Typography>
-                                {/* <Divider flexItem sx={{ my: 1 }} /> */}
                                 <Typography sx={{ fontSize: 11, color: "text.secondary", textAlign: "center" }}>
                                     The 5th EHS Cardiovascular and Metabolic Conference
                                 </Typography>
                             </Stack>
                         </SectionCard>
-                    </Box>
+                    </Box> */}
 
                     <Box sx={{ flex: 1 }} justifyItems={{ md: "flex-start", xs: "center" }}>
                         <SectionCard title="Event Countdown" withtImg>
@@ -64,7 +65,6 @@ export default function ChairAndCountdown() {
                                     </Stack>
 
                                     <Typography sx={{ fontSize: 66, fontWeight: 900, color: "#333333", px: 2, lineHeight: 1 }}>
-                                        :
                                     </Typography>
 
                                     <Stack alignItems="center">
@@ -77,7 +77,7 @@ export default function ChairAndCountdown() {
                                     href="/register"
                                     variant="contained"
                                     sx={{
-                                        mt: { md: 8, xs: 8 },
+                                        mt: { md: 2, xs: 2 },
                                         px: 8,
                                         py: 2,
                                         borderRadius: 999,

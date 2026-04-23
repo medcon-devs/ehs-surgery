@@ -2,6 +2,7 @@
 
 import * as React from "react";
 import {
+  Box,
   FormControl,
   FormControlLabel,
   FormHelperText,
@@ -94,16 +95,46 @@ export default function RegistrationFields({
         helperText={errors.email}
       />
 
-      <StyledAutocomplete
+      {/* <StyledAutocomplete
         label="Registration Category*"
         value={form.registrationCategory || null}
         onChange={onCategoryChange}
         options={categoryOptions}
         error={Boolean(errors.registrationCategory)}
         helperText={errors.registrationCategory}
-      />
+      /> */}
 
-      {isNonEhs && (
+      <StyledAutocomplete
+  label="Registration Category*"
+  value={form.registrationCategory || null}
+  onChange={onCategoryChange}
+  options={categoryOptions}
+  error={Boolean(errors.registrationCategory)}
+  helperText={errors.registrationCategory}
+  renderOption={(props, option) => (
+    <li {...props}>
+      <Box sx={{ display: "flex", flexDirection: "column", py: 0.5 }}>
+        <Typography sx={{ fontSize: "14px", fontWeight: 500 }}>
+          {option}
+        </Typography>
+
+        {option === "EHS Staff" && (
+          <Typography
+            sx={{
+              fontSize: "11px",
+              color: "text.secondary",
+              lineHeight: 1.3,
+            }}
+          >
+            (Please ensure using your EHS e-mail during registration)
+          </Typography>
+        )}
+      </Box>
+    </li>
+  )}
+/>
+
+      {/* {isNonEhs && (
         <FormControl error={Boolean(errors.accessCode)} sx={{ pt: 0.5 }}>
           <RadioGroup
             row
@@ -124,9 +155,9 @@ export default function RegistrationFields({
           </RadioGroup>
           {errors.accessCode && <FormHelperText>{errors.accessCode}</FormHelperText>}
         </FormControl>
-      )}
+      )} */}
 
-      {isNonEhs && form.codeChoice === "have-code" && (
+      {/* {isNonEhs && form.codeChoice === "have-code" && (
         <StyledTextField
           label="Registration Code*"
           value={form.accessCode}
@@ -134,8 +165,9 @@ export default function RegistrationFields({
           error={Boolean(errors.accessCode)}
           helperText={errors.accessCode}
         />
-      )}
+      )} */}
 
+      {!isNonEhs && (
       <StyledTextField
         label="Bayanati Number (For CME)*"
         value={form.bayanatiNumber}
@@ -143,6 +175,7 @@ export default function RegistrationFields({
         error={Boolean(errors.bayanatiNumber)}
         helperText={errors.bayanatiNumber}
       />
+      )}
     </Stack>
   );
 }

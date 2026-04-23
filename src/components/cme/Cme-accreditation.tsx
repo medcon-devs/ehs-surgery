@@ -2,6 +2,7 @@
 
 import * as React from "react";
 import { Box, Container, Stack, Typography } from "@mui/material";
+import { literata } from "@/lib/fonts";
 
 const attendancePoints = [
   "Attendance to the sessions will be monitored through scanning of the barcode on your conference badge at the entrance of the session hall.",
@@ -60,8 +61,10 @@ export default function CmeAccreditationComponent() {
               fontSize: { xs: 28, md: 38 },
               fontWeight: 400,
               lineHeight: 1.1,
-              mb:2
+              mb:2,
+              fontFamily: `${literata.style.fontFamily}, serif`,
             }}
+            className={literata.className}
           >
             CME Accreditation is in Progress
           </Typography>
@@ -74,7 +77,7 @@ export default function CmeAccreditationComponent() {
           mt={5}
         >
           {/* <CmeSeal /> */}
-            <img src={"/images/cme.png"} width={250}/>
+            <img src={"https://res.cloudinary.com/medcon-dam/image/upload/v1773726216/ehs-ckm-2026/Frontend/cme_lemu6m.png"} width={250}/>
           <Box sx={{ flex: 1, pt: { xs: 0, md: 3 }  }}>
             <Typography
               sx={{

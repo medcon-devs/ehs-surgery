@@ -8,6 +8,7 @@ import {
   Stack,
   Typography,
 } from "@mui/material";
+import { literata } from "@/lib/fonts";
 
 type RowItem = {
   time: string;
@@ -18,7 +19,14 @@ type RowItem = {
 type AgendaBlock =
   | { type: "rows"; rows: RowItem[] }
   | { type: "session"; title: string; chairman: string }
-  | { type: "highlight"; title: string; speaker: string };
+  | {
+      type: "highlight";
+      time: string;
+      topic: string;
+      speaker: string;
+      bgColor?: string;
+      textColor?: string;
+    };
 
 type AgendaDayType = {
   title: string;
@@ -32,66 +40,76 @@ const agendaDays: AgendaDayType[] = [
       {
         type: "rows",
         rows: [
-          { time: "07:45 - 08:15", topic: "Registration", speaker: "ALL" },
+          { time: "07:45 - 08:15", topic: "Coffee Break and Registration", speaker: "ALL" },
           { time: "08:15 - 08:30", topic: "Keynote Talk", speaker: "Dr. Muhammed Alrohani" },
         ],
       },
       {
         type: "session",
         title: "Session 1: The Triple-Threat Zone",
-        chairman: "Chairman: Dr. Salam Omar, Dr. Muhammed Alrohani",
+        chairman: "Chairperson: Dr. Salem Omar, Dr. Muhammed Alrohani",
       },
       {
         type: "rows",
         rows: [
-          { time: "08:30 - 09:00", topic: "IgA Nephropathy: Dialysis Hospital Experience", speaker: "Dr. Muhammed Alrohani" },
-          { time: "09:00 - 09:30", topic: "Proteinuria & Hematuria: Differential Diagnosis", speaker: "Dr. Rayan Kamal Babiker Khogali" },
-          { time: "09:30 - 10:00", topic: "Approach to Acute on Chronic Kidney Disease", speaker: "Dr. Mohammed Edan" },
-          { time: "10:00 - 10:05", topic: "Panel Discussion", speaker: "ALL" },
-          { time: "10:05 - 10:30", topic: "Coffee Break", speaker: "ALL" },
+          { time: "08:30 - 08:45", topic: "The Missing Piece in Cardiorenal Metabolic Risk", speaker: "Dr. Amrish Agrawal" },
+          { time: "08:45 - 09:00", topic: "Guidelines for Heart Failure in Pregnant Women", speaker: "Dr. Mohamed Salah" },
+          { time: "09:00 - 09:15", topic: "Precision in Heart Failure in Pregnancy", speaker: "Dr. Abdul Nasser Oudeh" },
+          { time: "09:15 - 09:30", topic: "Tenecteplase® in Acute Ischaemic Stroke (AIS)", speaker: "Dr. Enji Hamdy Elsawy" },
+          { time: "09:30 - 09:40", topic: "Panel Discussion", speaker: "ALL" },
+          { time: "09:40 - 09:50", topic: "Coffee Break", speaker: "ALL" },
         ],
       },
       {
         type: "highlight",
-        title: "10:30 - 10:50   Opening Ceremony",
+        time: "09:50 - 10:20",
+        topic: "Opening Ceremony",
         speaker: "ALL",
+        bgColor: "#2f5d7d",
+        textColor: "#ffffff",
       },
       {
         type: "rows",
         rows: [
-          { time: "10:50 - 11:20", topic: "AGN in Pediatrics", speaker: "Dr. Ezz Al Ali Taher" },
-          { time: "11:20 - 11:50", topic: "Approached to IgA Nephropathy Management Guidelines", speaker: "Dr. Ramadan Arafia" },
-          { time: "11:50 - 12:20", topic: "Individualised Diabetes Care in Dialysis-dependent Kidney Failure: Update", speaker: "Dr. Dawlat Hussein Samy" },
-          { time: "12:20 - 12:50", topic: "CKD in Geriatrics: Challenges", speaker: "Dr. Bahia Zayed" },
-          { time: "12:50 - 13:20", topic: "Role of Aldosterone Synthase Inhibitors in Renal and Cardiovascular Disease", speaker: "Dr. Annas Qasem" },
-          { time: "13:20 - 13:25", topic: "Panel Discussion", speaker: "ALL" },
-          { time: "13:25 - 13:30", topic: "Prayer Break", speaker: "ALL" },
+          { time: "10:20 - 10:35", topic: "Proteinuria & Hematuria: Differential Diagnosis", speaker: "Dr. Rayan Khojali" },
+          { time: "10:35 - 10:50", topic: "Rapidly Progressing Kidney Disease: Case Presentation", speaker: "Dr. Medhat Ali" },
+          { time: "10:50 - 11:05", topic: "IgA Nephropathy: Dibba Hospital Experience", speaker: "Dr. Muhammed Alrohani" },
+          { time: "11:05 - 11:20", topic: "Approach to IgA Nephropathy Management Guidelines", speaker: "Dr. Ramadan Arafa" },
+          { time: "11:20 - 11:30", topic: "Panel Discussion", speaker: "ALL" },
+          { time: "11:30 - 12:30", topic: "Industry Satellite Symposium", speaker: "Novartis" },
+          { time: "12:30 - 13:00", topic: "Prayer and Lunch Break", speaker: "ALL" },
+          { time: "13:00 - 13:30", topic: "Industry Satellite Symposium", speaker: "CSL VIFOR" },
+          { time: "13:30 - 13:45", topic: "CKD In Geriatrics: Challenges", speaker: "Dr. Bahaa Zayed" },
+          { time: "13:45 - 14:00", topic: "Approach To Acute On Chronic Kidney Disease", speaker: "Dr. Mohammed Edan" },
+          { time: "14:00 - 14:15", topic: "Individualised Diabetes Care In Dialysis-Dependent Kidney Failure: Update", speaker: "Dr. Dawlat Sany" },
+          { time: "14:15 - 14:30", topic: "Role Of Aldosterone Synthase Inhibitors In Renal And Cardiovascular Diseases", speaker: "Dr. Annas Qasem" },
+          { time: "14:30 - 14:40", topic: "Panel Discussion", speaker: "ALL" },
+          { time: "14:40 - 15:10", topic: "Industry Satellite Symposium", speaker: "Amgen" },
+          { time: "15:10 - 15:20", topic: "Coffee Break", speaker: "ALL" },
+          { time: "15:20 - 15:50", topic: "Industry Satellite Symposium", speaker: "Amgen" },
         ],
       },
       {
         type: "session",
         title: "Session 2: Red Zone: Minutes Matter",
-        chairman: "Chairman:",
+        chairman: "Chairperson:",
       },
       {
         type: "rows",
         rows: [
-          { time: "13:30 - 14:00", topic: "Atypical Presentation of ACS", speaker: "Dr. Waheed Farid" },
-          { time: "14:00 - 14:30", topic: "Pain Management in Unstable Patients", speaker: "Dr. Adel Al Maytamy" },
-          { time: "14:30 - 15:00", topic: "Emergency NIV in Adults", speaker: "Dr. Hatem Mohamed Gamaleldin Abdelhalek" },
-          { time: "15:00 - 15:30", topic: "Approach to ENT Emergencies in ED", speaker: "Dr. Waheedh Munjid AlBassam" },
-          { time: "15:30 - 16:00", topic: "Approach to Acute Management of Headache in ED", speaker: "Dr. Abobakr Hassan Omar Abdelkader" },
-          { time: "16:00 - 16:30", topic: "Pitfalls in ACLS Arrhythmia", speaker: "Dr. Ahmed Abdelnageed" },
-          { time: "16:30 - 17:00", topic: "Paradigm Shift in Ischemic Stroke (Emergency)", speaker: "Dr. Abdela Elbahnasy" },
-          { time: "17:00 - 17:30", topic: "Critical Care Approach to Hypertensive Crisis: When Seconds Matter", speaker: "Dr. Germdan" },
-          { time: "17:30 - 17:45", topic: "Company lecture", speaker: "ALL" },
-          { time: "17:45 - 18:00", topic: "Panel Discussion", speaker: "ALL" },
+          { time: "15:50 - 16:05", topic: "Thyroid Disorder in Pregnancy", speaker: "Dr. Salem Omar" },
+          { time: "16:05 - 16:20", topic: "Gestational Diabetes (GDM) Update", speaker: "Dr. Mohammed Babiker" },
+          { time: "16:20 - 17:00", topic: "Sequential Case Discussion 1 (45 min): The Cardio-Renal Domino MDT Panel (Diab/Neph/Cardio)", speaker: "Dr. Amr ElFaramawy, Dr. Muhammed Alrohani, Dr. Amrish Agrawal" },
+          { time: "17:00 - 17:15", topic: "Post-Bariatric Hypoglycaemia", speaker: "Dr. Aseilah Al Qaydi" },
         ],
       },
       {
         type: "highlight",
-        title: "18:00 onwards   Closing and Lunch",
+        time: "17:15 - 17:30",
+        topic: "Closing Ceremony",
         speaker: "ALL",
+        bgColor: "#2f5d7d",
+        textColor: "#ffffff",
       },
     ],
   },
@@ -100,64 +118,112 @@ const agendaDays: AgendaDayType[] = [
     items: [
       {
         type: "rows",
-        rows: [{ time: "08:00 - 08:15", topic: "Registration", speaker: "ALL" }],
+        rows: [{ time: "08:00 - 08:30", topic: "Coffee Break and Registration", speaker: "ALL" }],
       },
       {
         type: "session",
-        title: "Session 3: Her Health: The Turning Point",
-        chairman: "Chairman:",
+        title: "Session 3: Red Zone: Minutes Matter",
+        chairman: "Chairperson:",
       },
       {
         type: "rows",
         rows: [
-          { time: "08:15 - 08:45", topic: "Thyroid Disorder in Pregnancy", speaker: "Dr. Salam Omar" },
-          { time: "08:45 - 09:15", topic: "Gestational Diabetes (GDM) Update", speaker: "Dr. Mohammed Babiker" },
-          { time: "09:15 - 09:45", topic: "High-risk Pregnancy and Convenient in Pregnancy", speaker: "Dr. Atif Bashir Eltayeb" },
-          { time: "09:45 - 10:15", topic: "Menopause Clinical Impact", speaker: "Dr. Hanadi Abbas Widadallah Alatta" },
-          { time: "10:15 - 10:20", topic: "Panel Discussion", speaker: "ALL" },
-          { time: "10:20 - 10:40", topic: "Coffee Break", speaker: "ALL" },
-          { time: "10:40 - 11:10", topic: "Guideline of Heart Failure in Pregnancy Women", speaker: "Dr. Mohamed Salah Meselly Osman" },
-          { time: "11:10 - 11:40", topic: "Precision in Heart Failure in Pregnancy", speaker: "Dr. Abdul Nasser Oudeh" },
-          { time: "11:40 - 12:00", topic: "—", speaker: "—" },
-          { time: "12:00 - 12:30", topic: "—", speaker: "—" },
-          { time: "12:30 - 12:35", topic: "Panel Discussion", speaker: "ALL" },
-          { time: "12:35 - 12:45", topic: "Prayer Break", speaker: "ALL" },
+          { time: "08:30 - 08:45", topic: "Atypical Presentation Of ACS", speaker: "Dr. Waheed Farid" },
+          { time: "08:45 - 09:00", topic: "Pain Management In Unstable Patients", speaker: "Dr. Adel Almaytamy" },
+          { time: "09:00 - 09:15", topic: "Emergency NIV In Adults", speaker: "Dr. Hatem Abdelkhalek" },
+          { time: "09:15 - 09:30", topic: "Approach To ENT Emergencies In ED", speaker: "Dr. Wameedh AlBassam" },
+          { time: "09:30 - 09:40", topic: "Panel Discussion", speaker: "ALL" },
+          { time: "09:40 - 10:10", topic: "Industry Satellite Symposium", speaker: "CSL VIFOR" },
+          { time: "10:10 - 10:20", topic: "Coffee Break", speaker: "ALL" },
+          { time: "10:20 - 10:35", topic: "Approach To Acute Management Of Headache In ED", speaker: "Dr. Abobakr Abdelkader" },
+          { time: "10:35 - 10:50", topic: "Pitfalls In ACLS Arrhythmia", speaker: "Dr. Ahmed Abdelmageed" },
+          { time: "10:50 - 11:05", topic: "Critical Care Approaches To Hypertensive Crisis: When Seconds Matter", speaker: "Dr. Ghamdan Alsadeh" },
+          { time: "11:05 - 11:15", topic: "Panel Discussion", speaker: "ALL" },
+          { time: "11:15 - 11:30", topic: "Industry Satellite Symposium", speaker: "BI" },
+          { time: "11:30 - 11:45", topic: "Industry Satellite Symposium", speaker: "AZ" },
+          { time: "11:45 - 12:00", topic: "Industry Satellite Symposium", speaker: "Merck" },
+          { time: "12:00 - 12:45", topic: "Prayer and Lunch Break", speaker: "ALL" },
         ],
       },
       {
         type: "session",
         title: "Session 4: The Case Arena: Connect the Dots",
-        chairman: "Chairman:",
+        chairman: "Chairperson:",
       },
       {
         type: "rows",
         rows: [
-          { time: "12:45 - 13:15", topic: "Physician Burn Out", speaker: "Dr. Eman Elmahdi" },
-          { time: "13:15 - 13:45", topic: "Insulin Therapy in Pediatric Type 1 DM", speaker: "Dr. Ammar Al Yarrouh" },
-          { time: "13:45 - 14:15", topic: "Aortic Dissection: When Chest Pain is a Surgical Emergency", speaker: "Dr. Ali Muhaidin" },
-          { time: "14:15 - 14:45", topic: "Targeted Approached for Clever Eosinophilic Asthma Management", speaker: "Dr. Hassan Al Hakim" },
-          { time: "14:45 - 15:15", topic: "Sequential Case Discussion I (45 min): The Cardio-Renal Domino", speaker: "MDT Panel (Diala/Neph/Cardio)" },
-          { time: "15:15 - 15:45", topic: "—", speaker: "—" },
-          { time: "15:45 - 16:10", topic: "Bayer Company", speaker: "—" },
-          { time: "16:10 - 17:00", topic: "Boehringer Ingelheim Company", speaker: "—" },
-          { time: "17:00 - 17:10", topic: "Panel Discussion", speaker: "ALL" },
+          { time: "12:45 - 13:00", topic: "Industry Satellite Symposium", speaker: "Merck" },
+          { time: "13:00 - 13:15", topic: "Physician Burn Out", speaker: "Dr. Eman Almahdi" },
+          { time: "13:15 - 13:30", topic: "Insulin Therapy in Pediatric Type 1 DM", speaker: "Dr. Ammar Al Farroukh" },
+          { time: "13:30 - 13:45", topic: "Metabolic Syndrome In Pregnancy", speaker: "Dr. Anaam Hasson" },
+          { time: "13:45 - 14:00", topic: "IVF In Diabetic Patients", speaker: "Dr. Ahmed Mohamed" },
+          { time: "14:00 - 14:15", topic: "Menopause Clinical Impact", speaker: "Dr. Hanadi Alatta" },
+          { time: "14:15 - 14:30", topic: "Coffee Break", speaker: "ALL" },
+          { time: "14:30 - 14:45", topic: "Aortic Dissection: When Chest Pain Is A Surgical Emergency", speaker: "Dr. Ali Muhibaldin" },
+          { time: "14:45 - 15:00", topic: "Targeted Approach for Severe Eosinophil Asthma Management", speaker: "Dr. Hassan Al Hakim" },
+          { time: "15:00 - 15:15", topic: "Finerenone Economical Evaluation For T2D Patients With CKD", speaker: "Dr. Sabaa Alhemyari" },
+          { time: "15:15 - 15:25", topic: "Panel Discussion", speaker: "ALL" }
         ],
       },
       {
         type: "highlight",
-        title: "17:10 onwards   Closing and Lunch",
+        time: "15:25 - 16:00",
+        topic: "Closing Ceremony and Appreciation Certificates",
         speaker: "ALL",
+        bgColor: "#2f5d7d",
+        textColor: "#ffffff",
       },
     ],
   },
 ];
+
+const AGENDA_GRID = {
+  xs: "0.95fr 1.9fr 1.15fr",
+  md: "1.1fr 4fr 2fr",
+};
+
+function getSpecialRowStyle(topic: string) {
+  const normalized = topic.trim().toLowerCase();
+
+  if (normalized === "panel discussion") {
+    return {
+      bgColor: "#d8c6c0",
+      textColor: "#4e6780",
+      fontWeight: 600,
+    };
+  }
+
+  if (
+    normalized === "coffee break" ||
+    normalized === "prayer and lunch break"
+  ) {
+    return {
+      bgColor: "#cbbfda",
+      textColor: "#4e6780",
+      fontWeight: 600,
+    };
+  }
+
+  if (
+    normalized === "industry satellite symposium"
+  ) {
+    return {
+      bgColor: "#ebe6ef",
+      textColor: "#4e6780",
+      fontWeight: 600,
+    };
+  }
+
+  return null;
+}
 
 function HeaderRow() {
   return (
     <Box
       sx={{
         display: "grid",
-        gridTemplateColumns: { xs: "1fr", md: "1.1fr 4fr 2fr" },
+        gridTemplateColumns: AGENDA_GRID,
         gap: "2px",
         mb: 1,
       }}
@@ -169,11 +235,13 @@ function HeaderRow() {
             bgcolor: "#d8cdc6",
             color: "#496987",
             textAlign: "center",
-            py: 1.2,
-            fontSize: { xs: 12, md: 13 },
+            py: { xs: 0.8, md: 1.2 },
+            px: { xs: 0.5, md: 1 },
+            fontSize: { xs: 9, md: 13 },
             fontWeight: 700,
-            letterSpacing: label === "Speaker" ? 0 : 0.8,
+            letterSpacing: { xs: 0, md: label === "Speaker" ? 0 : 0.8 },
             textTransform: label === "Speaker" ? "none" : "uppercase",
+            lineHeight: 1.15,
           }}
         >
           {label}
@@ -183,16 +251,29 @@ function HeaderRow() {
   );
 }
 
-function Cell({ children }: { children: React.ReactNode }) {
+function Cell({
+  children,
+  align = "left",
+  sx = {},
+}: {
+  children: React.ReactNode;
+  align?: "left" | "center";
+  sx?: Record<string, any>;
+}) {
   return (
     <Box
       sx={{
-        px: { xs: 1.5, md: 2 },
-        py: 1,
+        px: { xs: 0.75, md: 2 },
+        py: { xs: 0.8, md: 1 },
         color: "#5c748a",
-        fontSize: { xs: 11, md: 12 },
-        lineHeight: 1.45,
+        fontSize: { xs: 9.5, md: 12 },
+        lineHeight: { xs: 1.25, md: 1.45 },
         bgcolor: "#fff",
+        textAlign: align,
+        wordBreak: "break-word",
+        overflowWrap: "anywhere",
+        whiteSpace: "normal",
+        ...sx,
       }}
     >
       {children}
@@ -201,17 +282,59 @@ function Cell({ children }: { children: React.ReactNode }) {
 }
 
 function AgendaRow({ row }: { row: RowItem }) {
+  const specialStyle = getSpecialRowStyle(row.topic);
+
   return (
     <Box
       sx={{
         display: "grid",
-        gridTemplateColumns: { xs: "1fr", md: "1.1fr 4fr 2fr" },
+        gridTemplateColumns: AGENDA_GRID,
         borderBottom: "1px solid #ece4de",
       }}
     >
-      <Cell>{row.time}</Cell>
-      <Cell>{row.topic}</Cell>
-      <Cell>{row.speaker}</Cell>
+      <Cell
+        align="center"
+        sx={
+          specialStyle
+            ? {
+                bgcolor: specialStyle.bgColor,
+                color: specialStyle.textColor,
+                fontWeight: specialStyle.fontWeight,
+              }
+            : {}
+        }
+      >
+        {row.time}
+      </Cell>
+
+      <Cell
+        sx={
+          specialStyle
+            ? {
+                bgcolor: specialStyle.bgColor,
+                color: specialStyle.textColor,
+                fontWeight: specialStyle.fontWeight,
+              }
+            : {}
+        }
+      >
+        {row.topic}
+      </Cell>
+
+      <Cell
+        align="center"
+        sx={
+          specialStyle
+            ? {
+                bgcolor: specialStyle.bgColor,
+                color: specialStyle.textColor,
+                fontWeight: specialStyle.fontWeight,
+              }
+            : {}
+        }
+      >
+        {row.speaker}
+      </Cell>
     </Box>
   );
 }
@@ -225,54 +348,88 @@ function SessionBar({ title, chairman }: { title: string; chairman: string }) {
         bgcolor: "#2f5d7d",
         color: "#fff",
         textAlign: "center",
-        py: 1.4,
-        px: 2,
+        py: { xs: 1, md: 1.4 },
+        px: { xs: 1, md: 2 },
       }}
     >
-      <Typography sx={{ fontSize: { xs: 16, md: 20 }, fontWeight: 500, lineHeight: 1.2 }}>
+      <Typography
+        sx={{
+          fontSize: { xs: 13, md: 20 },
+          fontWeight: 500,
+          lineHeight: 1.2,
+          wordBreak: "break-word",
+        }}
+      >
         {title}
       </Typography>
-      <Typography sx={{ mt: 0.5, fontSize: { xs: 10, md: 11 }, opacity: 0.95 }}>
+      <Typography
+        sx={{
+          mt: 0.5,
+          fontSize: { xs: 9, md: 11 },
+          opacity: 0.95,
+          lineHeight: 1.25,
+          wordBreak: "break-word",
+        }}
+      >
         {chairman}
       </Typography>
     </Box>
   );
 }
 
-function HighlightRow({ title, speaker }: { title: string; speaker: string }) {
+function HighlightRow({
+  time,
+  topic,
+  speaker,
+  bgColor = "#c9bdd7",
+  textColor = "#556f84",
+}: {
+  time: string;
+  topic: string;
+  speaker: string;
+  bgColor?: string;
+  textColor?: string;
+}) {
   return (
     <Box
       sx={{
         display: "grid",
-        gridTemplateColumns: { xs: "1fr", md: "5.1fr 2fr" },
-        gap: "2px",
-        my: 1.5,
+        gridTemplateColumns: AGENDA_GRID,
+        borderBottom: "1px solid #ece4de",
+        // my: 1,
       }}
     >
-      <Box
+      <Cell
+        align="center"
         sx={{
-          bgcolor: "#c9bdd7",
-          color: "#556f84",
-          px: 2,
-          py: 1,
-          fontSize: { xs: 11, md: 12 },
-          fontWeight: 500,
+          bgcolor: bgColor,
+          color: textColor,
+          fontWeight: 600,
         }}
       >
-        {title}
-      </Box>
-      <Box
+        {time}
+      </Cell>
+
+      <Cell
         sx={{
-          bgcolor: "#c9bdd7",
-          color: "#556f84",
-          px: 2,
-          py: 1,
-          fontSize: { xs: 11, md: 12 },
-          fontWeight: 500,
+          bgcolor: bgColor,
+          color: textColor,
+          fontWeight: 600,
+        }}
+      >
+        {topic}
+      </Cell>
+
+      <Cell
+        align="center"
+        sx={{
+          bgcolor: bgColor,
+          color: textColor,
+          fontWeight: 600,
         }}
       >
         {speaker}
-      </Box>
+      </Cell>
     </Box>
   );
 }
@@ -288,15 +445,18 @@ function AgendaDay({ title, items }: AgendaDayType) {
           borderBottom: "4px solid #c9bdd7",
           pb: 1,
           mb: 1.5,
+          gap: 2,
         }}
       >
         <Typography
           sx={{
             color: "#2f5d7d",
-            fontSize: { xs: 24, md: 38 },
+            fontSize: { xs: 22, md: 38 },
             fontWeight: 400,
             lineHeight: 1,
+            fontFamily: `${literata.style.fontFamily}, serif`,
           }}
+          className={literata.className}
         >
           Agenda
         </Typography>
@@ -304,10 +464,12 @@ function AgendaDay({ title, items }: AgendaDayType) {
         <Typography
           sx={{
             color: "#2f5d7d",
-            fontSize: { xs: 24, md: 38 },
+            fontSize: { xs: 22, md: 38 },
             fontWeight: 400,
             lineHeight: 1,
+            fontFamily: `${literata.style.fontFamily}, serif`,
           }}
+          className={literata.className}
         >
           {title}
         </Typography>
@@ -331,8 +493,11 @@ function AgendaDay({ title, items }: AgendaDayType) {
             return (
               <HighlightRow
                 key={`${title}-highlight-${index}`}
-                title={item.title}
+                time={item.time}
+                topic={item.topic}
                 speaker={item.speaker}
+                bgColor={item.bgColor}
+                textColor={item.textColor}
               />
             );
           }
@@ -352,15 +517,13 @@ function AgendaDay({ title, items }: AgendaDayType) {
 
 export default function AgendaPage() {
   return (
-    <Box sx={{ bgcolor: "#fff", minHeight: "100vh", py: { xs: 3, md: 6 } }}>
+    <Box sx={{ bgcolor: "#fff", minHeight: "100vh", py: { xs: 2, md: 6 } }}>
       <Container maxWidth="lg">
         <Paper
           elevation={0}
           sx={{
-            // bgcolor: "#fff",
-            // borderRadius: 4,
-            px: { xs: 2, md: 5 },
-            py: { xs: 3, md: 5 },
+            px: { xs: 1, md: 5 },
+            py: { xs: 2, md: 5 },
             boxShadow: "0 18px 60px rgba(31, 41, 55, 0.08)",
           }}
         >

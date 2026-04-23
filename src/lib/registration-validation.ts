@@ -51,17 +51,17 @@ import {
       errors.registrationCategory = "Registration category is required.";
     }
   
-    if (!values.bayanatiNumber.trim()) {
+    if (values.registrationCategory === "EHS Staff" && !values.bayanatiNumber.trim()) {
       errors.bayanatiNumber = "Bayanati Number is required.";
     }
   
-    if (
-      values.registrationCategory === "Non EHS Attendee" &&
-      values.codeChoice === "have-code" &&
-      !values.accessCode.trim()
-    ) {
-      errors.accessCode = "Please enter your registration code.";
-    }
+    // if (
+    //   values.registrationCategory === "Non EHS Attendee" &&
+    //   values.codeChoice === "have-code" &&
+    //   !values.accessCode.trim()
+    // ) {
+    //   errors.accessCode = "Please enter your registration code.";
+    // }
   
     return errors;
   }

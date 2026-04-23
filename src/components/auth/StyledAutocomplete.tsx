@@ -1,5 +1,6 @@
 "use client";
 
+import React from "react";
 import { Autocomplete } from "@mui/material";
 import StyledTextField from "./StyledTextField";
 
@@ -10,6 +11,7 @@ export default function StyledAutocomplete({
   options,
   error,
   helperText,
+  renderOption,
 }: {
   label: string;
   value: string | null;
@@ -17,6 +19,10 @@ export default function StyledAutocomplete({
   options: string[];
   error?: boolean;
   helperText?: string;
+  renderOption?: (
+    props: React.HTMLAttributes<HTMLLIElement>,
+    option: string
+  ) => React.ReactNode;
 }) {
   return (
     <Autocomplete
@@ -26,6 +32,7 @@ export default function StyledAutocomplete({
       onChange={(_, nextValue) => onChange(nextValue)}
       autoHighlight
       popupIcon={undefined}
+      renderOption={renderOption}
       renderInput={(params) => (
         <StyledTextField
           {...params}

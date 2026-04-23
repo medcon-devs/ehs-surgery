@@ -30,97 +30,56 @@ function InfoPill({ icon, text,subtext }: { icon: React.ReactNode; text: string 
 export default function HeroSection() {
   return (
     <Box
-      sx={{
-        position: "relative",
-        minHeight: { xs: 420, md: 420 },
-        display: "flex",
-        alignItems: "stretch",
-        overflow: "hidden",
-        bgcolor: "#1e3b52",
-      }}
-    >
-      <Box
-        sx={{
-          position: "absolute",
-          inset: 0,
-          backgroundImage: "url(/images/hero-bg.jpg)",
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-          filter: "saturate(1.1)",
-        }}
-      />
-      <Box
-        sx={{
-          position: "absolute",
-          inset: 0,
-        //   background:
-        //     "linear-gradient(180deg, rgba(12, 25, 38, 0.13) 0%, rgba(12,25,38,0.35) 45%, rgba(12, 25, 38, 0.27) 100%)",
-        }}
-      />
+  sx={{
+    position: "relative",
+    minHeight: { xs: 125, md: 306 },
+    display: "flex",
+    alignItems: "stretch",
+    overflow: "hidden",
+    bgcolor: "#1e3b52",
+  }}
+>
+  {/* Mobile video */}
+  <Box
+    component="video"
+    autoPlay
+    muted
+    loop
+    playsInline
+    sx={{
+      display: { xs: "block", md: "none" },
+      width: "100%",
+      height: "100%",
+      objectFit: "cover",
+      filter: "saturate(1.1)",
+    }}
+  >
+    <source
+      src="https://res.cloudinary.com/medcon-dam/video/upload/q_auto/f_auto/v1776432103/ehs-ckm-2026/Frontend/5th_EHS_Banner_MOBILE_cz7f3e.mp4"
+      type="video/mp4"
+    />
+  </Box>
 
-      <Container maxWidth={false} sx={{ position: "relative", pt:4 }}>
-      <Stack direction={{ xs: "column", md: "row" }} alignItems="center" justifyContent="space-between" gap={4}>
-      <Box component="img" src="/images/ehs-logo.png" alt="EHS" sx={{ width: "27%",minWidth:250,maxWidth:300 }} />
-      <Box component="img" src="/images/cardio.png" alt="EHS" sx={{  width: "23%",minWidth:250,maxWidth:300 }} />
-        </Stack>
-        <Stack px={2} pt={{xs:5,md:0}} direction={{ xs: "column", md: "row" }} alignItems="center" justifyContent="space-between" gap={2}>
-          <Box sx={{ width: { xs: "100%", md: "55%"}, }}>
-            {/* <Stack direction="row" alignItems="center" gap={2}  sx={{ mb: 2,backgroundColor:"red" }}>
-             
-            </Stack> */}
-
-            <motion.div
-              initial={{ opacity: 0, y: 16 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, ease: "easeOut" }}
-            >
-              <Typography variant="h2" sx={{ color: "white", fontSize: { xs: 34, md: 44 }, lineHeight: 1.1 }}>
-                The 5<sup>th</sup> EHS Cardiorenal
-                <br />
-                and Metabolic Conference
-              </Typography>
-            </motion.div>
-
-            <Stack direction={{ xs: "column", sm: "row" }} gap={2} sx={{ mt: 3 }}>
-              <InfoPill icon={<img src={"/images/calander.png"} width={60}/>}
-               text="9 - 10 May 2026"
-               subtext=""
-               />
-              <InfoPill
-              icon={<img src={"/images/location.png"} width={60}/>}
-                // icon={<LocationOnIcon sx={{ color: "white" }} />}
-                text="DoubleTree by Hilton"
-               subtext="Fujairah City Hotel"
-              />
-            </Stack>
-          </Box>
-
-          <Box  width={{md:"50%",xs:"100%"}}  justifyItems={"flex-end"}>
-          <motion.div
-            initial={{ opacity: 0, scale: 0.96 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.7, ease: "easeOut", delay: 0.1 }}
-          >
-
-            <Box
-              component="img"
-              src="/images/hero-organ.png"
-              alt="Cardiorenal Visual"
-              sx={{
-                width: { xs: 260, md: 360 },
-                height: "auto",
-                dropShadow: "0 16px 40px rgba(0,0,0,0.25)",
-                filter: "drop-shadow(0 16px 40px rgba(0,0,0,0.25))",
-                // bgcolor:"red",
-               
-                
-              }}
-            />
-            {/* </Box> */}
-          </motion.div>
-          </Box>
-        </Stack>
-      </Container>
-    </Box>
+  {/* Desktop video */}
+  <Box
+    component="video"
+    autoPlay
+    muted
+    loop
+    playsInline
+    sx={{
+      display: { xs: "none", md: "block" },
+      width: "100%",
+      height: "100%",
+      objectFit: "cover",
+      filter: "saturate(1.1)",
+    }}
+  >
+    <source
+      src="https://res.cloudinary.com/medcon-dam/video/upload/q_auto/f_auto/v1776432103/ehs-ckm-2026/Frontend/5th_EHS_Banner_1.4_i2wqtk.mp4"
+      type="video/mp4"
+    />
+  </Box>
+</Box>
   );
 }

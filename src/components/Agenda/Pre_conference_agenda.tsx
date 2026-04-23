@@ -15,7 +15,6 @@ import {
 import { useRouter } from "next/router";
 import { conferenceRoutes } from "@/lib/conference-routes";
 
-
 type ScheduleRow = {
   time: string;
   topic: React.ReactNode;
@@ -51,29 +50,33 @@ const scheduleRows: ScheduleRow[] = [
     time: "3:00 – 4:30 PM",
     topic: (
       <>
-        <Typography sx={{ fontSize: 15, color: "#355E80", mb: 1 }}>
+        <Typography sx={{ fontSize: { xs: 10, md: 15 }, color: "#355E80", mb: 1, lineHeight: 1.3 }}>
           <Box component="span" sx={{ fontWeight: 400 }}>
-            Workshop 1:
+            <strong>Workshop 1:</strong>
           </Box>
           <br />
-          The CKM Shift: Integrated Management of Cardio-Kidney-Metabolic Risk
+          <strong>The CKM Shift: Integrated Management of Cardio-Kidney-Metabolic Risk </strong>
           Applying CKM pathways in clinical decisions with real patient cases.
         </Typography>
 
-        <Typography sx={{ fontSize: 15, color: "#355E80", mt: 2 }}>
+        <Typography sx={{ fontSize: { xs: 10, md: 15 }, color: "#355E80", mt: 2, lineHeight: 1.3 }}>
           <Box component="span" sx={{ fontWeight: 400 }}>
-            Workshop 2:
+            <strong>Workshop 2:</strong>
           </Box>
           <br />
-          Prediabetes in Focus: Screening, Risk Scoring &amp; Intervention Strategies
+          <strong>Prediabetes in Focus: Screening, Risk Scoring &amp; Intervention Strategies </strong>
           Translating preventive guidelines into frontline practice.
         </Typography>
       </>
     ),
     location: (
       <>
-        <Typography sx={{ fontSize: 15, color: "#355E80", mb: 6 }}>Jais A</Typography>
-        <Typography sx={{ fontSize: 15, color: "#355E80" }}>Jais B</Typography>
+        <Typography sx={{ fontSize: { xs: 10, md: 15 }, color: "#355E80", mb: { xs: 8, md: 10 }, lineHeight: 1.3 }}>
+          Jais A
+        </Typography>
+        <Typography sx={{ fontSize: { xs: 10, md: 15 }, color: "#355E80", lineHeight: 1.3 }}>
+          Jais B
+        </Typography>
       </>
     ),
   },
@@ -86,31 +89,35 @@ const scheduleRows: ScheduleRow[] = [
     time: "5:00 – 6:30 PM",
     topic: (
       <>
-        <Typography sx={{ fontSize: 15, color: "#355E80", mb: 1 }}>
+        <Typography sx={{ fontSize: { xs: 10, md: 15 }, color: "#355E80", mb: 1, lineHeight: 1.3 }}>
           <Box component="span" sx={{ fontWeight: 400 }}>
-            Workshop 3:
+            <strong>Workshop 3:</strong>
           </Box>
           <br />
-          Insulin Inertia: Overcoming Hesitation, Building Confidence
+          <strong>Insulin Inertia: Overcoming Hesitation, Building Confidence</strong>
           Practical, case-based workshop on initiating and adjusting insulin in T2D
           patients.
         </Typography>
 
-        <Typography sx={{ fontSize: 15, color: "#355E80", mt: 2 }}>
+        <Typography sx={{ fontSize: { xs: 10, md: 15 }, color: "#355E80", mt: 2, lineHeight: 1.3 }}>
           <Box component="span" sx={{ fontWeight: 400 }}>
-            Workshop 4:
+            <strong>Workshop 4:</strong>
           </Box>
           <br />
-          CGM &amp; Digital Tools in Practice: Data-Driven Care Beyond T1D
-          Maximizing CGM value for patient education, monitoring, and therapy
+          <strong>CGM &amp; Digital Tools in Practice: Data-Driven Care Beyond T1D </strong>
+           Maximizing CGM value for patient education, monitoring, and therapy
           adjustments.
         </Typography>
       </>
     ),
     location: (
       <>
-        <Typography sx={{ fontSize: 15, color: "#355E80", mb: 6 }}>Jais A</Typography>
-        <Typography sx={{ fontSize: 15, color: "#355E80" }}>Jais B</Typography>
+        <Typography sx={{ fontSize: { xs: 10, md: 15 }, color: "#355E80", mb: { xs: 8, md: 10 }, lineHeight: 1.3 }}>
+          Jais A
+        </Typography>
+        <Typography sx={{ fontSize: { xs: 10, md: 15 }, color: "#355E80", lineHeight: 1.3 }}>
+          Jais B
+        </Typography>
       </>
     ),
   },
@@ -138,17 +145,14 @@ async function authRequest<T = any>(
 ): Promise<T> {
   const token = getAccessToken();
 
-  const response = await fetch(
-    `${conferenceRoutes.baseUrl}/${endpoint}`,
-    {
-      method,
-      headers: {
-        "Content-Type": "application/json",
-        ...(token ? { Authorization: `Bearer ${token}` } : {}),
-      },
-      body: body ? JSON.stringify(body) : undefined,
-    }
-  );
+  const response = await fetch(`${conferenceRoutes.baseUrl}/${endpoint}`, {
+    method,
+    headers: {
+      "Content-Type": "application/json",
+      ...(token ? { Authorization: `Bearer ${token}` } : {}),
+    },
+    body: body ? JSON.stringify(body) : undefined,
+  });
 
   return response.json();
 }
@@ -158,7 +162,10 @@ function TableHeader() {
     <Box
       sx={{
         display: "grid",
-        gridTemplateColumns: { xs: "1fr", md: "1.1fr 3fr 1.2fr" },
+        gridTemplateColumns: {
+          xs: "0.95fr 2fr 0.95fr",
+          md: "1.1fr 3fr 1.2fr",
+        },
         gap: "6px",
         mt: 2,
       }}
@@ -170,9 +177,12 @@ function TableHeader() {
             bgcolor: "#d3c8c2",
             color: "#315D7C",
             textAlign: "center",
-            py: 1.6,
-            fontSize: { xs: 18, md: 20 },
+            py: { xs: 1, md: 1.6 },
+            px: { xs: 0.5, md: 1 },
+            fontSize: { xs: 10, md: 20 },
             fontWeight: 500,
+            lineHeight: 1.15,
+            wordBreak: "break-word",
           }}
         >
           {item.label}
@@ -181,6 +191,22 @@ function TableHeader() {
     </Box>
   );
 }
+
+const cellSx = {
+  px: { xs: 0.75, md: 2.5 },
+  py: { xs: 1, md: 2.2 },
+  color: "#355E80",
+  fontSize: { xs: 9.5, md: 15 },
+  lineHeight: { xs: 1.25, md: 1.35 },
+  wordBreak: "break-word",
+  overflowWrap: "anywhere",
+  whiteSpace: "normal",
+};
+
+const cellSxCenter = {
+  ...cellSx,
+  textAlign: "center",
+};
 
 function ScheduleTable() {
   return (
@@ -194,11 +220,14 @@ function ScheduleTable() {
             key={index}
             sx={{
               display: "grid",
-              gridTemplateColumns: { xs: "1fr", md: "1.1fr 3fr 1.2fr" },
+              gridTemplateColumns: {
+                xs: "0.95fr 2fr 0.95fr",
+                md: "1.1fr 3fr 1.2fr",
+              },
               borderBottom: "1px solid #e2dcd8",
             }}
           >
-            <Box sx={cellSx}>{row.time}</Box>
+            <Box sx={{ ...cellSx, textAlign: "center" }}>{row.time}</Box>
             <Box sx={cellSx}>{row.topic}</Box>
             <Box sx={cellSxCenter}>{row.location}</Box>
           </Box>
@@ -289,19 +318,6 @@ function WorkshopCard({
   );
 }
 
-const cellSx = {
-  px: { xs: 1.5, md: 2.5 },
-  py: 2.2,
-  color: "#355E80",
-  fontSize: { xs: 14, md: 15 },
-  lineHeight: 1.35,
-};
-
-const cellSxCenter = {
-  ...cellSx,
-  textAlign: "center",
-};
-
 export default function PreConferenceWorkshopComponent() {
   const router = useRouter();
   const [slotOne, setSlotOne] = React.useState("");
@@ -315,7 +331,6 @@ export default function PreConferenceWorkshopComponent() {
     const token = getAccessToken();
 
     if (!token) {
-      // router.replace("/register");
       setLoading(false);
       return;
     }
@@ -417,6 +432,12 @@ export default function PreConferenceWorkshopComponent() {
           Friday, April 17, 2026 3:00 PM - 6.30 PM
         </Typography>
 
+        
+
+        <ScheduleTable />
+
+        <Box sx={{ height: 7, bgcolor: "#315D7C", mt: 3, mb: 4.5 }} />
+
         {error && (
           <Alert severity="error" sx={{ mb: 2, borderRadius: 2 }}>
             {error}
@@ -428,10 +449,6 @@ export default function PreConferenceWorkshopComponent() {
             {success}
           </Alert>
         )}
-
-        <ScheduleTable />
-
-        <Box sx={{ height: 7, bgcolor: "#315D7C", mt: 3, mb: 4.5 }} />
 
         <Typography
           sx={{

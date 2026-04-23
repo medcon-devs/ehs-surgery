@@ -1,85 +1,98 @@
-import * as React from "react";
+"use client";
 
-const TARGET = new Date("2026-05-09T05:00:00Z").getTime(); 
-// 9 May 2026 9:00 AM Dubai = 05:00 UTC
+import { useEffect, useState } from "react";
 
-type Mode = "MONTHS_DAYS" | "DAYS_HOURS" | "HOURS_MINUTES";
+type CountdownState = {
+  leftValue: number;
+  leftLabel: string;
+  rightValue: number;
+  rightLabel: string;
+};
 
-export function useDubaiCountdown() {
-  const [state, setState] = React.useState({
-    leftValue: 0,
-    rightValue: 0,
-    leftLabel: "Months",
-    rightLabel: "Days",
-    mode: "MONTHS_DAYS" as Mode,
-    done: false,
+function getDubaiNow() {
+  const now = new Date();
+
+  // Convert current time to Dubai time parts
+  const parts = new Intl.DateTimeFormat("en-CA", {
+    timeZone: "Asia/Dubai",
+    year: "numeric",
+    month: "2-digit",
+    day: "2-digit",
+    hour: "2-digit",
+    minute: "2-digit",
+    second: "2-digit",
+    hour12: false,
+  }).formatToParts(now);
+
+  const map: Record<string, string> = {};
+  parts.forEach((p) => {
+    if (p.type !== "literal") map[p.type] = p.value;
   });
 
-  React.useEffect(() => {
-    const tick = () => {
-      const now = Date.now();
-      const diff = TARGET - now;
+  return new Date(
+    `${map.year}-${map.month}-${map.day}T${map.hour}:${map.minute}:${map.second}`
+  );
+}
 
-      if (diff <= 0) {
-        setState((s) => ({ ...s, done: true }));
-        return;
-      }
+function calculateMonthsAndDays(now: Date, target: Date) {
+  if (target <= now) {
+    return { months: 0, days: 0 };
+  }
 
-      const minute = 60 * 1000;
-      const hour = 60 * minute;
-      const day = 24 * hour;
-      const month = 30 * day; // approximate display month
+  let months =
+    (target.getFullYear() - now.getFullYear()) * 12 +
+    (target.getMonth() - now.getMonth());
 
-      // 🔹 Less than 1 day → Hours : Minutes
-      if (diff < day) {
-        const hours = Math.floor(diff / hour);
-        const minutes = Math.floor((diff % hour) / minute);
+  // Anchor date after adding months to now
+  let anchor = new Date(now);
+  anchor.setMonth(anchor.getMonth() + months);
 
-        setState({
-          leftValue: hours,
-          rightValue: minutes,
-          leftLabel: "Hours",
-          rightLabel: "Minutes",
-          mode: "HOURS_MINUTES",
-          done: false,
-        });
-        return;
-      }
+  // If anchor passed target, reduce one month
+  if (anchor > target) {
+    months -= 1;
+    anchor = new Date(now);
+    anchor.setMonth(anchor.getMonth() + months);
+  }
 
-      // 🔹 Less than 1 month → Days : Hours
-      if (diff < month) {
-        const days = Math.floor(diff / day);
-        const hours = Math.floor((diff % day) / hour);
+  // Remaining days after full months
+  const msPerDay = 1000 * 60 * 60 * 24;
+  const days = Math.floor((target.getTime() - anchor.getTime()) / msPerDay);
 
-        setState({
-          leftValue: days,
-          rightValue: hours,
-          leftLabel: "Days",
-          rightLabel: "Hours",
-          mode: "DAYS_HOURS",
-          done: false,
-        });
-        return;
-      }
+  return {
+    months: Math.max(0, months),
+    days: Math.max(0, days),
+  };
+}
 
-      // 🔹 Default → Months : Days
-      const months = Math.floor(diff / month);
-      const days = Math.floor((diff % month) / day);
+export function useDubaiCountdown() {
+  const [countdown, setCountdown] = useState<CountdownState>({
+    leftValue: 0,
+    leftLabel: "Months",
+    rightValue: 0,
+    rightLabel: "Days",
+  });
 
-      setState({
+  useEffect(() => {
+    // Put your real event date here
+    const eventDate = new Date("2026-05-09T00:00:00");
+
+    const updateCountdown = () => {
+      const nowDubai = getDubaiNow();
+      const { months, days } = calculateMonthsAndDays(nowDubai, eventDate);
+
+      setCountdown({
         leftValue: months,
-        rightValue: days,
         leftLabel: "Months",
+        rightValue: days,
         rightLabel: "Days",
-        mode: "MONTHS_DAYS",
-        done: false,
       });
     };
 
-    tick();
-    const id = setInterval(tick, 1000);
-    return () => clearInterval(id);
+    updateCountdown();
+    const interval = setInterval(updateCountdown, 1000 * 60);
+
+    return () => clearInterval(interval);
   }, []);
 
-  return state;
+  return countdown;
 }

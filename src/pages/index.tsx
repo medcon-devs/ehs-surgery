@@ -6,6 +6,7 @@ import GallerySection from "@/components/home/GallerySection";
 import TargetAudience from "@/components/home/TargetAudience";
 import InfoCards from "@/components/home/InfoCards";
 import ComplianceNotice from "@/components/home/ComplianceNotice";
+import Sponsors from "@/components/home/sponsors";
 import { Box } from "@mui/material";
 
 export default function HomePage() {
@@ -19,6 +20,7 @@ export default function HomePage() {
         <TargetAudience />
         <InfoCards />
         <ComplianceNotice />
+        <Sponsors />
       </Box>
     </Layout>
   );

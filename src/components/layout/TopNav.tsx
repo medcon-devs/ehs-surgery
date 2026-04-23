@@ -60,13 +60,12 @@ export default function TopNav() {
     { label: "Home", href: "/" },
     { label: "Scientific Committee", href: "/scientific-committee" },
     { label: "Faculty", href: "/faculty" },
-    {
-      label: "Agenda",
-      children: [
-        { label: "Conference Agenda", href: "/agenda/conference-agenda" },
-        { label: "Pre-Conference Workshop", href: "/agenda/pre-conference-workshop" },
-      ],
-    },
+    {label: "Agenda", href: "/agenda/conference-agenda"},
+      // children: [
+      //   { label: "Conference Agenda", href: "/agenda/conference-agenda" },
+      //   // { label: "Pre-Conference Workshop", href: "/agenda/pre-conference-workshop" },
+      // ],
+    // },
     { label: "CME", href: "/cme" },
     { label: isLoggedIn ? "Profile" : "Register", href: "/register" },
   ];
@@ -144,7 +143,7 @@ export default function TopNav() {
                           },
                         }}
                       >
-                        {item.children!.map((child) => (
+                        {/* {item.children!.map((child) => (
                           <MenuItem
                             key={child.href}
                             component={Link}
@@ -155,7 +154,7 @@ export default function TopNav() {
                           >
                             {child.label}
                           </MenuItem>
-                        ))}
+                        ))} */}
                       </Menu>
                     </React.Fragment>
                   );
@@ -243,7 +242,7 @@ export default function TopNav() {
                     {mobileAgendaOpen ? <KeyboardArrowUpIcon /> : <KeyboardArrowDownIcon />}
                   </ListItemButton>
 
-                  <Collapse in={mobileAgendaOpen} timeout="auto" unmountOnExit>
+                  {/* <Collapse in={mobileAgendaOpen} timeout="auto" unmountOnExit>
                     <List disablePadding>
                       {item.children!.map((child) => (
                         <ListItemButton
@@ -275,7 +274,7 @@ export default function TopNav() {
                         </ListItemButton>
                       ))}
                     </List>
-                  </Collapse>
+                  </Collapse> */}
                 </Box>
               );
             }

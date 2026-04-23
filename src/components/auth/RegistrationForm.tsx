@@ -53,7 +53,7 @@ export default function RegistrationForm({
     <>
       <SectionTitle>Registration:</SectionTitle>
 
-      <Box sx={{ maxWidth: 620, mx: "auto" }}>
+      <Box sx={{ maxWidth: 620, mx: "auto", mb:5 }}>
         <RegistrationFields
           form={form}
           errors={errors}
@@ -144,7 +144,7 @@ export default function RegistrationForm({
             ) : requiresPayment ? (
               clientSecret ? "Payment Form Ready" : "Proceed to Payment"
             ) : (
-              "Join Now"
+              "Register Now"
             )}
           </Button>
         </Box>

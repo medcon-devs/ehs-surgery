@@ -36,7 +36,7 @@ export default function ComingSoon({
         sx={{
           position: "absolute",
           inset: 0,
-          backgroundImage: "url(/images/hero-bg.jpg)",
+          backgroundImage: "url(https://res.cloudinary.com/medcon-dam/image/upload/v1773726219/ehs-ckm-2026/Frontend/hero-bg_zfzzdg.jpg)",
           backgroundSize: "cover",
           backgroundPosition: "center",
           opacity: 0.16,
