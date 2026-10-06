@@ -3,354 +3,213 @@ import { Box, Container, Typography } from "@mui/material";
 import Grid from "@mui/material/Grid";
 import { literata } from "@/lib/fonts";
 
+
+
 type FacultyMember = {
   name: string;
   titleLines: string[];
-  image?: string;
 };
 
 const facultyLeft: FacultyMember[] = [
   {
-    name: "Dr. Muhamed Al Rohani, MD",
-    image:
-      "https://res.cloudinary.com/medcon-dam/image/upload/v1773726216/ehs-ckm-2026/Frontend/chairperson_fg0wif.png",
+    name: "Dr. Abdel Wahid Alwahidi",
     titleLines: [
-      "Associated professor RAK Medical & Health Sciences University,",
-      "Consultant in Nephrology", 
-      "Head of Medical Department Dibba hospital",
-      "Chairman, Organizing Committee",
-      "The 5th EHS Cardiovascular and Metabolic Conference",
+      "Consultant General Surgeon",
+      "Qassimi Hospital, EHS",
     ],
   },
   {
-    name: "Dr. Mohamed Salah",
-    image:"https://res.cloudinary.com/medcon-dam/image/upload/q_auto/f_auto/v1775651216/ehs-ckm-2026/Frontend/Mohamed_Salah_Meselhy_Osman-fac_gxabgv.png",
+    name: "Prof. Abdelbary Hassan",
     titleLines: [
-      "Seinor Cardiology Consultant and Head of Cardiology",
-      "Kalba Hospital, Professor of Cardiology Suez Canal University"
-    ],
-  },
-  {
-    name: "Dr. Enji Hamdy Elsawy",
-    image:"https://res.cloudinary.com/medcon-dam/image/upload/v1776683109/ehs-ckm-2026/Frontend/Enji_wxetzq.png",
-    titleLines: [
-      "Consultant Neurolgy", 
-      "Fujairah Hospital",
-    ],
-  },
-  {
-    name: "Dr. Medhat Ali",
-    image:"https://res.cloudinary.com/medcon-dam/image/upload/q_auto/f_auto/v1776254580/ehs-ckm-2026/Frontend/medhat_ali_jo0min.png",
-    titleLines: [
-      "Nephrology Consultant, EHS",
-      "Umm Al Quwain Hospital"
-    ],
-  },
-  {
-    name: "Dr. Bahaa Zayed",
-    image:"https://res.cloudinary.com/medcon-dam/image/upload/q_auto/f_auto/v1776254797/ehs-ckm-2026/Frontend/bahaa_jqe3ec.png",
-    titleLines: [
-      "Professor of Nephrology, Cairo University",
-      "Consultant of Internal Medicine and Nephrology",
-      "Fujairah Hospital",
-    ],
-  },
-  {
-    name: "Dr. Salem Omar",
-    image: "https://res.cloudinary.com/medcon-dam/image/upload/q_auto/f_auto/v1775649145/ehs-ckm-2026/Frontend/Salem_Abdula_Salem_Omar_sjilsb.png",
-    titleLines: [
-      "Consultants in Internal Medicine",
+      "Consultant Orthopedic Surgeon",
       "Dibba Hospital, EHS",
     ],
   },
   {
-    name: "Dr. Dawlat Sany",
-    image:"https://res.cloudinary.com/medcon-dam/image/upload/q_auto/f_auto/v1775651217/ehs-ckm-2026/Frontend/Dawlat_Hussein_Sany-fac_kp0jtc.png",
+    name: "Dr. Abobakr Omar",
     titleLines: [
-      "Consultant Internal Medicine / Nephrology",
-      "Kalba Hospital",
-      "Sharjah, United Arab Emirates",
+      "Specialist Emergency Physician",
+      "Dibba Hospital, EHS",
     ],
   },
   {
-    name: "Dr. Amr ElFaramawy",
-    image:"https://res.cloudinary.com/medcon-dam/image/upload/q_auto/f_auto/v1776414186/ehs-ckm-2026/Frontend/Mask_Group_8_u7yyng.png",
+    name: "Dr. Adel AlMaytamy",
     titleLines: [
-      "Cardiologist consultant",
-      "Fujairah hospital",
-    ],
-  },
-  {
-    name: "Dr. Aseilah Al Qaydi",
-    image:"https://res.cloudinary.com/medcon-dam/image/upload/q_auto/f_auto/v1776255156/ehs-ckm-2026/Frontend/aseilah_mgcxqx.png",
-    titleLines: [
-      "Internal Medicine Consultant",
-      "Al Fujairah Hospital ",
-    ],
-  },
-  {
-    name: "Dr. Adel Al Maytamy",
-    image:"https://res.cloudinary.com/medcon-dam/image/upload/q_auto/f_auto/v1776255288/ehs-ckm-2026/Frontend/mataymy_fjtulz.png",
-    titleLines: [
-      "Consultant Anesthesiologist",
-      "Tawam Hospital, Al Ain",
-      "Abu Dhabi, United Arab Emirates",
-    ],
-  },
-  {
-    name: "Dr. Wameedh AlBassam",
-    image:"https://res.cloudinary.com/medcon-dam/image/upload/q_auto/f_auto/v1775651217/ehs-ckm-2026/Frontend/Wameedh_Al_Bassam-fac_v7ijh3.png",
-    titleLines: [
-      "Senior Consultant, Otolaryngology –",
-      "Head & Neck Surgery (ENT)",
-      "Fujairah Hospital",
-      "Fujairah, United Arab Emirates",
-    ],
-  },
-  {
-    name: "Dr. Ahmed Abdelmageed",
-    image:"https://res.cloudinary.com/medcon-dam/image/upload/q_auto/f_auto/v1776255630/ehs-ckm-2026/Frontend/adbelmaged_j2gdlz.png",
-    titleLines: [
-      "Emergency Medicine Specialist",
-      "Dibba Hospital",
-      "Fujairah, United Arab Emirates",
-    ],
-  },
-  
-  {
-    name: "Dr. Ghamdan Alsadeh",
-    image:"https://res.cloudinary.com/medcon-dam/image/upload/q_auto/f_auto/v1776255767/ehs-ckm-2026/Frontend/ghamdan_iufl7r.png",
-    titleLines: [
-      "Consultant Critical Care Medicine", 
-      "Head of ICU Department, IBHO Hospital", 
-      "Associate Professor, RAK University",
-    ],
-  },
-  {
-    name: "Dr. Ammar Al Farroukh",
-    image:"https://res.cloudinary.com/medcon-dam/image/upload/q_auto/f_auto/v1776255889/ehs-ckm-2026/Frontend/ammar_q3zozj.png",
-    titleLines: [
-      "Pediatric Consultant",
-      "Head of Pediatric Department",
-      "Alsharq Hospital Dibba",
-    ],
-  },
-  {
-    name: "Dr. Ahmed Mohamed",
-    image:"https://res.cloudinary.com/medcon-dam/image/upload/q_auto/f_auto/v1776414614/ehs-ckm-2026/Frontend/Component_2_1_lo4ffz.png",
-    titleLines: [
-      "Consultant - Reproductive Medicine and Infertility",
-    ],
-  },
-  {
-    name: "Dr. Hanadi Widatallah",
-    image:"https://res.cloudinary.com/medcon-dam/image/upload/v1776684002/ehs-ckm-2026/Frontend/Hanadi_ha4grf.png",
-    titleLines: [
-      "Consultant Obstetrician and Gynaecologist, Reproductive",
-      "Medicine And Infertility",
-      "HOD OB/GYN Department",
+      "Consultant",
       "Dibba Hospital",
     ],
   },
-  
+  {
+    name: "Dr. Amr Arafa",
+    titleLines: [
+      "Consultant General and Bariatric Surgeon",
+      "Amina Hospital, Ajman",
+    ],
+  },
+  {
+    name: "Ms. Aisha Mostafa Hassan",
+    titleLines: [
+      "Wound, Ostomy and Continence Nurse",
+      "Sheikh Khalifa Hospital",
+    ],
+  },
+  {
+    name: "Dr. Basim Al Khafajee",
+    titleLines: [
+      "Consultant Surgeon",
+      "Canadian Specialist Hospital",
+    ],
+  },
+  {
+    name: "Prof. Denis Barritault",
+    titleLines: [
+      "Consultant Surgeon",
+      "Canadian Specialist Hospital",
+    ],
+  },
+  {
+    name: "Dr. Essa Muallemi",
+    titleLines: [
+      "Consultant",
+      "Sharjah, Kuwait Hospital",
+    ],
+  },
+  {
+    name: "Prof. Hatem Gaafar",
+    titleLines: [
+      "Consultant Surgeon",
+      "Dibba Hospital",
+    ],
+  },
+  {
+    name: "Dr. Hatem Moussa",
+    titleLines: [
+      "General Surgeon",
+      "American Hospital Dubai",
+    ],
+  },
+  {
+    name: "Dr. Haidar Saeed Jalil",
+    titleLines: [
+      "Specialist Surgeon",
+      "Dibba Hospital",
+    ],
+  },
+  {
+    name: "Dr. Haider Makki",
+    titleLines: [
+      "General Surgeon",
+      "Al Qassimi Hospital",
+    ],
+  },
+  {
+    name: "Mr. Hamza Al Shraileeh",
+    titleLines: [],
+  },
+  {
+    name: "Dr. Jado Kamal",
+    titleLines: [
+      "General Surgeon",
+      "American Hospital Dubai",
+    ],
+  },
 ];
 
 const facultyRight: FacultyMember[] = [
-  
   {
-    name: "Dr. Amrish Agrawal",
-    image:
-      "https://res.cloudinary.com/medcon-dam/image/upload/q_auto/f_auto/v1776256316/ehs-ckm-2026/Frontend/amrish_mbqjzo.png",
+    name: "Dr. Khaled Almuhtadi",
     titleLines: [
-      "Senior Consultant Cardiology, Fujairah Hospital, EHS, UAE", 
-      "Professor of Medicine, RAK University of Health Sciences",
+      "Consultant General Surgeon",
+      "Dibba Hospital",
     ],
   },
   {
-    name: "Dr. Abdul Nasser Oudeh",
-    image:"https://res.cloudinary.com/medcon-dam/image/upload/q_auto/f_auto/v1775651216/ehs-ckm-2026/Frontend/Abdulnasser-fac_qukv7e.png",
+    name: "Dr. Laurent Layani",
     titleLines: [
-      "Specialist & Interventional Cardiologist",
+      "Consultant Bariatric & Advance",
       "Al Sharq Hospital",
-      "Fujairah, United Arab Emirates",
     ],
   },
   {
-    name: "Dr. Rayan Khojali",
-    image:"https://res.cloudinary.com/medcon-dam/image/upload/q_auto/f_auto/v1776414893/ehs-ckm-2026/Frontend/Component_3_1_x5omzt.png",
+    name: "Ms. Manal Masuod Al Nuaimi",
+    titleLines: [],
+  },
+  {
+    name: "Dr. Mehroon Rasheed Muhammad",
+    titleLines: [],
+  },
+  {
+    name: "Mr. Moyad Ahmad Wishah",
+    titleLines: [
+      "Assistant Head of Nursing",
+      "Saqr Hospital",
+    ],
+  },
+  {
+    name: "Prof. Mohamed Hassan",
+    titleLines: [
+      "General Surgeon",
+      "Al Qassimi Hospital",
+    ],
+  },
+  {
+    name: "Dr. Mohammed Ramjiyan",
+    titleLines: [
+      "Physician",
+      "Dibba Hospital",
+    ],
+  },
+  {
+    name: "Prof. Mohammed Baguinde",
+    titleLines: [
+      "Consultant and Chair Of The Vascular Surgery ",
+      "Sheikh Shakhbout Medical City (SSMC)",
+
+    ],
+  },
+  {
+    name: "Dr. Nafad El-Hadidi",
+    titleLines: [
+      "Consultant General Surgeon",
+      "Zulekha Hospital",
+    ],
+  },
+  {
+    name: "Ms. Nasreen Abdelatif",
+    titleLines: [
+      "Wound Care Specialist Nurse",
+      "Al Qassimi Hospital",
+    ],
+  },
+  {
+    name: "Prof. Safwan Taha",
     titleLines: [
       "General Practitioner",
       "Dibba Hospital",
-      "Fujairah, United Arab Emirates"
-    ],
-  },
-  
-  {
-    name: "Dr. Ramadan Arafa",
-    image:"https://res.cloudinary.com/medcon-dam/image/upload/q_auto/f_auto/v1776252945/ehs-ckm-2026/Frontend/ramdan_qbruaf.png",
-    titleLines: [
-      "Consultant Physician",
-      "Fujairah Hospital",
-      "Fujairah, United Arab Emirates",
     ],
   },
   {
-    name: "Dr. Mohammed Edan",
-    image:"https://res.cloudinary.com/medcon-dam/image/upload/q_auto/f_auto/v1775651218/ehs-ckm-2026/Frontend/mohammed_edan_h1erzh.png",
+    name: "Ms. Salma Saeed",
+    titleLines: [],
+  },
+  {
+    name: "Dr. Syed Shafaat",
     titleLines: [
-      "Consultant Internal Medicine and Nephrology",
+      "General Practitioner Doctor",
       "Dibba Hospital",
-      "Fujairah, United Arab Emirates",
     ],
   },
   {
-    name: "Dr. Annas Qasem",
-    image:"https://res.cloudinary.com/medcon-dam/image/upload/q_auto/f_auto/v1775651217/ehs-ckm-2026/Frontend/Annas_Qasem-fac_m7mjgi.png",
+    name: "Dr. Wayne-George",
     titleLines: [
-      "Consultant Internal Medicine & Nephrology",
-      "Ibrahim Bin Hamad Obaidullah Hospital (IBHOH), RAK",
-    ],
-  },
-  {
-    name: "Dr. Mohammed Babiker",
-    image:"https://res.cloudinary.com/medcon-dam/image/upload/q_auto/f_auto/v1776415120/ehs-ckm-2026/Frontend/Component_4_1_a3rl97.png",
-    titleLines: [
-      "Consultant Internal Medicine",
-      "Dibba Hospital",
-      "Fujairah, United Arab Emirates",
-    ],
-  },
-  {
-    name: "Dr. Waheed Farid",
-    image:"https://res.cloudinary.com/medcon-dam/image/upload/q_auto/f_auto/v1775651218/ehs-ckm-2026/Frontend/Waheed_Farid_ibgjhj.png",
-    titleLines: [
-      "Consultant Cardiologist & Head of Cardiology",
-      "Dibba Hospital",
-      "Fujairah, United Arab Emirates",
-    ],
-  },
-  {
-    name: "Dr. Hatem Abdelkhalek",
-    image:"https://res.cloudinary.com/medcon-dam/image/upload/q_auto/f_auto/v1775651217/ehs-ckm-2026/Frontend/hatem_q6fkls.png",
-    titleLines: [
-      "ICU Specialist, Dibba Hospital",
-      "Fujairah, United Arab Emirates",
-    ],
-  },
-  {
-    name: "Dr. Abobakr Abdelkader",
-    image:"https://res.cloudinary.com/medcon-dam/image/upload/q_auto/f_auto/v1776257179/ehs-ckm-2026/Frontend/abobaker_cdjoxm.png",
-    titleLines: [
-      "Emergency Specialist",
-      "Dibba Hospital",
-      "Fujairah, United Arab Emirates",
-    ],
-  },
-  // {
-  //   name: "Dr. Abdelaal Elbahnasy",
-  //   image:"https://res.cloudinary.com/medcon-dam/image/upload/q_auto/f_auto/v1775651389/ehs-ckm-2026/Frontend/avatar_fja2dg.png",
-  //   titleLines: [
-  //     "Emergency Medicine Specialist",
-  //     "King Abdulaziz Airbase Hospital",
-  //     "Saudi Arabia",
-  //   ],
-  // },
-  {
-    name: "Dr. Eman Elmahdi",
-    image:"https://res.cloudinary.com/medcon-dam/image/upload/v1776684230/ehs-ckm-2026/Frontend/Eman_lhvbtr.png",
-    titleLines: [
-      "Emergency Medicine Specialist",
-      "Dibba Hospital ",
-    ],
-  },
-  {
-    name: "Dr. Anaam Hasson",
-    image:"https://res.cloudinary.com/medcon-dam/image/upload/q_auto/f_auto/v1776257371/ehs-ckm-2026/Frontend/anaam_elqmyg.png",
-    titleLines: [
-      "MO Consultant Obstetrics & Gynecology",
-      "Al Sharq Hospital",
-    ],
-  },
-  // {
-  //   name: "Dr. Atif Bashir Eltayeb",
-  //   image:"https://res.cloudinary.com/medcon-dam/image/upload/q_auto/f_auto/v1775651216/ehs-ckm-2026/Frontend/atif_yiajic.png",
-  //   titleLines: [
-  //     "Consultant, General Obstetrics and Gynaecology",
-  //     "Latifa Hospital",
-  //     "Dubai, United Arab Emirates",
-  //   ],
-  // },
-  {
-    name: "Dr. Ali Muhibaldin",
-    image:"https://res.cloudinary.com/medcon-dam/image/upload/q_auto/f_auto/v1776322287/ehs-ckm-2026/Frontend/moheb_sututb.png",
-    titleLines: [
-      "Cardiology Specialist",
-      "Dibba Hospital",
-      "Fujairah, United Arab Emirates",
-    ],
-  },
-  {
-    name: "Dr. Sabaa Alhemyari",
-    image:"https://res.cloudinary.com/medcon-dam/image/upload/q_auto/f_auto/v1776322287/ehs-ckm-2026/Frontend/sabaa_l8qsyu.png",
-    titleLines: [
-      "Ph.D Clinical Pharmacist",
-      "EHS",
-    ],
-  },
-  {
-    name: "Dr. Hassan Al Hakim",
-    image:"https://res.cloudinary.com/medcon-dam/image/upload/q_auto/f_auto/v1776256088/ehs-ckm-2026/Frontend/hasan_odlh3h.png",
-    titleLines: [
-      "Pulmonology Specialist",
-      "Dibba Hospital",
+      "Plastic Surgeon",
+      "Sheikh Khalifa Hospital",
     ],
   },
 ];
 
-function FacultyImage({ image, name }: { image?: string; name: string }) {
-  return (
-    <Box
-      sx={{
-        width: { xs: 86, md: 92 },
-        minWidth: { xs: 86, md: 92 },
-        height: { xs: 110, md: 118 },
-        bgcolor: "#d6ceca",
-        borderTopRightRadius: 18,
-        borderBottomRightRadius: 18,
-        overflow: "hidden",
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "center",
-      }}
-    >
-      {image ? (
-        <Box
-          component="img"
-          src={image}
-          alt={name}
-          sx={{
-            width: "100%",
-            height: "100%",
-            objectFit: "cover",
-            display: "block",
-          }}
-        />
-      ) : (
-        <Box
-          component="img"
-          src="https://res.cloudinary.com/medcon-dam/image/upload/v1774585350/ehs-ckm-2026/Frontend/avatar-placeholder_lx8g3j.png"
-          alt={name}
-          sx={{
-            width: "100%",
-            height: "100%",
-            objectFit: "cover",
-            display: "block",
-          }}
-        />
-      )}
-    </Box>
-  );
-}
+const BAR_SVG =
+  "https://res.cloudinary.com/medcon-dam/image/upload/v1785150360/EHS-surgery-conference/Bar_wpmvpr.svg";
 
 function FacultyCard({ member }: { member: FacultyMember }) {
   return (
@@ -358,61 +217,123 @@ function FacultyCard({ member }: { member: FacultyMember }) {
       sx={{
         position: "relative",
         display: "flex",
-        alignItems: "flex-start",
-        bgcolor: "#f6f4f4",
-        borderRadius: "14px",
-        overflow: "hidden",
-        minHeight: { xs: 118, md: 132 },
-        boxShadow: "0 1px 0 rgba(0,0,0,0.03)",
-        "&::after": {
-          content: '""',
-          position: "absolute",
-          left: { xs: 90, md: 100 },
-          right: 0,
-          bottom: 0,
-          height: 8,
-          bgcolor: "#3f6487",
-          borderBottomLeftRadius: 10,
-          borderBottomRightRadius: 10,
+        alignItems: "stretch",
+        pl: {
+          xs: 1,
+          sm: 1.2,
+          md: 1.3,
         },
       }}
     >
-      <Box sx={{ pt: 1.4 }}>
-        <FacultyImage image={member.image} name={member.name} />
-      </Box>
+      {/* Gold vertical SVG bar */}
+      <Box
+        component="img"
+        src={BAR_SVG}
+        alt=""
+        aria-hidden="true"
+        sx={{
+          position: "absolute",
+          left: 20,
+          top: {
+            xs: -4,
+            md: -5,
+          },
+          width: {
+            xs: 14,
+            md: 15,
+          },
+          height: {
+            // xs: 58,
+            // sm: 62,
+            xs:95,
+            md: 105,
+          },
+          objectFit: "cover",
+          display: "block",
+          zIndex: 2,
+        }}
+      />
 
+      {/* Faculty information card */}
       <Box
         sx={{
-          flex: 1,
-          px: { xs: 1.8, md: 2 },
-          pt: { xs: 1.8, md: 2 },
-          pb: { xs: 2.2, md: 2.4 },
+          position: "relative",
+          width: "100%",
+          height: { md: 84, xs: 80 },
+          // maxHeight: {
+          //   xs: 72,
+          //   sm: 76,
+          //   md: 90,
+          // },
+          bgcolor: "#f3f3f3",
+          borderRadius: {
+            xs: "10px",
+            md: "12px",
+          },
+          pr: {
+            xs: 2,
+            sm: 2.2,
+            md: 2.4,
+          },
+
+          pl: {
+            xs: 4,
+            sm: 4,
+            md: 4,
+          },
+          pt: {
+            xs: 1.5,
+            md: 1.7,
+          },
+          pb: {
+            xs: 1.8,
+            md: 2,
+          },
+          boxShadow: "0 4px 0 #f7e9d2",
+          overflow: "hidden",
         }}
       >
         <Typography
+          component="h3"
           sx={{
-            color: "#3a3a3a",
-            fontSize: { xs: 16, md: 17 },
-            fontWeight: 400,
-            lineHeight: 1.25,
-            mb: 1,
+            color: "#1d1d1d",
+            fontSize: {
+              xs: 14,
+              sm: 14.5,
+              md: 15,
+            },
+            fontWeight: 700,
+            lineHeight: 1.2,
+            mb: {
+              xs: 0.7,
+              md: 0.8,
+            },
           }}
         >
           {member.name}
         </Typography>
 
-        {member.titleLines.map((line, i) => (
-          <Typography
-            key={i}
-            sx={{
-              color: "#5f5f5f",
-              fontSize: { xs: 12, md: 11.5 },
-              lineHeight: 1.35,
-            }}
-          >
-            {line}
-          </Typography>
-        ))}
+        <Box>
+          {member.titleLines.map((line, index) => (
+            <Typography
+              key={`${member.name}-${index}`}
+              component="p"
+              sx={{
+                color: "#5f5f5f",
+                fontSize: {
+                  xs: 9,
+                  sm: 10,
+                  md:11,
+                },
+                fontWeight: 400,
+                lineHeight: 1.25,
+                m: 0,
+              }}
+            >
+              {line}
+            </Typography>
+          ))}
+        </Box>
       </Box>
     </Box>
   );
@@ -420,9 +341,19 @@ function FacultyCard({ member }: { member: FacultyMember }) {
 
 function FacultyColumn({ items }: { items: FacultyMember[] }) {
   return (
-    <Grid container spacing={{ xs: 2.5, md: 3 }}>
+    <Grid
+      container
+      rowSpacing={{
+        xs: 4,
+        sm: 4,
+        md: 5,
+      }}
+    >
       {items.map((member, index) => (
-        <Grid key={index} size={12}>
+        <Grid
+          key={`${member.name}-${index}`}
+          size={12}
+        >
           <FacultyCard member={member} />
         </Grid>
       ))}
@@ -434,41 +365,90 @@ export default function Faculty() {
   return (
     <Layout>
       <Box
+        component="section"
         sx={{
-          bgcolor: "#f3f3f3",
-          py: { xs: 5, md: 7 },
+          bgcolor: "#ffffff",
+          minHeight: "100vh",
+          py: {
+            xs: 4,
+            sm: 5,
+            md: 6,
+          },
         }}
       >
-        <Container maxWidth="lg" sx={{ maxWidth: "980px !important" }}>
+        <Container
+          maxWidth={"lg"}
+          sx={{
+            // maxWidth: "1000px",
+            px: {
+              xs: 2.5,
+              sm: 4,
+              md: 5,
+            },
+          }}
+        >
           <Typography
-            sx={{
-              color: "#315D7C",
-              fontSize: { xs: 30, md: 40 },
-              fontWeight: 700,
-              lineHeight: 1.1,
-              mb: 2,
-              fontFamily: `${literata.style.fontFamily}, serif`,
-            }}
+            component="h1"
             className={literata.className}
+            sx={{
+              color: "#111111",
+              fontFamily: `${literata.style.fontFamily}, serif`,
+              fontSize: {
+                xs: 24,
+                sm: 28,
+                md: 31,
+              },
+              fontWeight: 700,
+              lineHeight: 1.15,
+              mb: 1.5,
+            }}
           >
             Faculty
           </Typography>
 
           <Box
             sx={{
-              height: 5,
-              bgcolor: "#cbbfda",
               width: "100%",
-              mb: { xs: 4, md: 5 },
+              height: {
+                xs: 3,
+                md: 4,
+              },
+              bgcolor: "#d58b00",
+              mb: {
+                xs: 4,
+                sm: 4.5,
+                md: 5,
+              },
             }}
           />
 
-          <Grid container spacing={{ xs: 2.5, md: 3 }}>
-            <Grid size={{ xs: 12, md: 6 }}>
+          <Grid
+            container
+            columnSpacing={{
+              xs: 0,
+              md: 6,
+              lg: 7,
+            }}
+            rowSpacing={{
+              xs: 3,
+              md: 0,
+            }}
+          >
+            <Grid
+              size={{
+                xs: 12,
+                md: 6,
+              }}
+            >
               <FacultyColumn items={facultyLeft} />
             </Grid>
 
-            <Grid size={{ xs: 12, md: 6 }}>
+            <Grid
+              size={{
+                xs: 12,
+                md: 6,
+              }}
+            >
               <FacultyColumn items={facultyRight} />
             </Grid>
           </Grid>

@@ -1,31 +1,45 @@
 "use client";
 
 import * as React from "react";
-import {
-  Box,
-  Container,
-  Paper,
-  Stack,
-  Typography,
-} from "@mui/material";
+import { Box, Container, Stack, Typography } from "@mui/material";
 import { literata } from "@/lib/fonts";
 
 type RowItem = {
   time: string;
   topic: string;
   speaker: string;
+  variant?: "normal" | "break";
+};
+
+type WorkshopSection = {
+  title: string;
+  subtitle?: string;
+  bullets?: string[];
+  goldContent?: boolean;
+  stations?: {
+    title: string;
+    bullets: string[];
+  }[];
+  speaker?: string;
 };
 
 type AgendaBlock =
   | { type: "rows"; rows: RowItem[] }
-  | { type: "session"; title: string; chairman: string }
   | {
-      type: "highlight";
+      type: "session";
+      title: string;
+      chairman?: string;
+      moderator?: string;
+      workshopDirectors?: string;
+      color?: "navy" | "gold";
+    }
+  | {
+      type: "workshop";
       time: string;
       topic: string;
-      speaker: string;
-      bgColor?: string;
-      textColor?: string;
+      showDot?: boolean;
+      introBullets?: string[];
+      sections: WorkshopSection[];
     };
 
 type AgendaDayType = {
@@ -40,76 +54,270 @@ const agendaDays: AgendaDayType[] = [
       {
         type: "rows",
         rows: [
-          { time: "07:45 - 08:15", topic: "Coffee Break and Registration", speaker: "ALL" },
-          { time: "08:15 - 08:30", topic: "Keynote Talk", speaker: "Dr. Muhammed Alrohani" },
+          {
+            time: "07:45 - 08:30",
+            topic: "Registration",
+            speaker: "All",
+          },
         ],
       },
       {
         type: "session",
-        title: "Session 1: The Triple-Threat Zone",
-        chairman: "Chairperson: Dr. Salem Omar, Dr. Muhammed Alrohani",
+        title: "Session 1: Laser & Minimally Invasive Colorectal Innovation",
+        chairman:
+          "Chairperson: Dr. Abdulla Alblooshi, Dr. Amer Arafa",
+        moderator: "Moderator: Prof. Hatem Gaafar",
       },
       {
         type: "rows",
         rows: [
-          { time: "08:30 - 08:45", topic: "The Missing Piece in Cardiorenal Metabolic Risk", speaker: "Dr. Amrish Agrawal" },
-          { time: "08:45 - 09:00", topic: "Guidelines for Heart Failure in Pregnant Women", speaker: "Dr. Mohamed Salah" },
-          { time: "09:00 - 09:15", topic: "Precision in Heart Failure in Pregnancy", speaker: "Dr. Abdul Nasser Oudeh" },
-          { time: "09:15 - 09:30", topic: "Tenecteplase® in Acute Ischaemic Stroke (AIS)", speaker: "Dr. Enji Hamdy Elsawy" },
-          { time: "09:30 - 09:40", topic: "Panel Discussion", speaker: "ALL" },
-          { time: "09:40 - 09:50", topic: "Coffee Break", speaker: "ALL" },
-        ],
-      },
-      {
-        type: "highlight",
-        time: "09:50 - 10:20",
-        topic: "Opening Ceremony",
-        speaker: "ALL",
-        bgColor: "#2f5d7d",
-        textColor: "#ffffff",
-      },
-      {
-        type: "rows",
-        rows: [
-          { time: "10:20 - 10:35", topic: "Proteinuria & Hematuria: Differential Diagnosis", speaker: "Dr. Rayan Khojali" },
-          { time: "10:35 - 10:50", topic: "Rapidly Progressing Kidney Disease: Case Presentation", speaker: "Dr. Medhat Ali" },
-          { time: "10:50 - 11:05", topic: "IgA Nephropathy: Dibba Hospital Experience", speaker: "Dr. Muhammed Alrohani" },
-          { time: "11:05 - 11:20", topic: "Approach to IgA Nephropathy Management Guidelines", speaker: "Dr. Ramadan Arafa" },
-          { time: "11:20 - 11:30", topic: "Panel Discussion", speaker: "ALL" },
-          { time: "11:30 - 12:30", topic: "Industry Satellite Symposium", speaker: "Novartis" },
-          { time: "12:30 - 13:00", topic: "Prayer and Lunch Break", speaker: "ALL" },
-          { time: "13:00 - 13:30", topic: "Industry Satellite Symposium", speaker: "CSL VIFOR" },
-          { time: "13:30 - 13:45", topic: "CKD In Geriatrics: Challenges", speaker: "Dr. Bahaa Zayed" },
-          { time: "13:45 - 14:00", topic: "Approach To Acute On Chronic Kidney Disease", speaker: "Dr. Mohammed Edan" },
-          { time: "14:00 - 14:15", topic: "Individualised Diabetes Care In Dialysis-Dependent Kidney Failure: Update", speaker: "Dr. Dawlat Sany" },
-          { time: "14:15 - 14:30", topic: "Role Of Aldosterone Synthase Inhibitors In Renal And Cardiovascular Diseases", speaker: "Dr. Annas Qasem" },
-          { time: "14:30 - 14:40", topic: "Panel Discussion", speaker: "ALL" },
-          { time: "14:40 - 15:10", topic: "Industry Satellite Symposium", speaker: "Amgen" },
-          { time: "15:10 - 15:20", topic: "Coffee Break", speaker: "ALL" },
-          { time: "15:20 - 15:50", topic: "Industry Satellite Symposium", speaker: "Amgen" },
+          {
+            time: "08:30 - 08:50",
+            topic:
+              "Role of Laser Technology in Surgical Management of Anorectal Disorders",
+            speaker: "Dr. Mohamed Ramjiyan",
+          },
+          {
+            time: "08:50 - 09:10",
+            topic:
+              "Laser Hemorrhoidoplasty – The Future of Hemorrhoid Surgery",
+            speaker: "Dr. Mehroon Rashed",
+          },
+          {
+            time: "09:10 - 09:30",
+            topic:
+              "Major Considerations of Staple Flexure Mobilization in Laparoscopic Colorectal Surgery",
+            speaker: "Dr. Amr Arafa",
+          },
+          {
+            time: "09:30 - 09:50",
+            topic:
+              "Diode Laser Hemorrhoidoplasty Using a Standardized Technique: A 3-Year Real-World Clinical Experience",
+            speaker: "Prof. Hatem Gaafar",
+          },
+          {
+            time: "09:50 - 10:00",
+            topic: "Panel Discussion and Q&A",
+            speaker: "All",
+          },
+          {
+            time: "10:00 - 10:40",
+            topic: "Opening Ceremony",
+            speaker: "All",
+            variant: "break",
+          },
         ],
       },
       {
         type: "session",
-        title: "Session 2: Red Zone: Minutes Matter",
-        chairman: "Chairperson:",
+        title: "Session 2: Robotic Surgery & Advanced Hernia Surgery",
+        chairman:
+          "Chairperson: Dr. Hatem Moussa, Dr. Munal Al-Ayyari, Prof. Mohammed Hassan",
+        moderator: "Moderator: Prof. Hatem Gaafar",
       },
       {
         type: "rows",
         rows: [
-          { time: "15:50 - 16:05", topic: "Thyroid Disorder in Pregnancy", speaker: "Dr. Salem Omar" },
-          { time: "16:05 - 16:20", topic: "Gestational Diabetes (GDM) Update", speaker: "Dr. Mohammed Babiker" },
-          { time: "16:20 - 17:00", topic: "Sequential Case Discussion 1 (45 min): The Cardio-Renal Domino MDT Panel (Diab/Neph/Cardio)", speaker: "Dr. Amr ElFaramawy, Dr. Muhammed Alrohani, Dr. Amrish Agrawal" },
-          { time: "17:00 - 17:15", topic: "Post-Bariatric Hypoglycaemia", speaker: "Dr. Aseilah Al Qaydi" },
+          {
+            time: "10:40 - 11:00",
+            topic:
+              "Robotic Surgery: Advancing Precision, Safety & Surgical Performance",
+            speaker: "Prof. Hatem Gaafar",
+          },
+          {
+            time: "11:00 - 11:20",
+            topic: "Robotic Hernia Surgery",
+            speaker: "Dr. Jado Kamal",
+          },
+          {
+            time: "11:20 - 11:40",
+            topic:
+              "Thoracoscopic Lobectomy in Paediatric Populations: Horizon for Surgical Innovation",
+            speaker: "Prof. Mohamed Hassan",
+          },
+          {
+            time: "11:40 - 12:00",
+            topic:
+              "Laparoscopic Inguinal Hernia Extraperitoneal Repair: Is It the Gold Standard?",
+            speaker: "Dr. Laurent Layani",
+          },
+          {
+            time: "12:00 - 12:20",
+            topic:
+              "Subcutaneous Only Laparoscopic Approach (SCOLA)",
+            speaker: "Dr. Basim Al Khafajee",
+          },
+          {
+            time: "12:20 - 12:40",
+            topic: "Coffee Break",
+            speaker: "All",
+            variant: "break",
+          },
         ],
       },
       {
-        type: "highlight",
-        time: "17:15 - 17:30",
-        topic: "Closing Ceremony",
-        speaker: "ALL",
-        bgColor: "#2f5d7d",
-        textColor: "#ffffff",
+        type: "session",
+        title:
+          "Session 3: Modern Bariatric Surgery: Strategy, Technique & Complex Decision-Making",
+        chairman:
+          "Chairperson: Dr. Abdel Wahid Alwahidi, Prof. Safwan Taha, Dr. Essa Muallemi",
+        moderator: "Moderator: Dr. Abdel Wahid Alwahidi",
+      },
+      {
+        type: "rows",
+        rows: [
+          {
+            time: "12:40 - 13:00",
+            topic: "Bariatric Surgery for Extreme Obesity",
+            speaker: "Prof. Safwan Taha",
+          },
+          {
+            time: "13:00 - 13:20",
+            topic: "Mathematics of OAGB Formation: How We Do It",
+            speaker: "Dr. Laurent Layani",
+          },
+          {
+            time: "13:20 - 13:40",
+            topic: "Challenges in Bariatric Surgery",
+            speaker: "Dr. AbdelWahid Alwahidi",
+          },
+          {
+            time: "13:40 - 14:00",
+            topic: "Aborted Primary Bariatric Surgeries",
+            speaker: "Dr. Essa Muallemi",
+          },
+          {
+            time: "14:00 - 14:20",
+            topic:
+              "Synchronous Lap Cholecystectomy & Bariatric Surgery: Added Benefit or Added Stress?",
+            speaker: "Prof. Safwan Taha",
+          },
+          {
+            time: "14:20 - 14:40",
+            topic:
+              "Comprehensive Review of Laparoscopic Sleeve Gastrectomy",
+            speaker: "Dr. Syed Shafaat",
+          },
+        ],
+      },
+      {
+        type: "session",
+        title:
+          "Session 4: Expert Panel Discussion – Future Directions in Minimally Invasive & Bariatric Surgery in the UAE",
+        moderator: "Moderator: Dr. Abdel Wahid Alwahidi",
+      },
+      {
+        type: "rows",
+        rows: [
+          {
+            time: "14:40 - 15:10",
+            topic: "Panel Discussion",
+            speaker:
+              "Panelists: Dr. Essa Muallemi, Prof. Safwan Taha, Dr. Amr Arafa, Dr. Laurent Layani, Dr. Basim Al Khafajee, Prof. Hatem Gaafar",
+          },
+          {
+            time: "15:10 - 15:50",
+            topic: "Lunch Break",
+            speaker: "All",
+            variant: "break",
+          },
+        ],
+      },
+      {
+        type: "session",
+        title:
+          "Session 5: Next-Generation Surgery 2026\nEHS: Dibba-Fujairah Hospital in Collaboration with American Hospital, Dubai",
+        workshopDirectors:
+          "Workshop Director: Dr. Hatem Moussa\nCo-Facilitator: Dr. Jado Kamal",
+      },
+      {
+        type: "workshop",
+        time: "15:50 - 17:50",
+        topic: "Robotic Surgery Hands-On Workshop",
+        sections: [
+          {
+            title: "Registration & System Orientation",
+            goldContent: true,
+            bullets: [
+              "Introduction to robotic platform",
+              "Console components overview",
+              "Safety briefing",
+            ],
+          },
+          {
+            title: "Session 1: Principles of Robotic Surgery",
+            goldContent: true,
+            bullets: [
+              "Evolution of robotic surgery",
+              "Indications and patient selection",
+              "Port placement strategy",
+              "Docking techniques",
+            ],
+            speaker: "Dr. Jado Kamal",
+          },
+          {
+            title:
+              "Session 2: Hands-On Training (Small Groups Rotation)",
+            stations: [
+              {
+                title: "Station 1: Console Skills",
+                bullets: [
+                  "Camera control",
+                  "Instrument clutching",
+                  "Wrist articulation exercises",
+                ],
+              },
+              {
+                title: "Station 2: Robotic Suturing & Knot Tying",
+                bullets: [
+                  "Intracorporeal suturing drills",
+                  "Needle handling precision",
+                ],
+              },
+              {
+                title: "Station 3: Simulation Lab",
+                bullets: [
+                  "Tissue dissection module",
+                  "Haemostasis simulation",
+                  "Emergency undocking protocol",
+                ],
+              },
+            ],
+          },
+        ],
+      },
+      {
+        type: "workshop",
+        time: "16:30 - 16:50",
+        topic: "",
+        showDot: false,
+        sections: [
+          {
+            title:
+              "Session 3: Robotic Hernia Repair – Technical Masterclass",
+            goldContent: true,
+            bullets: [
+              "Live or Recorded Robotic Case Discussion",
+              "Step-by-step narrated procedure",
+              "TAPP vs ETEP robotic approach",
+              "Mesh positioning strategies",
+              "Suturing techniques",
+              "Avoiding complications",
+            ],
+            speaker: "Dr. Hatem Moussa",
+          },
+        ],
+      },
+      {
+        type: "rows",
+        rows: [
+          {
+            time: "",
+            topic: "Coffee Break",
+            speaker: "All",
+            variant: "break",
+          },
+        ],
       },
     ],
   },
@@ -117,359 +325,636 @@ const agendaDays: AgendaDayType[] = [
     title: "Day 2",
     items: [
       {
-        type: "rows",
-        rows: [{ time: "08:00 - 08:30", topic: "Coffee Break and Registration", speaker: "ALL" }],
-      },
-      {
         type: "session",
-        title: "Session 3: Red Zone: Minutes Matter",
-        chairman: "Chairperson:",
+        title:
+          "Session 6: Expert Panel Discussion – Future of AI & Robotics in Surgery:\nThe Next Surgical Frontier",
+        moderator: "Moderator: Dr. Abdel Wahid Alwahidi",
       },
       {
         type: "rows",
         rows: [
-          { time: "08:30 - 08:45", topic: "Atypical Presentation Of ACS", speaker: "Dr. Waheed Farid" },
-          { time: "08:45 - 09:00", topic: "Pain Management In Unstable Patients", speaker: "Dr. Adel Almaytamy" },
-          { time: "09:00 - 09:15", topic: "Emergency NIV In Adults", speaker: "Dr. Hatem Abdelkhalek" },
-          { time: "09:15 - 09:30", topic: "Approach To ENT Emergencies In ED", speaker: "Dr. Wameedh AlBassam" },
-          { time: "09:30 - 09:40", topic: "Panel Discussion", speaker: "ALL" },
-          { time: "09:40 - 10:10", topic: "Industry Satellite Symposium", speaker: "CSL VIFOR" },
-          { time: "10:10 - 10:20", topic: "Coffee Break", speaker: "ALL" },
-          { time: "10:20 - 10:35", topic: "Approach To Acute Management Of Headache In ED", speaker: "Dr. Abobakr Abdelkader" },
-          { time: "10:35 - 10:50", topic: "Pitfalls In ACLS Arrhythmia", speaker: "Dr. Ahmed Abdelmageed" },
-          { time: "10:50 - 11:05", topic: "Critical Care Approaches To Hypertensive Crisis: When Seconds Matter", speaker: "Dr. Ghamdan Alsadeh" },
-          { time: "11:05 - 11:15", topic: "Panel Discussion", speaker: "ALL" },
-          { time: "11:15 - 11:30", topic: "Industry Satellite Symposium", speaker: "BI" },
-          { time: "11:30 - 11:45", topic: "Industry Satellite Symposium", speaker: "AZ" },
-          { time: "11:45 - 12:00", topic: "Industry Satellite Symposium", speaker: "Merck" },
-          { time: "12:00 - 12:45", topic: "Prayer and Lunch Break", speaker: "ALL" },
+          {
+            time: "08:30 - 09:10",
+            topic: "Panel Discussion",
+            speaker:
+              "Chairpersons: Dr. Hatem Moussa, Prof. Mohamed Hassan, Dr. Nafad El-Hadidi, Dr. Ashwaq Alhayyi",
+            variant: "break",
+          },
         ],
       },
       {
         type: "session",
-        title: "Session 4: The Case Arena: Connect the Dots",
-        chairman: "Chairperson:",
+        title:
+          "Session 7: Acute Care Surgery & Trauma Management: Evidence-Based Approach",
+        chairman:
+          "Chairperson: Dr. Nafad El-Hadidi, Prof. Abdelbary Hassan, Dr. Khaled Almuhtadi",
+        moderator: "Moderator: Dr. Abdel Wahid Alwahidi",
       },
       {
         type: "rows",
         rows: [
-          { time: "12:45 - 13:00", topic: "Industry Satellite Symposium", speaker: "Merck" },
-          { time: "13:00 - 13:15", topic: "Physician Burn Out", speaker: "Dr. Eman Almahdi" },
-          { time: "13:15 - 13:30", topic: "Insulin Therapy in Pediatric Type 1 DM", speaker: "Dr. Ammar Al Farroukh" },
-          { time: "13:30 - 13:45", topic: "Metabolic Syndrome In Pregnancy", speaker: "Dr. Anaam Hasson" },
-          { time: "13:45 - 14:00", topic: "IVF In Diabetic Patients", speaker: "Dr. Ahmed Mohamed" },
-          { time: "14:00 - 14:15", topic: "Menopause Clinical Impact", speaker: "Dr. Hanadi Alatta" },
-          { time: "14:15 - 14:30", topic: "Coffee Break", speaker: "ALL" },
-          { time: "14:30 - 14:45", topic: "Aortic Dissection: When Chest Pain Is A Surgical Emergency", speaker: "Dr. Ali Muhibaldin" },
-          { time: "14:45 - 15:00", topic: "Targeted Approach for Severe Eosinophil Asthma Management", speaker: "Dr. Hassan Al Hakim" },
-          { time: "15:00 - 15:15", topic: "Finerenone Economical Evaluation For T2D Patients With CKD", speaker: "Dr. Sabaa Alhemyari" },
-          { time: "15:15 - 15:25", topic: "Panel Discussion", speaker: "ALL" }
+          {
+            time: "09:10 - 09:30",
+            topic:
+              "Pain Management in Unstable Trauma Patients",
+            speaker: "Dr. Adel Saleh AlMayfamy",
+          },
+          {
+            time: "09:30 - 09:50",
+            topic:
+              "Acute Mesenteric Ischemia: How to Improve Outcome",
+            speaker: "Dr. Abdel Wahid Alwahidi",
+          },
+          {
+            time: "09:50 - 10:10",
+            topic:
+              "Splenic Hernia: A Cause of Abdominal Pain – Case Presentation",
+            speaker: "Dr. Nafad El-Hadidi",
+          },
+          {
+            time: "10:10 - 10:30",
+            topic:
+              "Radiolucent Single Use Wrist Fixator in Management of Complex Wrist Fractures",
+            speaker: "Prof. Abdelbary Hassan",
+          },
+          {
+            time: "10:30 - 10:50",
+            topic: "New Modalities in Burn Management",
+            speaker: "Dr. Wayne-George",
+          },
+          {
+            time: "10:50 - 11:10",
+            topic:
+              "Expanding the Clinical Impact of Indocyanine Green in General Surgery",
+            speaker: "Dr. Haidar Makki",
+          },
+          {
+            time: "11:10 - 11:30",
+            topic:
+              "Multiple Organ Injury Following Penetrating Perineal Metal Rod Trauma",
+            speaker: "Dr. Khaled Almuhtadi",
+          },
+          {
+            time: "11:30 - 11:50",
+            topic:
+              "Head Trauma (TBI's): Indications for CT in Adults & Paediatrics",
+            speaker: "Dr. Abobakr Omar",
+          },
+          {
+            time: "11:50 - 12:10",
+            topic:
+              "When Seconds Matter – The Power of Nursing in Trauma Care",
+            speaker: "Moyad Ahmed Wishah",
+          },
+          {
+            time: "12:10 - 12:30",
+            topic: "Coffee Break",
+            speaker: "All",
+            variant: "break",
+          },
         ],
       },
       {
-        type: "highlight",
-        time: "15:25 - 16:00",
-        topic: "Closing Ceremony and Appreciation Certificates",
-        speaker: "ALL",
-        bgColor: "#2f5d7d",
-        textColor: "#ffffff",
+        type: "session",
+        title:
+          "Session 8: Advanced Wound Care & Multidisciplinary Surgical Recovery",
+        chairman:
+          "Chairperson: Prof. Mohammed Baguindo, Prof. Denis Barritault, Dr. Noura Salim Salman",
+        moderator: "Moderator: Dr. Haidar Saeed Jalil",
+      },
+      {
+        type: "rows",
+        rows: [
+          {
+            time: "12:30 - 12:50",
+            topic:
+              "Comprehensive Infection Control Strategy in Wound Management",
+            speaker: "Dr. Haidar Saeed Jalil",
+          },
+          {
+            time: "12:50 - 13:10",
+            topic: "Holistic Approach in Wound Management",
+            speaker: "Prof. Mohammed Baguindo",
+          },
+          {
+            time: "13:10 - 13:30",
+            topic:
+              "When Time Won’t Heal: Cracking the Code of the Chronic Wound",
+            speaker: "Dr. Salma Saeed",
+          },
+          {
+            time: "13:30 - 13:50",
+            topic:
+              "Nursing Interventions to Prevent Pressure Ulcers in ICU",
+            speaker: "Manal Masoud AlNuaimi",
+          },
+          {
+            time: "13:50 - 14:10",
+            topic:
+              "Matrix Therapy for Regenerative Medicine: CACIPLIQ20(RGTA) in the Treatment of Chronic Non-Healing Wounds",
+            speaker: "Prof. Denis Barritault",
+          },
+          {
+            time: "14:10 - 14:30",
+            topic: "Burn Dressing Selection",
+            speaker: "Nasreen Abdelatif",
+          },
+          {
+            time: "14:30 - 14:50",
+            topic: "AI-Driven Innovation in Modern Wound",
+            speaker: "Aisha Mostafa Hassan",
+          },
+          {
+            time: "14:50 - 15:10",
+            topic:
+              "Best Practice in Pressure Injury Prevention and Management",
+            speaker: "Hamza Al Shraiedeh",
+          },
+          {
+            time: "15:10 - 16:00",
+            topic: "Lunch Break",
+            speaker: "All",
+            variant: "break",
+          },
+        ],
+      },
+      {
+        type: "session",
+        color: "gold",
+        title:
+          "Session 9: Hands-On Laser Hemorrhoidoplasty Workshop – Next Generation Surgery 2026\nEHS: Dibba-Fujairah Hospital EHS: Dibba-Fujairah Hospital",
+        workshopDirectors:
+          "Workshop Directors: Prof. Hatem Gaafar, Dr. Haidar Saeed Jalil, Dr. Mohamed Ramjiyan",
+      },
+      {
+        type: "workshop",
+        time: "09:30 - 11:30",
+        topic:
+          "Practical Training in Diode Laser Applications\nRegistration & System Orientation",
+        sections: [
+          {
+            title: "",
+            bullets: [
+              "Laser physics & safety principles",
+              "Standardized diode laser hemorrhoidoplasty protocol",
+              "Energy settings & fiber selection",
+              "Case selection criteria",
+              "Complication management algorithm",
+              "Live or recorded video procedural demonstration",
+              "Interactive discussion & troubleshooting",
+              "Q&A",
+            ],
+          },
+        ],
       },
     ],
   },
 ];
 
-const AGENDA_GRID = {
-  xs: "0.95fr 1.9fr 1.15fr",
-  md: "1.1fr 4fr 2fr",
+const COLORS = {
+  navy: "#0D2E4B",
+  orange: "#E59522",
+  gold: "#B98C3B",
+  goldLight: "#EFCF8B",
+  workshopGold: "#D6A357",
+  topic: "#B38332",
+  speaker: "#555555",
+  rowBackground: "#FAFAFA",
+  specialBackground: "#FCF6EC",
+  workshopBackground: "#F4F5F6",
 };
 
-function getSpecialRowStyle(topic: string) {
-  const normalized = topic.trim().toLowerCase();
-
-  if (normalized === "panel discussion") {
-    return {
-      bgColor: "#d8c6c0",
-      textColor: "#4e6780",
-      fontWeight: 600,
-    };
-  }
-
-  if (
-    normalized === "coffee break" ||
-    normalized === "prayer and lunch break"
-  ) {
-    return {
-      bgColor: "#cbbfda",
-      textColor: "#4e6780",
-      fontWeight: 600,
-    };
-  }
-
-  if (
-    normalized === "industry satellite symposium"
-  ) {
-    return {
-      bgColor: "#ebe6ef",
-      textColor: "#4e6780",
-      fontWeight: 600,
-    };
-  }
-
-  return null;
-}
+const GRID = {
+  xs: "86px 22px minmax(0, 1fr)",
+  sm: "112px 28px minmax(0, 1fr)",
+  md: "145px 34px minmax(0, 1fr)",
+};
 
 function HeaderRow() {
   return (
     <Box
       sx={{
         display: "grid",
-        gridTemplateColumns: AGENDA_GRID,
-        gap: "2px",
+        gridTemplateColumns: GRID,
+        alignItems: "center",
         mb: 1,
       }}
     >
-      {["TIME", "TOPIC", "Speaker"].map((label) => (
-        <Box
-          key={label}
-          sx={{
-            bgcolor: "#d8cdc6",
-            color: "#496987",
-            textAlign: "center",
-            py: { xs: 0.8, md: 1.2 },
-            px: { xs: 0.5, md: 1 },
-            fontSize: { xs: 9, md: 13 },
-            fontWeight: 700,
-            letterSpacing: { xs: 0, md: label === "Speaker" ? 0 : 0.8 },
-            textTransform: label === "Speaker" ? "none" : "uppercase",
-            lineHeight: 1.15,
-          }}
-        >
-          {label}
-        </Box>
-      ))}
+      <Box
+        sx={{
+          gridColumn: 1,
+          mr: 0.75,
+          py: { xs: 0.75, md: 0.9 },
+          borderRadius: "5px",
+          color: "#fff",
+          textAlign: "center",
+          fontWeight: 800,
+          fontSize: { xs: 9, sm: 10, md: 11.5 },
+          background:
+            "linear-gradient(90deg,#EFD18D 0%,#B78A38 100%)",
+        }}
+      >
+        TIME
+      </Box>
+
+      <Box />
+
+      <Box
+        sx={{
+          gridColumn: 3,
+          py: { xs: 0.75, md: 0.9 },
+          borderRadius: "5px",
+          color: "#fff",
+          textAlign: "center",
+          fontWeight: 800,
+          fontSize: { xs: 9, sm: 10, md: 11.5 },
+          background:
+            "linear-gradient(90deg,#B78A38 0%,#EFD18D 100%)",
+        }}
+      >
+        TOPIC &amp; SPEAKER
+      </Box>
     </Box>
   );
 }
 
-function Cell({
-  children,
-  align = "left",
-  sx = {},
-}: {
-  children: React.ReactNode;
-  align?: "left" | "center";
-  sx?: Record<string, any>;
-}) {
+function TimelineDot() {
   return (
     <Box
       sx={{
-        px: { xs: 0.75, md: 2 },
-        py: { xs: 0.8, md: 1 },
-        color: "#5c748a",
-        fontSize: { xs: 9.5, md: 12 },
-        lineHeight: { xs: 1.25, md: 1.45 },
-        bgcolor: "#fff",
-        textAlign: align,
-        wordBreak: "break-word",
-        overflowWrap: "anywhere",
-        whiteSpace: "normal",
-        ...sx,
+        display: "flex",
+        justifyContent: "center",
+        pt: { xs: "5px", md: "6px" },
       }}
     >
-      {children}
+      <Box
+        sx={{
+          width: { xs: 8, md: 10 },
+          height: { xs: 8, md: 10 },
+          borderRadius: "50%",
+          bgcolor: COLORS.orange,
+        }}
+      />
     </Box>
   );
 }
 
 function AgendaRow({ row }: { row: RowItem }) {
-  const specialStyle = getSpecialRowStyle(row.topic);
+  const isSpecial = row.variant === "break";
 
   return (
     <Box
       sx={{
         display: "grid",
-        gridTemplateColumns: AGENDA_GRID,
-        borderBottom: "1px solid #ece4de",
+        gridTemplateColumns: GRID,
+        alignItems: "start",
+        mb: { xs: 0.8, md: 1 },
+        borderRadius: "5px",
+        bgcolor: isSpecial
+          ? COLORS.specialBackground
+          : "transparent",
+        py: isSpecial ? 0.5 : 0,
       }}
     >
-      <Cell
-        align="center"
-        sx={
-          specialStyle
-            ? {
-                bgcolor: specialStyle.bgColor,
-                color: specialStyle.textColor,
-                fontWeight: specialStyle.fontWeight,
-              }
-            : {}
-        }
+      <Box
+        sx={{
+          pt: 0.25,
+          pl: isSpecial ? 0.5 : 0,
+          pr: 0.5,
+          color: "#111",
+          fontWeight: 800,
+          fontSize: { xs: 10, sm: 11.5, md: 13 },
+          lineHeight: 1.25,
+          whiteSpace: "nowrap",
+        }}
       >
         {row.time}
-      </Cell>
+      </Box>
 
-      <Cell
-        sx={
-          specialStyle
-            ? {
-                bgcolor: specialStyle.bgColor,
-                color: specialStyle.textColor,
-                fontWeight: specialStyle.fontWeight,
-              }
-            : {}
-        }
-      >
-        {row.topic}
-      </Cell>
+      <TimelineDot />
 
-      <Cell
-        align="center"
-        sx={
-          specialStyle
-            ? {
-                bgcolor: specialStyle.bgColor,
-                color: specialStyle.textColor,
-                fontWeight: specialStyle.fontWeight,
-              }
-            : {}
-        }
-      >
-        {row.speaker}
-      </Cell>
+      <Box sx={{ minWidth: 0 }}>
+        <Typography
+          sx={{
+            color: COLORS.topic,
+            fontWeight: 700,
+            fontSize: { xs: 10.5, sm: 12.5, md: 14 },
+            lineHeight: 1.3,
+            whiteSpace: "pre-line",
+            overflowWrap: "break-word",
+          }}
+        >
+          {row.topic}
+        </Typography>
+
+        <Typography
+          sx={{
+            mt: 0.3,
+            px: 0.75,
+            py: 0.4,
+            color: COLORS.speaker,
+            bgcolor: isSpecial
+              ? "transparent"
+              : COLORS.rowBackground,
+            fontSize: { xs: 9.5, sm: 11, md: 12.5 },
+            lineHeight: 1.3,
+            borderRadius: "2px",
+            overflowWrap: "break-word",
+          }}
+        >
+          {row.speaker}
+        </Typography>
+      </Box>
     </Box>
   );
 }
 
-function SessionBar({ title, chairman }: { title: string; chairman: string }) {
+function SessionBar({
+  title,
+  chairman,
+  moderator,
+  workshopDirectors,
+  color = "navy",
+}: Extract<AgendaBlock, { type: "session" }>) {
   return (
     <Box
       sx={{
-        mt: 1.5,
-        mb: 1,
-        bgcolor: "#2f5d7d",
+        mt: { xs: 1.1, md: 1.4 },
+        mb: { xs: 0.9, md: 1.1 },
         color: "#fff",
         textAlign: "center",
-        py: { xs: 1, md: 1.4 },
-        px: { xs: 1, md: 2 },
+        borderRadius: color === "gold" ? "5px 5px 0 0" : 0,
+        overflow: "hidden",
       }}
     >
       <Typography
         sx={{
-          fontSize: { xs: 13, md: 20 },
-          fontWeight: 500,
+          px: 1,
+          py: { xs: 0.45, md: 0.55 },
+          bgcolor: color === "gold" ? COLORS.workshopGold : COLORS.navy,
+          fontWeight: 800,
+          fontSize: { xs: 11.2, sm: 12.8, md: 14.2 },
           lineHeight: 1.2,
-          wordBreak: "break-word",
+          whiteSpace: "pre-line",
         }}
       >
         {title}
       </Typography>
-      <Typography
-        sx={{
-          mt: 0.5,
-          fontSize: { xs: 9, md: 11 },
-          opacity: 0.95,
-          lineHeight: 1.25,
-          wordBreak: "break-word",
-        }}
-      >
-        {chairman}
-      </Typography>
+
+      {(chairman || moderator || workshopDirectors) && (
+        <Box
+          sx={{
+            px: 1,
+            py: { xs: 0.4, md: 0.5 },
+            bgcolor: color === "gold" ? "#d9b474" : "#536b80",
+          }}
+        >
+          {chairman && (
+            <Typography sx={{ fontSize: { xs: 9.4, sm: 10.6, md: 11.8 }, lineHeight: 1.2 }}>
+              {chairman}
+            </Typography>
+          )}
+          {moderator && (
+            <Typography sx={{ fontSize: { xs: 9.4, sm: 10.6, md: 11.8 }, lineHeight: 1.2 }}>
+              {moderator}
+            </Typography>
+          )}
+          {workshopDirectors && (
+            <Typography
+              sx={{
+                fontSize: { xs: 9.4, sm: 10.6, md: 11.8 },
+                lineHeight: 1.2,
+                whiteSpace: "pre-line",
+              }}
+            >
+              {workshopDirectors}
+            </Typography>
+          )}
+        </Box>
+      )}
     </Box>
   );
 }
 
-function HighlightRow({
+function BulletList({
+  bullets,
+  gold = false,
+}: {
+  bullets: string[];
+  gold?: boolean;
+}) {
+  return (
+    <Stack spacing={0.1}>
+      {bullets.map((bullet) => (
+        <Typography
+          key={bullet}
+          sx={{
+            color: gold ? COLORS.topic : "#333",
+            fontWeight: gold ? 700 : 400,
+            fontSize: { xs: 11, sm: 12.5, md: 14 },
+            lineHeight: 1.3,
+            "&::before": {
+              content: '"• "',
+              color: COLORS.orange,
+            },
+          }}
+        >
+          {bullet}
+        </Typography>
+      ))}
+    </Stack>
+  );
+}
+
+function WorkshopBlock({
   time,
   topic,
-  speaker,
-  bgColor = "#c9bdd7",
-  textColor = "#556f84",
-}: {
-  time: string;
-  topic: string;
-  speaker: string;
-  bgColor?: string;
-  textColor?: string;
-}) {
+  showDot = true,
+  introBullets,
+  sections,
+}: Extract<AgendaBlock, { type: "workshop" }>) {
   return (
     <Box
       sx={{
         display: "grid",
-        gridTemplateColumns: AGENDA_GRID,
-        borderBottom: "1px solid #ece4de",
-        // my: 1,
+        gridTemplateColumns: GRID,
+        alignItems: "start",
+        mb: 1.2,
       }}
     >
-      <Cell
-        align="center"
+      <Box
         sx={{
-          bgcolor: bgColor,
-          color: textColor,
-          fontWeight: 600,
+          pt: 0.35,
+          pr: 0.5,
+          color: "#111",
+          fontWeight: 800,
+          fontSize: { xs: 10.5, sm: 11.5, md: 14 },
+          whiteSpace: "nowrap",
         }}
       >
         {time}
-      </Cell>
+      </Box>
 
-      <Cell
+      {showDot ? <TimelineDot /> : <Box />}
+
+      <Box
         sx={{
-          bgcolor: bgColor,
-          color: textColor,
-          fontWeight: 600,
+          minWidth: 0,
+          bgcolor: COLORS.workshopBackground,
+          borderRadius: "0 0 5px 5px",
+          px: { xs: 1, md: 1.4 },
+          pb: 1.1,
         }}
       >
-        {topic}
-      </Cell>
+        {topic && (
+          <Typography
+            sx={{
+              pt: 0.15,
+              pb: 0.55,
+              borderBottom: `2px solid ${COLORS.orange}`,
+              color: COLORS.topic,
+              fontWeight: 800,
+              fontSize: { xs: 12.5, sm: 14, md: 16 },
+              lineHeight: 1.25,
+              whiteSpace: "pre-line",
+            }}
+          >
+            {topic}
+          </Typography>
+        )}
 
-      <Cell
-        align="center"
-        sx={{
-          bgcolor: bgColor,
-          color: textColor,
-          fontWeight: 600,
-        }}
-      >
-        {speaker}
-      </Cell>
+        {introBullets && (
+          <Box sx={{ mt: 0.6 }}>
+            <BulletList bullets={introBullets} />
+          </Box>
+        )}
+
+        <Stack spacing={1.1} sx={{ mt: 1 }}>
+          {sections.map((section, index) => (
+            <Box
+              key={`${section.title}-${index}`}
+              sx={{
+                position: "relative",
+                pl: { xs: 1.4, md: 1.8 },
+                "&::before": {
+                  content: '""',
+                  position: "absolute",
+                  left: 0,
+                  top: 0,
+                  width: "5px",
+                  height: section.title ? "44px" : "100%",
+                  background:
+                    "linear-gradient(180deg,#E7C274 0%,#B78027 55%,#F5E1B3 100%)",
+                },
+              }}
+            >
+              {section.title && (
+                <Typography
+                  sx={{
+                    mb: 0.25,
+                    color: COLORS.topic,
+                    fontWeight: 800,
+                    fontSize: { xs: 11.5, sm: 13, md: 15.5 },
+                    lineHeight: 1.25,
+                  }}
+                >
+                  {section.title}
+                </Typography>
+              )}
+
+              {section.subtitle && (
+                <Typography
+                  sx={{
+                    color: "#333",
+                    fontSize: { xs: 11, sm: 12.5, md: 14 },
+                  }}
+                >
+                  {section.subtitle}
+                </Typography>
+              )}
+
+              {section.bullets && (
+                <BulletList
+                  bullets={section.bullets}
+                  gold={section.goldContent}
+                />
+              )}
+
+              {section.stations && (
+                <Stack spacing={0.55}>
+                  {section.stations.map((station) => (
+                    <Box key={station.title}>
+                      <Typography
+                        sx={{
+                          color: "#222",
+                          fontWeight: 700,
+                          fontSize: { xs: 11, sm: 12.5, md: 14 },
+                        }}
+                      >
+                        {station.title}
+                      </Typography>
+                      <Box sx={{ pl: 1.25 }}>
+                        <BulletList bullets={station.bullets} />
+                      </Box>
+                    </Box>
+                  ))}
+                </Stack>
+              )}
+
+              {section.speaker && (
+                <Typography
+                  sx={{
+                    mt: 0.35,
+                    color: "#555",
+                    fontSize: { xs: 11, sm: 12.5, md: 14 },
+                  }}
+                >
+                  {section.speaker}
+                </Typography>
+              )}
+            </Box>
+          ))}
+        </Stack>
+      </Box>
     </Box>
   );
 }
 
 function AgendaDay({ title, items }: AgendaDayType) {
   return (
-    <Box sx={{ mb: 8 }}>
+    <Box sx={{ mb: { xs: 5, md: 7 } }}>
       <Stack
         direction="row"
-        alignItems="flex-end"
         justifyContent="space-between"
+        alignItems="flex-end"
         sx={{
-          borderBottom: "4px solid #c9bdd7",
-          pb: 1,
-          mb: 1.5,
-          gap: 2,
+          pb: 0.7,
+          mb: 1,
+          borderBottom: `3px solid ${COLORS.orange}`,
         }}
       >
         <Typography
-          sx={{
-            color: "#2f5d7d",
-            fontSize: { xs: 22, md: 38 },
-            fontWeight: 400,
-            lineHeight: 1,
-            fontFamily: `${literata.style.fontFamily}, serif`,
-          }}
           className={literata.className}
+          sx={{
+            color: "#111",
+            fontFamily: `${literata.style.fontFamily}, serif`,
+            fontWeight: 800,
+            fontSize: { xs: 15, sm: 18, md: 22 },
+            lineHeight: 1,
+          }}
         >
           Agenda
         </Typography>
 
         <Typography
-          sx={{
-            color: "#2f5d7d",
-            fontSize: { xs: 22, md: 38 },
-            fontWeight: 400,
-            lineHeight: 1,
-            fontFamily: `${literata.style.fontFamily}, serif`,
-          }}
           className={literata.className}
+          sx={{
+            color: "#111",
+            fontFamily: `${literata.style.fontFamily}, serif`,
+            fontWeight: 800,
+            fontSize: { xs: 14, sm: 17, md: 21 },
+            lineHeight: 1,
+          }}
         >
           {title}
         </Typography>
@@ -477,61 +962,72 @@ function AgendaDay({ title, items }: AgendaDayType) {
 
       <HeaderRow />
 
-      <Box>
-        {items.map((item, index) => {
-          if (item.type === "session") {
-            return (
-              <SessionBar
-                key={`${title}-session-${index}`}
-                title={item.title}
-                chairman={item.chairman}
-              />
-            );
-          }
-
-          if (item.type === "highlight") {
-            return (
-              <HighlightRow
-                key={`${title}-highlight-${index}`}
-                time={item.time}
-                topic={item.topic}
-                speaker={item.speaker}
-                bgColor={item.bgColor}
-                textColor={item.textColor}
-              />
-            );
-          }
-
+      {items.map((item, index) => {
+        if (item.type === "session") {
           return (
-            <React.Fragment key={`${title}-rows-${index}`}>
-              {item.rows.map((row, rowIndex) => (
-                <AgendaRow key={`${title}-row-${index}-${rowIndex}`} row={row} />
-              ))}
-            </React.Fragment>
+            <SessionBar
+              key={`${title}-session-${index}`}
+              {...item}
+            />
           );
-        })}
-      </Box>
+        }
+
+        if (item.type === "workshop") {
+          return (
+            <WorkshopBlock
+              key={`${title}-workshop-${index}`}
+              {...item}
+            />
+          );
+        }
+
+        return (
+          <React.Fragment key={`${title}-rows-${index}`}>
+            {item.rows.map((row, rowIndex) => (
+              <AgendaRow
+                key={`${title}-${index}-${rowIndex}`}
+                row={row}
+              />
+            ))}
+          </React.Fragment>
+        );
+      })}
     </Box>
   );
 }
 
-export default function AgendaPage() {
+function AgendaShell({ days }: { days: AgendaDayType[] }) {
   return (
-    <Box sx={{ bgcolor: "#fff", minHeight: "100vh", py: { xs: 2, md: 6 } }}>
-      <Container maxWidth="lg">
-        <Paper
-          elevation={0}
-          sx={{
-            px: { xs: 1, md: 5 },
-            py: { xs: 2, md: 5 },
-            boxShadow: "0 18px 60px rgba(31, 41, 55, 0.08)",
-          }}
-        >
-          {agendaDays.map((day) => (
-            <AgendaDay key={day.title} title={day.title} items={day.items} />
-          ))}
-        </Paper>
+    <Box
+      sx={{
+        minHeight: "100vh",
+        bgcolor: "#fff",
+        
+        py: { xs: 2, sm: 3, md: 5 },
+      }}
+    >
+      <Container
+        maxWidth={"lg"}
+        sx={{
+        
+          width: "100%",
+          // maxWidth: { xs: "100%", sm: "680px", md: "820px" },
+          px: { xs: 2, sm: 3, md: 4 },
+        }}
+      >
+        {days.map((day) => (
+          <AgendaDay
+            key={day.title}
+            title={day.title}
+            items={day.items}
+          />
+        ))}
       </Container>
     </Box>
   );
+}
+
+export default function AgendaPage({ day }: { day?: 1 | 2 }) {
+  const days = day ? [agendaDays[day - 1]] : agendaDays;
+  return <AgendaShell days={days} />;
 }

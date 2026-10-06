@@ -25,7 +25,7 @@ export default function LoginForm({
 }: Props) {
   return (
     <Box sx={{ mt: 6 }}>
-      <SectionTitle>Login with existing account:</SectionTitle>
+      {/* <SectionTitle>Login with existing account:</SectionTitle> */}
 
       <Box sx={{ maxWidth: 620, mx: "auto" }}>
         <StyledTextField

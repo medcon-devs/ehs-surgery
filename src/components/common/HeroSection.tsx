@@ -32,7 +32,7 @@ export default function HeroSection() {
     <Box
   sx={{
     position: "relative",
-    minHeight: { xs: 125, md: 306 },
+    minHeight: { xs: 305, md: 360},
     display: "flex",
     alignItems: "stretch",
     overflow: "hidden",
@@ -41,44 +41,60 @@ export default function HeroSection() {
 >
   {/* Mobile video */}
   <Box
-    component="video"
-    autoPlay
-    muted
-    loop
-    playsInline
+    // component="video"
+    // autoPlay
+    // muted
+    // loop
+    // playsInline
     sx={{
       display: { xs: "block", md: "none" },
       width: "100%",
       height: "100%",
+      overflow: "hidden",
       objectFit: "cover",
       filter: "saturate(1.1)",
     }}
   >
-    <source
+    <Box
+      component="img"
+      src="https://res.cloudinary.com/medcon-dam/image/upload/v1785317410/EHS-surgery-conference/bannermobile_iuqn86.png"
+      alt="1st EHS Next Generation Surgery Conference"
+      sx={{ display: "block", width: "100%", minHeight: 305, objectFit: "cover" }}
+    />
+    {/* <source
       src="https://res.cloudinary.com/medcon-dam/video/upload/q_auto/f_auto/v1776432103/ehs-ckm-2026/Frontend/5th_EHS_Banner_MOBILE_cz7f3e.mp4"
       type="video/mp4"
-    />
+    /> */}
   </Box>
 
   {/* Desktop video */}
   <Box
-    component="video"
-    autoPlay
-    muted
-    loop
-    playsInline
+    // component="img"
+    // component="video"
+    // autoPlay
+    // muted
+    // loop
+    // playsInline
     sx={{
       display: { xs: "none", md: "block" },
       width: "100%",
       height: "100%",
+      overflow: "hidden",
       objectFit: "cover",
       filter: "saturate(1.1)",
+      
     }}
   >
-    <source
+    <Box
+      component="img"
+      src="https://res.cloudinary.com/medcon-dam/image/upload/v1785311779/EHS-surgery-conference/1st_Surgery_Conference_-_Banner_uxm2d7.png"
+      alt="1st EHS Next Generation Surgery Conference"
+      sx={{ display: "block", width: "100%", minHeight: 360, objectFit: "cover" }}
+    />
+    {/* <source
       src="https://res.cloudinary.com/medcon-dam/video/upload/q_auto/f_auto/v1776432103/ehs-ckm-2026/Frontend/5th_EHS_Banner_1.4_i2wqtk.mp4"
       type="video/mp4"
-    />
+    /> */}
   </Box>
 </Box>
   );

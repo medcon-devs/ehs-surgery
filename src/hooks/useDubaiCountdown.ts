@@ -74,7 +74,7 @@ export function useDubaiCountdown() {
 
   useEffect(() => {
     // Put your real event date here
-    const eventDate = new Date("2026-05-09T00:00:00");
+    const eventDate = new Date("2026-10-10T00:00:00");
 
     const updateCountdown = () => {
       const nowDubai = getDubaiNow();

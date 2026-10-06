@@ -1,5 +1,5 @@
 export const conferenceRoutes = {
-    baseUrl: "https://ehs-ckm-conference.com/backend/public/api/v1",
+    baseUrl: "https://ehs-surgery-conference.com/Backend/public/api/v1",
     account: {
       register: "/user/account/register",
       login: "/user/account/login",

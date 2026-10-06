@@ -1,101 +1,83 @@
-import { Box, Button, Card, CardContent, Container, Stack, Typography } from "@mui/material";
-import CalendarMonthIcon from "@mui/icons-material/CalendarMonth";
-import PlaceIcon from "@mui/icons-material/Place";
+import { Box, Button, Container, Stack, Typography } from "@mui/material";
 import { motion } from "framer-motion";
-import { literata } from "@/lib/fonts";
+import type { ReactNode } from "react";
 
-function InfoCard({
-  icon,
-  title,
-  rows,
-  buttonLabel,
-  buttonHref,
-}: {
-  icon: React.ReactNode;
+type CardProps = {
+  icon: string;
   title: string;
-  rows: Array<{ label: string; value: string }>;
+  rows: Array<{ label: string; value: ReactNode }>;
   buttonLabel: string;
   buttonHref: string;
-}) {
+};
+
+function InfoCard({ icon, title, rows, buttonLabel, buttonHref }: CardProps) {
   return (
-    <Card sx={{ borderRadius: 1, overflow: "hidden", boxShadow: "0 10px 30px rgba(16,24,40,0.10)" }}>
-      <Box sx={{ bgcolor: "#D8CCC7", px: 2.5, py: 2 }}>
-        <Stack direction="row" alignItems="center" gap={1.5}>
-          <Box
-            sx={{
-              width: 50,
-              height: 50,
-              borderRadius: "50%",
-              bgcolor: "#2F5E7A",
-              color: "white",
-              display: "grid",
-              placeItems: "center",
-            }}
-          >
-            {icon}
+    <Box sx={{ flex: 1, bgcolor: "#f4f4f4", borderRadius: "24px", overflow: "hidden", minHeight: 350, display: "flex", flexDirection: "column" }}>
+      <Stack direction="row" alignItems="center" gap={2} sx={{ bgcolor: "#102f4c", px: 2.5, py: 2.1, color: "#fff" }}>
+        <Box component="img" src={icon} alt="" sx={{ width: 48, height: 48 }} />
+        <Typography sx={{ fontSize: { xs: 22, md: 27 }, fontWeight: 800 }}>{title}</Typography>
+      </Stack>
+      <Stack sx={{ p: 3.5, flex: 1, textAlign: "center" }} gap={2}>
+        {rows.map((row) => (
+          <Box key={row.label}>
+            <Typography sx={{ fontSize: 15, fontWeight: 800 }}>{row.label}</Typography>
+            <Typography sx={{ fontSize: 14, color: "#444" }}>{row.value}</Typography>
           </Box>
-          <Typography sx={{ fontSize:25,fontWeight: 400, color: "#2F5E7A", fontFamily: `${literata.style.fontFamily}, serif`, }} className={literata.className}>{title}</Typography>
-        </Stack>
-      </Box>
-
-      <CardContent sx={{ p: 3,bgcolor:"#F2F2F2" }}>
-        <Stack gap={1.2}>
-          {rows.map((r) => (
-            <Stack key={r.label} direction="column" justifyContent="space-between" gap={.2}>
-              <Typography sx={{ fontSize: 13, color: "text.secondary" }}>{r.label}</Typography>
-              <Typography sx={{ fontSize: 13, fontWeight: 500 }}>{r.value}</Typography>
-            </Stack>
-          ))}
-        </Stack>
-
-        <Stack alignItems="center" sx={{ mt: 3 }}>
-          <Button variant="contained" href={buttonHref} sx={{ borderRadius: 999, px: 4,fontSize:16 }} target="blank">
-            {buttonLabel}
-          </Button>
-        </Stack>
-      </CardContent>
-    </Card>
+        ))}
+        <Button
+          href={buttonHref}
+          target="_blank"
+          rel="noopener noreferrer"
+          sx={{
+            mt: "auto",
+            alignSelf: "center",
+            minWidth: "82%",
+            borderRadius: 999,
+            py: 0.8,
+            color: "#fff",
+            fontSize: 17,
+            fontWeight: 800,
+            textTransform: "none",
+            background: "linear-gradient(90deg, #ae7e29 0%, #f0cd82 100%)",
+          }}
+        >
+          {buttonLabel}
+        </Button>
+      </Stack>
+    </Box>
   );
 }
 
 export default function InfoCards() {
-  const googleCalendarUrl =
-  "https://calendar.google.com/calendar/render?action=TEMPLATE" +
-  "&text=The%205th%20EHS%20Cardiorenal%20and%20Metabolic%20Conference" +
-  "&dates=20260509T050000Z/20260510T140000Z" +
-  "&details=Join%20the%205th%20EHS%20Cardiorenal%20and%20Metabolic%20Conference%20in%20Fujairah." +
-  "&location=DoubleTree%20by%20Hilton%20Fujairah,%20UAE";
+  const calendarUrl =
+    "https://calendar.google.com/calendar/render?action=TEMPLATE&text=1st%20EHS%20Next%20Generation%20Surgery%20Conference&dates=20261010T050000Z%2F20261011T140000Z&location=InterContinental%20Hotel%20-%20Events%20Center%2C%20Fujairah%2C%20UAE";
+
   return (
     <Container maxWidth="md">
       <motion.div initial={{ opacity: 0, y: 14 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
-        <Stack direction={{ xs: "column", md: "row" }} gap={3} sx={{ mt: 5 }}>
-          <Box sx={{ flex: 1 }}>
-            <InfoCard
-              icon={<img src={"https://res.cloudinary.com/medcon-dam/image/upload/v1773726216/ehs-ckm-2026/Frontend/calander_qh2km6.png"} />}
-              title="Save the Date"
-              rows={[
-                { label: "Starting From:", value: "9th May 2026" },
-                { label: "Until:", value: "10th May 2026" },
-                { label: "Duration:", value: "2 days" },
-              ]}
-              buttonLabel="Add to Google Calendar"
-              buttonHref={googleCalendarUrl}
-            />
-          </Box>
-
-          <Box sx={{ flex: 1 }}>
-            <InfoCard
-              icon={<img src={"https://res.cloudinary.com/medcon-dam/image/upload/v1773726218/ehs-ckm-2026/Frontend/location_ft2zc8.png"}/>}
-              title="Venue Location"
-              rows={[
-                { label: "Hotel:", value: "DoubleTree by Hilton" },
-                { label: "Location:", value: "Fujairah, United Arab Emirates" },
-                { label: "Region:", value: "Fujairah City" },
-              ]}
-              buttonLabel="View on Google Maps"
-              buttonHref="https://maps.app.goo.gl/W74tnPK94eQ4g7KEA"
-            />
-          </Box>
+        <Stack direction={{ xs: "column", md: "row" }} gap={3} sx={{ mt: 6 }}>
+          <InfoCard
+            icon="https://res.cloudinary.com/medcon-dam/image/upload/v1785148773/EHS-surgery-conference/datesurgery_le7fn1.png"
+            title="Save the Date"
+            rows={[
+              { label: "Starting From:", value: <>October 10<sup>th</sup>, 2026</> },
+              { label: "Until:", value: <>October 11<sup>th</sup>, 2026</> },
+              { label: "Duration:", value: "2 days" },
+            ]}
+            buttonLabel="Add to Calendar"
+            buttonHref={calendarUrl}
+          />
+          <InfoCard
+            icon="https://res.cloudinary.com/medcon-dam/image/upload/v1785148774/EHS-surgery-conference/locationsurgery_ynetmw.png"
+            title="Venue Location"
+            rows={[
+              { label: "Hotel:", value: "InterContinental Hotel - Events Center" },
+              { label: "Location:", value: "Fujairah, United Arab Emirates" },
+              { label: "Region:", value: "Fujairah City" },
+            ]}
+            buttonLabel="View on Google Maps"
+            buttonHref="https://www.google.com/maps/search/?api=1&query=InterContinental+Fujairah+Resort"
+          />
         </Stack>
       </motion.div>
     </Container>

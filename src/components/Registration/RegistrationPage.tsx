@@ -52,7 +52,7 @@ export default function RegisterPage() {
 
   const isNonEhs = registerForm.registrationCategory === "Non EHS Attendee";
   const requiresPayment = isNonEhs && registerForm.codeChoice === "no-code";
-  const amount = 250;
+  const amount = 500;
 
   React.useEffect(() => {
     const syncAuthState = () => {
@@ -271,10 +271,30 @@ export default function RegisterPage() {
   };
 
   return (
-    <Box sx={{ bgcolor: "#f6f6f6", py: { xs: 4, md: 6 } }}>
-      <Container maxWidth="lg">
+    <Box
+      sx={{
+        minHeight: "100vh",
+        bgcolor: "#FFFFFF",
+        py: { xs: 3, sm: 4, md: 5 },
+      }}
+    >
+      <Container
+        maxWidth={'lg'}
+        sx={{
+          width: "100%",
+          // maxWidth: { xs: "100%", sm: "620px", md: "760px" },
+          px: { xs: 2, sm: 3, md: 4 },
+        }}
+      >
         {generalError && (
-          <Alert severity="error" sx={{ mb: 3, borderRadius: 2 }}>
+          <Alert
+            severity="error"
+            sx={{
+              mb: 2,
+              borderRadius: 1.5,
+              fontSize: { xs: 11, md: 13 },
+            }}
+          >
             {generalError}
           </Alert>
         )}
@@ -283,67 +303,255 @@ export default function RegisterPage() {
           <ProfileCard user={userData} onLogout={handleLogout} />
         ) : (
           <>
-            <RegistrationForm
-              form={registerForm}
-              errors={registerErrors}
-              isNonEhs={isNonEhs}
-              requiresPayment={requiresPayment}
-              amount={amount}
-              success={registerSuccess}
-              loading={registerLoading}
-              clientSecret={clientSecret}
-              onChange={setField}
-              onCategoryChange={handleCategoryChange}
-              onCodeChoiceChange={handleCodeChoiceChange}
-              onSubmit={handleRegistrationSubmit}
-              onPaymentSuccess={handlePaymentSuccess}
-            />
-            {generalError && (
-          <Alert severity="error" sx={{ mb: 3, borderRadius: 2 }}>
-            {generalError}
-          </Alert>
-        )}
-            <LoginForm
-              form={loginForm}
-              errors={loginErrors}
-              success={loginSuccess}
-              loading={loginLoading}
-              onChange={setLoginField}
-              onSubmit={handleLoginSubmit}
-            />
-
-            <Box sx={{ mt: 6, color: "#444", fontSize: 15, lineHeight: 1.55 }}>
+            <Box>
               <Typography
-                sx={{ fontSize: 15, color: "#444", whiteSpace: "pre-line" }}
+                sx={{
+                  color: "#111111",
+                  fontSize: { xs: 18, sm: 20, md: 22 },
+                  fontWeight: 800,
+                  lineHeight: 1.15,
+                }}
               >
-                {`EHS Staff:
-Registration is Free, and utilization of an EHS email address is mandatory for registration.
+                Registration
+              </Typography>
 
-Non-EHS Attendees:
-A registration fee of AED 500 applies.`}
+              <Box
+                sx={{
+                  height: "3px",
+                  bgcolor: "#DD8F17",
+                  mt: 1,
+                  mb: { xs: 2, md: 2.5 },
+                }}
+              />
+
+              <Box
+                sx={{
+                  width: "100%",
+                  maxWidth: "520px",
+                  mx: "auto",
+                  "& .MuiTextField-root, & .MuiFormControl-root": {
+                    width: "100%",
+                  },
+                  "& .MuiInputBase-root": {
+                    minHeight: { xs: 52, md: 56 },
+                    fontSize: { xs: 15, md: 16 },
+                  },
+                  "& .MuiInputLabel-root": {
+                    fontSize: { xs: 14, md: 15 },
+                  },
+                  "& .MuiButton-root": {
+                    minWidth: { xs: 180, md: 210 },
+                    minHeight: { xs: 44, md: 48 },
+                    borderRadius: 999,
+                    background:
+                      "linear-gradient(90deg, #B88934 0%, #E8C47B 100%)",
+                    color: "#FFFFFF",
+                    boxShadow: "none",
+                    textTransform: "none",
+                    fontSize: { xs: 14, md: 16 },
+                    fontWeight: 800,
+                    "&:hover": {
+                      background:
+                        "linear-gradient(90deg, #AA7C2D 0%, #DBB96C 100%)",
+                      boxShadow: "none",
+                    },
+                  },
+                }}
+              >
+                <RegistrationForm
+                  form={registerForm}
+                  errors={registerErrors}
+                  isNonEhs={isNonEhs}
+                  requiresPayment={requiresPayment}
+                  amount={amount}
+                  success={registerSuccess}
+                  loading={registerLoading}
+                  clientSecret={clientSecret}
+                  onChange={setField}
+                  onCategoryChange={handleCategoryChange}
+                  onCodeChoiceChange={handleCodeChoiceChange}
+                  onSubmit={handleRegistrationSubmit}
+                  onPaymentSuccess={handlePaymentSuccess}
+                />
+              </Box>
+            </Box>
+
+            <Box sx={{ mt: { xs: 5, md: 6 } }}>
+              <Typography
+                sx={{
+                  color: "#111111",
+                  fontSize: { xs: 18, sm: 20, md: 22 },
+                  fontWeight: 800,
+                  lineHeight: 1.15,
+                }}
+              >
+                Login with existing account
+              </Typography>
+
+              <Box
+                sx={{
+                  height: "3px",
+                  bgcolor: "#DD8F17",
+                  mt: 1,
+                  mb: { xs: 2, md: 2.5 },
+                }}
+              />
+
+              <Box
+                sx={{
+                  width: "100%",
+                  maxWidth: "520px",
+                  mx: "auto",
+                  "& .MuiTextField-root, & .MuiFormControl-root": {
+                    width: "100%",
+                  },
+                  "& .MuiInputBase-root": {
+                    minHeight: { xs: 52, md: 56 },
+                    fontSize: { xs: 15, md: 16 },
+                  },
+                  "& .MuiInputLabel-root": {
+                    fontSize: { xs: 14, md: 15 },
+                  },
+                  "& .MuiButton-root": {
+                    minWidth: { xs: 180, md: 210 },
+                    minHeight: { xs: 44, md: 48 },
+                    borderRadius: 999,
+                    background:
+                      "linear-gradient(90deg, #B88934 0%, #E8C47B 100%)",
+                    color: "#FFFFFF",
+                    boxShadow: "none",
+                    textTransform: "none",
+                    fontSize: { xs: 14, md: 16 },
+                    fontWeight: 800,
+                    "&:hover": {
+                      background:
+                        "linear-gradient(90deg, #AA7C2D 0%, #DBB96C 100%)",
+                      boxShadow: "none",
+                    },
+                  },
+                }}
+              >
+                <LoginForm
+                  form={loginForm}
+                  errors={loginErrors}
+                  success={loginSuccess}
+                  loading={loginLoading}
+                  onChange={setLoginField}
+                  onSubmit={handleLoginSubmit}
+                />
+              </Box>
+            </Box>
+
+            <Box sx={{ mt: { xs: 4.5, md: 5.5 }, color: "#4A4A4A" }}>
+              <Typography
+                sx={{
+                  color: "#111111",
+                  fontSize: { xs: 10.5, sm: 11.5, md: 12.5 },
+                  fontWeight: 800,
+                }}
+              >
+                EHS Staff:
+              </Typography>
+              <Typography
+                sx={{
+                  mt: 0.2,
+                  color: "#555555",
+                  fontSize: { xs: 9.5, sm: 10.5, md: 11.5 },
+                  lineHeight: 1.4,
+                }}
+              >
+                Registration is Free, and utilization of an EHS email address is mandatory for registration.
               </Typography>
 
               <Typography
                 sx={{
-                  mt: 4,
-                  fontSize: 15,
-                  color: "#444",
-                  whiteSpace: "pre-line",
+                  mt: 1.5,
+                  color: "#111111",
+                  fontSize: { xs: 10.5, sm: 11.5, md: 12.5 },
+                  fontWeight: 800,
                 }}
               >
-                {`Conference Compliance Notice:
-This conference is a scientific and educational event and will be conducted strictly within the designated conference areas only. Participants will not have access to hotel recreational or leisure facilities (e.g., pool, spa, fitness center, or entertainment areas).
-Accommodation is not part of the official conference program. Any hotel stay arrangements are made independently by participants and are not covered by the event organizer or sponsors.
-For any compliance-related questions, please contact the conference organizing team through the official conference website.`}
+                Non-EHS Attendees:
+              </Typography>
+              <Typography
+                sx={{
+                  mt: 0.2,
+                  color: "#555555",
+                  fontSize: { xs: 9.5, sm: 10.5, md: 11.5 },
+                  lineHeight: 1.4,
+                }}
+              >
+                A registration fee of AED 500 applies.
               </Typography>
 
-              <Box sx={{ height: 1, bgcolor: "#e1d9d5", my: 4 }} />
+              <Typography
+                sx={{
+                  mt: 1.5,
+                  color: "#111111",
+                  fontSize: { xs: 10.5, sm: 11.5, md: 12.5 },
+                  fontWeight: 800,
+                }}
+              >
+                Participant Benefits:
+              </Typography>
+              <Typography
+                sx={{
+                  mt: 0.2,
+                  color: "#555555",
+                  fontSize: { xs: 9.5, sm: 10.5, md: 11.5 },
+                  lineHeight: 1.4,
+                }}
+              >
+              •  Full 2-day access to educational lectures and scientific sessions.<br/>
+              •  Coffee breaks and lunch served within the designated conference area.<br/>
+              •  Access to conference materials and standard participant services.
+              </Typography>
+
+              {/* <Typography
+                sx={{
+                  mt: 3,
+                  color: "#111111",
+                  fontSize: { xs: 10.5, sm: 11.5, md: 12.5 },
+                  fontWeight: 800,
+                }}
+              >
+                Conference Compliance Notice:
+              </Typography>
+              <Typography
+                sx={{
+                  mt: 0.4,
+                  color: "#555555",
+                  fontSize: { xs: 9.2, sm: 10.2, md: 11.2 },
+                  lineHeight: 1.45,
+                }}
+              >
+                This conference is a scientific and educational event and will be conducted strictly within the designated conference areas only. Participants will not have access to hotel recreational or leisure facilities (e.g., pool, spa, fitness center, or entertainment areas).
+                <br />
+                Accommodation is not part of the official conference program. Any hotel stay arrangements are made independently by participants and are not covered by the event organizer or sponsors.
+                <br />
+                For any compliance-related questions, please contact the conference organizing team through the official conference website.
+              </Typography> */}
+
+              <Box sx={{ height: "1px", bgcolor: "#E6E0DB", my: 3.5 }} />
 
               <Typography
-                sx={{ fontSize: 15, color: "#444", whiteSpace: "pre-line" }}
+                sx={{
+                  color: "#111111",
+                  fontSize: { xs: 10.5, sm: 11.5, md: 12.5 },
+                  fontWeight: 800,
+                }}
               >
-                {`Disclaimer:
-We treat your personal data and protect your privacy when you use our services. By using our services you agree that MEDCON can use such data to contact you for future educational activities. This event is directed to healthcare professionals only. In accordance to UAE code of Ethical Practices for the Promotion and distribution of medical products, MEA Code of promotional practices for pharmaceuticals; spouses, relatives or other guests in relation with healthcare professionals cannot be invited or included in any promotional, professional or scientific event.`}
+                Disclaimer:
+              </Typography>
+              <Typography
+                sx={{
+                  mt: 0.4,
+                  color: "#555555",
+                  fontSize: { xs: 9.2, sm: 10.2, md: 11.2 },
+                  lineHeight: 1.45,
+                }}
+              >
+                We treat your personal data and protect your privacy when you use our services. By using our services you agree that MEDCON can use such data to contact you for future educational activities. This event is directed to healthcare professionals only. In accordance to UAE code of Ethical Practices for the Promotion and distribution of medical products, MEA Code of promotional practices for pharmaceuticals; spouses, relatives or other guests in relation with healthcare professionals cannot be invited or included in any promotional, professional or scientific event.
               </Typography>
             </Box>
           </>

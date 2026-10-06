@@ -1,192 +1,87 @@
-import { Box, Container, Divider, Stack, Typography } from "@mui/material";
+import { Box, Container, Stack, Typography } from "@mui/material";
 import { motion } from "framer-motion";
-import { literata } from "@/lib/fonts";
 
-function ProfileCard({
-  image,
-  name,
-  role,
-  imageWidth = 180,
-  imageTop = -58,
-}: {
-  image: string;
-  name: string;
-  role: string;
-  imageWidth?: number;
-  imageTop?: number;
-}) {
-  return (
-    <Box
-      sx={{
-        width: "100%",
-        maxWidth: 590,
-      }}
-    >
-      <Box
-        sx={{
-          bgcolor: "#F5F3F1",
-          borderRadius: "22px",
-          px: 2.5,
-          pt: 3,
-          pb: 1.8,
-          textAlign: "center",
-          boxShadow: "0 6px 18px rgba(0,0,0,0.06)",
-          position: "relative",
-          minHeight: 255,
-          mt: 5,
-        }}
-      >
-        <Box
-          component="img"
-          src={image}
-          alt={name}
-          sx={{
-            width: imageWidth,
-            maxWidth: "100%",
-            objectFit: "contain",
-            mx: "auto",
-            display: "block",
-            position: "absolute",
-            top: imageTop,
-            left: "50%",
-            transform: "translateX(-50%)",
-          }}
-        />
-
-        <Box sx={{ pt: 19 }}>
-          <Typography
-            sx={{
-              fontWeight: 400,
-              fontSize: { xs: 18, md: 19 },
-              color: "#2F2F2F",
-              lineHeight: 1.2,
-            }}
-          >
-            {name}
-          </Typography>
-
-          <Typography
-            sx={{
-              fontWeight: 700,
-              fontSize: 12,
-              color: "#315A7B",
-              lineHeight: 1.5,
-              mt: 0.5,
-            }}
-          >
-            {role}
-          </Typography>
-        </Box>
-      </Box>
-    </Box>
-  );
-}
+const profiles = [
+  {
+    image: "https://res.cloudinary.com/medcon-dam/image/upload/v1785148224/EHS-surgery-conference/Essamsurgery_nvao3p.png",
+    name: "Dr. Essam AlZarooni",
+    role: "Executive Director Of Clinical Services",
+    subtitle: "Sector Emirates Health Services",
+  },
+  {
+    image: "https://res.cloudinary.com/medcon-dam/image/upload/v1785148224/EHS-surgery-conference/Wedadsurgery_dmohwf.png",
+    name: "Ms. Wedad Al Fard",
+    title: "Conference Chairperson",
+    role: "Director of Dibba-Fujairah Hospital",
+  },
+  {
+    image:"https://res.cloudinary.com/medcon-dam/image/upload/v1785224244/EHS-surgery-conference/Hatem_le92lb.png",
+    name:"Prof. Hatem Gaafar",
+    role:"Consultant Surgeon",
+    subtitle:"Dibba Hospital"
+  }
+];
 
 export default function WelcomeMessage() {
   return (
     <Container maxWidth="lg">
-      <motion.div
-        initial={{ opacity: 0, y: 14 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-      >
-        <Box sx={{ mt: 4 }}>
-          <Divider
-            sx={{
-              mb: 3,
-              borderColor: "#315A7B",
-              borderBottomWidth: 5,
-            }}
-          />
+      <motion.div initial={{ opacity: 0, y: 14 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
+        <Box sx={{ mt: 7, bgcolor: "#f4f4f4", borderRadius: "7px", }}>
+          <Box display={{ md: "flex", xs: "block" }} alignContent={"flex-end"} alignItems={"center"} pt={2}>
 
-          <Typography
-            variant="h4"
-            className={literata.className}
-            sx={{
-              fontWeight: 600,
-              color: "#2F5E7A",
-              mb: 3,
-              fontFamily: `${literata.style.fontFamily}, serif`,
-            }}
-          >
-            Welcome Message
-          </Typography>
+            <Typography sx={{ fontSize: { xs: 24, md: 27 }, fontWeight: 800, whiteSpace: "nowrap", px: { xs: 3, md: 4 }, }}>
+              Welcome Message
+            </Typography>
+            <Box sx={{ height: 3, flex: 1, bgcolor: "#dc951d", mx: 2 }} />
+          </Box>
+          <Stack direction={{ xs: "column", md: "row" }} gap={{ xs: 4, md: 3 }}>
+            <Box sx={{ flex: 1.6 }}>
 
-          <Stack
-            direction={{ xs: "column", md: "row" }}
-            spacing={{ xs: 4, md: 2 }}
-            alignItems={{ xs: "center", md: "flex-start" }}
-          >
-            {/* Left side text */}
-            <Box sx={{ flex: 1, width: "100%" }}>
-              <Typography
-                sx={{
-                  color: "#4A4A4A",
-                  lineHeight: 1.75,
-                  fontSize: { xs: 16, md: 15 },
-                  textAlign: "left",
-                  maxWidth: 590,
-                }}
-              >
-                On behalf of the Organizing and Scientific Committee, it is our
-                great honor to extend a warm welcome to you to The 5th EHS
-                Cardiorenal and Metabolic Conference, chaired by Dr. Muhamed Al
-                Rohani, MD, Head of the Medical Department at Dibba Hospital,
-                and Chairman of the Organizing Committee.
-                <br />
-                <br />
-                This distinguished event will take place on May 9–10, 2026, at
-                DoubleTree by Hilton Fujairah City Hotel.
-                <br />
-                <br />
-                Now in its fifth edition, this conference continues its mission
-                to advance cardiovascular and metabolic healthcare across the
-                region. It brings together leading clinicians, researchers,
-                academicians, and healthcare innovators to share knowledge,
-                exchange best practices, and explore emerging trends that are
-                shaping the future of patient care.
-                <br />
-                <br />
-                The scientific program has been thoughtfully designed to deliver
-                high-quality educational content through cutting-edge lectures,
-                expert panel discussions, hands-on sessions, and inspiring
-                keynote presentations delivered by national and international
-                leaders in the fields of cardiology, nephrology, endocrinology,
-                and internal medicine.
-                <br />
-                <br />
-                We look forward to your active participation and hope this
-                conference will foster meaningful collaboration, drive
-                scientific innovation, and further elevate the standards of
-                cardiovascular and metabolic healthcare.
+              <Stack direction="row" alignItems="center" gap={3} sx={{ mb: 2.5 }}>
+
+              </Stack>
+              <Typography component="div" sx={{ color: "#555", fontSize: 16, lineHeight: 1.38, px: { xs: 3, md: 4 }, pb: 3 }}>
+                Emirates Health Services is pleased to announce the <strong>1st EHS Next Generation Surgery Conference</strong>, a two-day scientific conference dedicated to advancing the future of surgical care through science, precision, innovation, education, and excellence.
+                <br /><br />
+                The conference brings together surgical experts, researchers, and healthcare professionals to explore evolving practices, precision-driven approaches, emerging technologies, enhanced recovery, perioperative excellence, and multidisciplinary surgical care.
+                <br /><br />
+                The event will be held on<br />
+                <strong>10<sup>th</sup> - 11<sup>th</sup> October 2026 at InterContinental Hotel - Events Center, Fujairah, UAE.</strong>
+                <br /><br />
+                The conference will provide a dynamic platform for knowledge exchange and professional collaboration, highlighting the latest advances shaping modern surgical care, including minimally invasive and robotic techniques, emerging technologies, and innovative approaches that support safer procedures and improved patient outcomes.
+                {/* We are pleased to invite selected partners to participate as sponsors. By supporting this event, you will demonstrate your commitment to surgical education and training, your contribution to knowledge exchange among healthcare practitioners, and your dedication to advancing surgical excellence across the UAE. */}
+                <br /><br />
+                The conference is designed for surgeons, surgical residents, physicians, operating room teams, nurses, allied health professionals, and medical students, with opportunities for scientific sessions, interactive discussions, workshops, exhibition engagement, and networking.
+                <br /><br />
+                We look forward to your participation.
               </Typography>
             </Box>
 
-            {/* Right side cards */}
             <Stack
-              spacing={4}
               sx={{
-                width: { xs: "100%", sm: 320, md: 400 },
-                flexShrink: 0,
-                alignItems: "center",
-                mt: { xs: 2, },
+                flex: 0.9,
+                bgcolor: "#102b43",
+                borderRadius: "7px",
+                color: "#fff",
+                px: 2.5,
+                py: 3.5,
+                justifyContent: "space-around",
               }}
             >
-              <ProfileCard
-                image="https://res.cloudinary.com/medcon-dam/image/upload/q_auto/f_auto/v1776249349/ehs-ckm-2026/Frontend/Group_457_gjccnv.png"
-                name="Dr. Wedad Mohammed Al Fard"
-                role="Director of Dibba Hospital"
-                imageWidth={195}
-                imageTop={-58}
-              />
-
-              <ProfileCard
-                image="https://res.cloudinary.com/medcon-dam/image/upload/v1773726216/ehs-ckm-2026/Frontend/chairperson_fg0wif.png"
-                name="Dr. Muhamed Al Rohani, MD"
-                role="Conference Chairperson"
-                imageWidth={215}
-                imageTop={-58}
-              />
+              {profiles.map((profile) => (
+                <Box key={profile.name} sx={{ textAlign: "center", py: 1 }}>
+                  <Box
+                    component="img"
+                    src={profile.image}
+                    alt={profile.name}
+                    sx={{ width: 105, height: 105, borderRadius: "50%", objectFit: "cover",mx:"auto"}}
+                  />
+                   <Typography sx={{fontSize: 12,mt:.5, fontWeight: 800,color:"#D88E23" }}>{profile.title}</Typography>
+                  <Typography sx={{ mt: profile.title!=null?0: 0.5, fontSize: 19, fontWeight: 800 }}>{profile.name}</Typography>
+                  <Typography sx={{ mt: 0.3, fontSize: 9.5, lineHeight: 1.3 }}>{profile.role}</Typography>
+                  {profile.subtitle && <Typography sx={{ fontSize: 9.5 }}>{profile.subtitle}</Typography>}
+                </Box>
+              ))}
             </Stack>
           </Stack>
         </Box>

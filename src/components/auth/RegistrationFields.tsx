@@ -43,7 +43,7 @@ export default function RegistrationFields({
   onCodeChoiceChange,
 }: Props) {
   return (
-    <Stack spacing={1.1}>
+    <Stack spacing={1.6}>
       <StyledTextField
         label="Full Name*"
         value={form.fullName}

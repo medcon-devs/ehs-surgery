@@ -51,9 +51,9 @@ export default function RegistrationForm({
 }: Props) {
   return (
     <>
-      <SectionTitle>Registration:</SectionTitle>
+      {/* <SectionTitle>Registration:</SectionTitle> */}
 
-      <Box sx={{ maxWidth: 620, mx: "auto", mb:5 }}>
+      <Box sx={{ width: "100%", mx: "auto", mb: 5 }}>
         <RegistrationFields
           form={form}
           errors={errors}

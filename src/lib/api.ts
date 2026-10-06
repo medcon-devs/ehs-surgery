@@ -1,6 +1,6 @@
 import { ApiResponse } from "./registration-types";
 
-export const API_BASE = "https://ehs-ckm-conference.com/backend/public/api/v1";
+export const API_BASE = "https://ehs-surgery-conference.com/Backend/public/api/v1";
 
 export const ROUTES = {
   register: "/user/account/register",
