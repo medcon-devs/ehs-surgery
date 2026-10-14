@@ -12,6 +12,7 @@ export const jobTitleOptions = [
 ];
 
 export const specialityOptions = [
+  "Surgeon",
   "Endocrinologist",
   "Cardiologist",
   "Pediatrician",

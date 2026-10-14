@@ -12,7 +12,7 @@ const BAR_SVG =
   const committeeMembers: CommitteeMember[] = [
     {
       name: "Prof. Hatem Gaafar",
-      title: `Consultant Surgeon,
+      title: `Consultant Surgeon
       Dibba Hospital`,
     },
     {
@@ -22,7 +22,7 @@ const BAR_SVG =
     },
     {
       name: "Dr. Khaled Almuhtadi",
-      title: `Consultant General Surgeon,
+      title: `Consultant General Surgeon
 Dibba Hospital`,
     },
     {
@@ -40,7 +40,7 @@ Dibba Hospital`,
     },
     {
       name: "Dr. Syed Shafaat",
-      title: `General Practitioner,
+      title: `General Practitioner
 Dibba Hospital`,
     },
     {

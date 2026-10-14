@@ -13,7 +13,7 @@ const BAR_SVG =
 const committeeMembers: CommitteeMember[] = [
     {
       name: "Dr. Abdulla Alboushi",
-      title: "",
+      title: "Consultant General Surgeon & Director of Khorfakkan Hospital EHS",
     },
     {
       name: "Dr. Amr Arafa",
@@ -22,17 +22,17 @@ Amina Hospital, Ajman`,
     },
     {
       name: "Prof.  Hatem Gaafar",
-      title: `Consultant Surgeon ,
+      title: `Consultant Surgeon,
 Dibba Hospital`,
     },
     {
       name: "Dr. Muna Al-Ayyan",
-      title: "",
+      title: "Consultant, Breast surgeon, General Surgeon Head of general surgery department CEO of Saqr Hospital",
     },
     {
       name: "Dr. Essa Muallemi",
-      title: `Consultant,
-Sharjah, Kuwait Hospital`,
+      title: `General and Bariatric Surgery Consultant
+MOHAP/ EHS`,
     },
     {
       name: "Dr. Haider Saeed Jalil",
@@ -44,42 +44,54 @@ Dibba Hospital`,
 const advisoryMembers: CommitteeMember[] = [
   {
     name: "Dr. Abdel Wahid Alwahidi",
-    title: `Consultant General Surgeon, Qassimi
-Hospital, EHS`,
+    title: `Consultant General and Bariatric Surgeon,
+University Hospital Sharjah`,
   },
   {
     name: "Dr. Saqr Almulla",
-    title: "",
+    title: `Consultant and Head of the Department of Plastic Surgery, Al Qassimi Hospital`,
   },
   {
     name: "Dr. Hatem Moussa",
-    title: `General Surgeon,
-Qassimi Hospital, EHS`,
+    title: `Chief of Robotic Surgery Center of Excellence,
+American Hospital Dubai`,
   },
   {
-    name: "Dr. Yasra Alsalami",
-    title: "",
+    name: "Dr. Yosra  Alsalami",
+    title: `Consultant Family Medicine
+Assistant Director for Medical Affair,
+EHS Dibba-Fujairah Hospital`,
   },
   {
     name: "Prof. Safwan Taha",
-    title: `General Practitioner,
-Dibba Hospital`,
+    title: `Consultant Surgeon and Director of the Metabolic and Bariatric Surgery Center,
+    Mediclinic Airport Road Hospital, Abu Dhabi`,
   },
   {
-    name: "Prof. Mohammed Baguinde",
-    title: `Physician,
-Dibba Hospital`,
+    name: "Prof. Mohamed Baguneid",
+    title: `Consultant and Chair of the Vascular Surgery Division,
+Sheikh Shakhbout Medical City (SSMC), Abu Dhabi`,
   },
   {
     name: "Prof. Mohamed Hassan",
-    title: `General Surgeon,
-Al Qassimi Hospital`,
+    title: `Senior Consultant Pediatric Surgeon & Deputy Head,
+Al Qassimi Women's & Children's Hospital`,
   },
   {
-    name: "Dr. Basim Al Khafajee",
-    title: `Consultant Surgeon,
+    name: "Dr Basem AlKhafaji",
+    title: `Consultant Laparoscopic and Robotic General and Bariatric Surgeon,
 Canadian Specialist Hospital`,
   },
+  {
+    name: "Dr. Shafaat Syed Ali",
+    title: `Physician – General Surgery,
+Dibba Hospital`,
+  },
+  {
+    name: "Dr. Haidar Saeed Jalil Aal Mussa",
+    title: `Specialist General Surgeon,
+Dibba Hospital`,
+  }
 ];
 
 function SpeakerBar() {

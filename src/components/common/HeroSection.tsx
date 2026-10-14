@@ -87,7 +87,7 @@ export default function HeroSection() {
   >
     <Box
       component="img"
-      src="https://res.cloudinary.com/medcon-dam/image/upload/v1785311779/EHS-surgery-conference/1st_Surgery_Conference_-_Banner_uxm2d7.png"
+      src="https://res.cloudinary.com/medcon-dam/image/upload/v1791973144/EHS-surgery-conference/banner/Banner_e9cedo.png"
       alt="1st EHS Next Generation Surgery Conference"
       sx={{ display: "block", width: "100%", minHeight: 360, objectFit: "cover" }}
     />

@@ -50,7 +50,7 @@ function InfoCard({ icon, title, rows, buttonLabel, buttonHref }: CardProps) {
 
 export default function InfoCards() {
   const calendarUrl =
-    "https://calendar.google.com/calendar/render?action=TEMPLATE&text=1st%20EHS%20Next%20Generation%20Surgery%20Conference&dates=20261010T050000Z%2F20261011T140000Z&location=InterContinental%20Hotel%20-%20Events%20Center%2C%20Fujairah%2C%20UAE";
+    "https://calendar.google.com/calendar/render?action=TEMPLATE&text=1st%20EHS%20Next%20Generation%20Surgery%20Conference&dates=20261031T050000Z%2F20261101T140000Z&location=InterContinental%20Hotel%20-%20Events%20Center%2C%20Fujairah%2C%20UAE";
 
   return (
     <Container maxWidth="md">
@@ -60,8 +60,8 @@ export default function InfoCards() {
             icon="https://res.cloudinary.com/medcon-dam/image/upload/v1785148773/EHS-surgery-conference/datesurgery_le7fn1.png"
             title="Save the Date"
             rows={[
-              { label: "Starting From:", value: <>October 10<sup>th</sup>, 2026</> },
-              { label: "Until:", value: <>October 11<sup>th</sup>, 2026</> },
+              { label: "Starting From:", value: <>October 31<sup>st</sup>, 2026</> },
+              { label: "Until:", value: <>November 1<sup>st</sup>, 2026</> },
               { label: "Duration:", value: "2 days" },
             ]}
             buttonLabel="Add to Calendar"
@@ -72,7 +72,7 @@ export default function InfoCards() {
             title="Venue Location"
             rows={[
               { label: "Hotel:", value: "InterContinental Hotel - Events Center" },
-              { label: "Location:", value: "Fujairah, United Arab Emirates" },
+              { label: "Location:", value: "Dibba Fujairah, United Arab Emirates" },
               { label: "Region:", value: "Fujairah City" },
             ]}
             buttonLabel="View on Google Maps"

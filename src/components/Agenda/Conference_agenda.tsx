@@ -63,9 +63,9 @@ const agendaDays: AgendaDayType[] = [
       },
       {
         type: "session",
-        title: "Session 1: Laser & Minimally Invasive Colorectal Innovation",
+        title: "Session 1: Laser & minimally invasive Colorectal Innovation",
         chairman:
-          "Chairperson: Dr. Abdulla Alblooshi, Dr. Amer Arafa",
+          "Chairperson: Dr. Abdulla Alblooshi",
         moderator: "Moderator: Prof. Hatem Gaafar",
       },
       {
@@ -75,34 +75,29 @@ const agendaDays: AgendaDayType[] = [
             time: "08:30 - 08:50",
             topic:
               "Role of Laser Technology in Surgical Management of Anorectal Disorders",
-            speaker: "Dr. Mohamed Ramjiyan",
+            speaker: "Dr. Mohamed Ramijyan",
           },
           {
             time: "08:50 - 09:10",
             topic:
-              "Laser Hemorrhoidoplasty – The Future of Hemorrhoid Surgery",
-            speaker: "Dr. Mehroon Rashed",
+              "Laser Hemorrhoidoplasty- the future of Hemorrhoid Surgery.",
+            speaker: "Dr. Mehreen Rashed",
           },
           {
             time: "09:10 - 09:30",
             topic:
-              "Major Considerations of Staple Flexure Mobilization in Laparoscopic Colorectal Surgery",
-            speaker: "Dr. Amr Arafa",
-          },
-          {
-            time: "09:30 - 09:50",
-            topic:
               "Diode Laser Hemorrhoidoplasty Using a Standardized Technique: A 3-Year Real-World Clinical Experience",
-            speaker: "Prof. Hatem Gaafar",
+            speaker: "Prof. Dr. Hatem Gaafar",
           },
           {
-            time: "09:50 - 10:00",
-            topic: "Panel Discussion and Q&A",
-            speaker: "All",
-          },
-          {
-            time: "10:00 - 10:40",
+            time: "09:30 - 10:20",
             topic: "Opening Ceremony",
+            speaker: "All",
+            variant: "break",
+          },
+          {
+            time: "10:20 - 10:40",
+            topic: "Coffee Break",
             speaker: "All",
             variant: "break",
           },
@@ -112,40 +107,39 @@ const agendaDays: AgendaDayType[] = [
         type: "session",
         title: "Session 2: Robotic Surgery & Advanced Hernia Surgery",
         chairman:
-          "Chairperson: Dr. Hatem Moussa, Dr. Munal Al-Ayyari, Prof. Mohammed Hassan",
-        moderator: "Moderator: Prof. Hatem Gaafar",
+          "Chairperson: Dr.Hatem Mussa, Dr. Muna Al-Ayyan, Prof.Dr. Mohamed Hassan",
+        moderator: "Moderator: Prof. Dr. Hatem Gaafar",
       },
       {
         type: "rows",
         rows: [
           {
             time: "10:40 - 11:00",
-            topic:
-              "Robotic Surgery: Advancing Precision, Safety & Surgical Performance",
-            speaker: "Prof. Hatem Gaafar",
+            topic:"Pediatric Surgical Robotic experience in Al-Qassimi Women & Children Hospital New Horison",
+            speaker: "Prof. Dr. Mohamed Hassan",
           },
           {
             time: "11:00 - 11:20",
-            topic: "Robotic Hernia Surgery",
-            speaker: "Dr. Jado Kamal",
+            topic: "Robotic Complications and its Management.",
+            speaker: "Dr.Hatem Mussa.",
           },
           {
             time: "11:20 - 11:40",
             topic:
-              "Thoracoscopic Lobectomy in Paediatric Populations: Horizon for Surgical Innovation",
-            speaker: "Prof. Mohamed Hassan",
+              "Robotic Surgery: Advancing Precision, Safety & Surgical Performance",
+            speaker: "Prof. Dr. Hatem Gaafar",
           },
           {
             time: "11:40 - 12:00",
             topic:
-              "Laparoscopic Inguinal Hernia Extraperitoneal Repair: Is It the Gold Standard?",
-            speaker: "Dr. Laurent Layani",
+              "Subcutaneous Onlay Laparoscopic Approach (SCOLA)",
+            speaker: "Dr. Basim Al Khafajee",
           },
           {
             time: "12:00 - 12:20",
             topic:
-              "Subcutaneous Only Laparoscopic Approach (SCOLA)",
-            speaker: "Dr. Basim Al Khafajee",
+              "Laparoscopic Inguinal Hernia Extraperitoneal Repair: Is It the Gold Standard?",
+            speaker: "Prof. Laurent Layani",
           },
           {
             time: "12:20 - 12:40",
@@ -160,8 +154,8 @@ const agendaDays: AgendaDayType[] = [
         title:
           "Session 3: Modern Bariatric Surgery: Strategy, Technique & Complex Decision-Making",
         chairman:
-          "Chairperson: Dr. Abdel Wahid Alwahidi, Prof. Safwan Taha, Dr. Essa Muallemi",
-        moderator: "Moderator: Dr. Abdel Wahid Alwahidi",
+          "Chairperson: Dr. Abdulwahid Alwahedi, Prof. Safwan Taha, Dr. Essa Muallemi",
+        moderator: "Moderator: Dr. Abdulwahid Alwahedi",
       },
       {
         type: "rows",
@@ -169,28 +163,28 @@ const agendaDays: AgendaDayType[] = [
           {
             time: "12:40 - 13:00",
             topic: "Bariatric Surgery for Extreme Obesity",
-            speaker: "Prof. Safwan Taha",
+            speaker: "Prof.Dr. Safwan Taha",
           },
           {
             time: "13:00 - 13:20",
-            topic: "Mathematics of OAGB Formation: How We Do It",
-            speaker: "Dr. Laurent Layani",
-          },
-          {
-            time: "13:20 - 13:40",
-            topic: "Challenges in Bariatric Surgery",
+            topic: "Challenges in Bariatric Surgery.",
             speaker: "Dr. AbdelWahid Alwahidi",
           },
           {
-            time: "13:40 - 14:00",
-            topic: "Aborted Primary Bariatric Surgeries",
+            time: "13:20 - 13:40",
+            topic: "Aborted primary bariatric surgeries",
             speaker: "Dr. Essa Muallemi",
+          },
+          {
+            time: "13:40 - 14:00",
+            topic: "Mathematics of OAGB Formation: How We Do It",
+            speaker: "Prof. Laurent Layani",
           },
           {
             time: "14:00 - 14:20",
             topic:
               "Synchronous Lap Cholecystectomy & Bariatric Surgery: Added Benefit or Added Stress?",
-            speaker: "Prof. Safwan Taha",
+            speaker: "Prof.Dr. Safwan Taha",
           },
           {
             time: "14:20 - 14:40",
@@ -198,25 +192,8 @@ const agendaDays: AgendaDayType[] = [
               "Comprehensive Review of Laparoscopic Sleeve Gastrectomy",
             speaker: "Dr. Syed Shafaat",
           },
-        ],
-      },
-      {
-        type: "session",
-        title:
-          "Session 4: Expert Panel Discussion – Future Directions in Minimally Invasive & Bariatric Surgery in the UAE",
-        moderator: "Moderator: Dr. Abdel Wahid Alwahidi",
-      },
-      {
-        type: "rows",
-        rows: [
           {
             time: "14:40 - 15:10",
-            topic: "Panel Discussion",
-            speaker:
-              "Panelists: Dr. Essa Muallemi, Prof. Safwan Taha, Dr. Amr Arafa, Dr. Laurent Layani, Dr. Basim Al Khafajee, Prof. Hatem Gaafar",
-          },
-          {
-            time: "15:10 - 15:50",
             topic: "Lunch Break",
             speaker: "All",
             variant: "break",
@@ -226,13 +203,13 @@ const agendaDays: AgendaDayType[] = [
       {
         type: "session",
         title:
-          "Session 5: Next-Generation Surgery 2026\nEHS: Dibba-Fujairah Hospital in Collaboration with American Hospital, Dubai",
+          "Session 4: Next-Generation Surgery 2026\nEHS: Dibba-Fujairah Hospital in Collaboration with American Hospital, Dubai",
         workshopDirectors:
-          "Workshop Director: Dr. Hatem Moussa\nCo-Facilitator: Dr. Jado Kamal",
+          "Workshop Director: Dr. Hatem Moussa",
       },
       {
         type: "workshop",
-        time: "15:50 - 17:50",
+        time: "15:10 - 16:50",
         topic: "Robotic Surgery Hands-On Workshop",
         sections: [
           {
@@ -253,11 +230,10 @@ const agendaDays: AgendaDayType[] = [
               "Port placement strategy",
               "Docking techniques",
             ],
-            speaker: "Dr. Jado Kamal",
           },
           {
             title:
-              "Session 2: Hands-On Training (Small Groups Rotation)",
+              "Session 2: Hands-On Training",
             stations: [
               {
                 title: "Station 1: Console Skills",
@@ -288,7 +264,7 @@ const agendaDays: AgendaDayType[] = [
       },
       {
         type: "workshop",
-        time: "16:30 - 16:50",
+        time: "",
         topic: "",
         showDot: false,
         sections: [
@@ -297,25 +273,32 @@ const agendaDays: AgendaDayType[] = [
               "Session 3: Robotic Hernia Repair – Technical Masterclass",
             goldContent: true,
             bullets: [
-              "Live or Recorded Robotic Case Discussion",
+              "Live or Recorded Robotic Case Discussion (speaker: Dr. Hatem Moussa)",
               "Step-by-step narrated procedure",
               "TAPP vs ETEP robotic approach",
               "Mesh positioning strategies",
               "Suturing techniques",
               "Avoiding complications",
             ],
-            speaker: "Dr. Hatem Moussa",
           },
         ],
       },
       {
-        type: "rows",
-        rows: [
+        type: "workshop",
+        time: "",
+        topic: "Learning Objectives:",
+        showDot: false,
+        sections: [
           {
-            time: "",
-            topic: "Coffee Break",
-            speaker: "All",
-            variant: "break",
+            title:
+              "By the end of this workshop, participants will:",
+            goldContent: true,
+            bullets: [
+              "Understand robotic system setup and docking",
+              "Demonstrate basic console skills",
+              "Perform robotic suturing techniques",
+              "Apply robotic principles to hernia surgery",
+            ],
           },
         ],
       },
@@ -327,84 +310,53 @@ const agendaDays: AgendaDayType[] = [
       {
         type: "session",
         title:
-          "Session 6: Expert Panel Discussion – Future of AI & Robotics in Surgery:\nThe Next Surgical Frontier",
-        moderator: "Moderator: Dr. Abdel Wahid Alwahidi",
-      },
-      {
-        type: "rows",
-        rows: [
-          {
-            time: "08:30 - 09:10",
-            topic: "Panel Discussion",
-            speaker:
-              "Chairpersons: Dr. Hatem Moussa, Prof. Mohamed Hassan, Dr. Nafad El-Hadidi, Dr. Ashwaq Alhayyi",
-            variant: "break",
-          },
-        ],
-      },
-      {
-        type: "session",
-        title:
-          "Session 7: Acute Care Surgery & Trauma Management: Evidence-Based Approach",
+          "Session 5: Acute Care Surgery & Trauma Management: Evidence –Based Approach",
         chairman:
-          "Chairperson: Dr. Nafad El-Hadidi, Prof. Abdelbary Hassan, Dr. Khaled Almuhtadi",
-        moderator: "Moderator: Dr. Abdel Wahid Alwahidi",
+          "Chairperson: Dr. Nafad El- hadidi, Prof. Dr. Abdelbary Hassan, Dr.Yalda Z.A.Ziaei",
+        moderator: "Moderator: Dr. Abdulwahid Alwahedi",
       },
       {
         type: "rows",
         rows: [
-          {
-            time: "09:10 - 09:30",
-            topic:
-              "Pain Management in Unstable Trauma Patients",
-            speaker: "Dr. Adel Saleh AlMayfamy",
-          },
           {
             time: "09:30 - 09:50",
-            topic:
-              "Acute Mesenteric Ischemia: How to Improve Outcome",
+            topic: "Acute Mesenteric Ischemia: How to Improve Outcome",
             speaker: "Dr. Abdel Wahid Alwahidi",
           },
           {
             time: "09:50 - 10:10",
-            topic:
-              "Splenic Hernia: A Cause of Abdominal Pain – Case Presentation",
-            speaker: "Dr. Nafad El-Hadidi",
+            topic: "Spigelian Hernia: A Cause of Abdominal Pain. Case Presentation",
+            speaker: "Dr. Nafad El-hadidi",
           },
           {
             time: "10:10 - 10:30",
-            topic:
-              "Radiolucent Single Use Wrist Fixator in Management of Complex Wrist Fractures",
-            speaker: "Prof. Abdelbary Hassan",
+            topic: "Radioluscent single use wrist fixator in management of complex wrist fractures",
+            speaker: "Prof. Dr. Abdelbary Hassan",
           },
           {
             time: "10:30 - 10:50",
-            topic: "New Modalities in Burn Management",
-            speaker: "Dr. Wayne-George",
+            topic: "Major Considerations of Splenic Flexure Mobilization in Laparoscopic Colorectal Surgery.",
+            speaker: "Dr. Amr Arafa",
           },
           {
             time: "10:50 - 11:10",
-            topic:
-              "Expanding the Clinical Impact of Indocyanine Green in General Surgery",
-            speaker: "Dr. Haidar Makki",
+            topic: "Expanding the Clinical Impact of Indocyanine Green in General Surgery",
+            speaker: "Dr.Haidar Makki",
           },
           {
             time: "11:10 - 11:30",
-            topic:
-              "Multiple Organ Injury Following Penetrating Perineal Metal Rod Trauma",
+            topic: "Multiple Organ Injury Following Penetrating Perineal Metal Rod Trauma",
             speaker: "Dr. Khaled Almuhtadi",
           },
           {
             time: "11:30 - 11:50",
-            topic:
-              "Head Trauma (TBI's): Indications for CT in Adults & Paediatrics",
+            topic: "Head Trauma (TBIs): Indications for CT in Adults & Paediatrics",
             speaker: "Dr. Abobakr Omar",
           },
           {
             time: "11:50 - 12:10",
-            topic:
-              "When Seconds Matter – The Power of Nursing in Trauma Care",
-            speaker: "Moyad Ahmed Wishah",
+            topic: "Pain Management in Unstable Trauma Patients",
+            speaker: "Dr. Adel Saleh AlMaytamy",
           },
           {
             time: "12:10 - 12:30",
@@ -417,10 +369,10 @@ const agendaDays: AgendaDayType[] = [
       {
         type: "session",
         title:
-          "Session 8: Advanced Wound Care & Multidisciplinary Surgical Recovery",
+          "Session 6: Advanced Wound Care & Multidisciplinary Surgical Recovery",
         chairman:
-          "Chairperson: Prof. Mohammed Baguindo, Prof. Denis Barritault, Dr. Noura Salim Salman",
-        moderator: "Moderator: Dr. Haidar Saeed Jalil",
+          "Chairperson: Prof. Dr. Mohamed Bagunid, Prof. Dr. Hatem Gaafar",
+        moderator: "Moderator: Dr.Haidar Saeed Jalil",
       },
       {
         type: "rows",
@@ -428,13 +380,14 @@ const agendaDays: AgendaDayType[] = [
           {
             time: "12:30 - 12:50",
             topic:
-              "Comprehensive Infection Control Strategy in Wound Management",
+              "Comprehensive Infection Control Strategy in Wound Management.",
             speaker: "Dr. Haidar Saeed Jalil",
           },
           {
             time: "12:50 - 13:10",
-            topic: "Holistic Approach in Wound Management",
-            speaker: "Prof. Mohammed Baguindo",
+            topic:
+              "Holistic approach in wound management.",
+            speaker: "Prof. Dr. Mohamed Bagunid",
           },
           {
             time: "13:10 - 13:30",
@@ -445,33 +398,40 @@ const agendaDays: AgendaDayType[] = [
           {
             time: "13:30 - 13:50",
             topic:
-              "Nursing Interventions to Prevent Pressure Ulcers in ICU",
-            speaker: "Manal Masoud AlNuaimi",
+              "Nursing Interventions to Prevent Pressure Ulcers in ICU.",
+            speaker: "Ms. Manal Masoud AlNuaimi",
           },
           {
             time: "13:50 - 14:10",
-            topic:
-              "Matrix Therapy for Regenerative Medicine: CACIPLIQ20(RGTA) in the Treatment of Chronic Non-Healing Wounds",
-            speaker: "Prof. Denis Barritault",
+            topic: "Matrix Therapy for Regenerative Medicine: CACIPLIQ20(RGTA) in the Treatment of Chronic Non- Healing Wounds.",
+            speaker: "Prof. Dr. Denis Barritault",
           },
           {
             time: "14:10 - 14:30",
-            topic: "Burn Dressing Selection",
-            speaker: "Nasreen Abdelatif",
+            topic:
+              "Burn Dressing Selection",
+            speaker: "Ms. Nasreen Abdelatif",
           },
           {
             time: "14:30 - 14:50",
-            topic: "AI-Driven Innovation in Modern Wound",
-            speaker: "Aisha Mostafa Hassan",
+            topic:
+              'The Power of Nursing in Trauma Care "When Seconds Matter"',
+            speaker: "Mr. Moyad Ahmad Wishah",
           },
           {
             time: "14:50 - 15:10",
             topic:
-              "Best Practice in Pressure Injury Prevention and Management",
-            speaker: "Hamza Al Shraiedeh",
+              "Best practice in pressure injury prevention and management.",
+            speaker: "Mr. Hamza AL Shraiedeh",
           },
           {
-            time: "15:10 - 16:00",
+            time: "15:10 - 15:30",
+            topic:
+              "AI- Drives Innovation in Modern Wound Care",
+            speaker: "Ms. Aisha Mostafa Hassan",
+          },
+          {
+            time: "15:30 - 16:00",
             topic: "Lunch Break",
             speaker: "All",
             variant: "break",
@@ -482,9 +442,9 @@ const agendaDays: AgendaDayType[] = [
         type: "session",
         color: "gold",
         title:
-          "Session 9: Hands-On Laser Hemorrhoidoplasty Workshop – Next Generation Surgery 2026\nEHS: Dibba-Fujairah Hospital EHS: Dibba-Fujairah Hospital",
+          "Session 7: Hands-On Laser Hemorrhoidoplasty Workshop ",
         workshopDirectors:
-          "Workshop Directors: Prof. Hatem Gaafar, Dr. Haidar Saeed Jalil, Dr. Mohamed Ramjiyan",
+          "Workshop Directors: Prof. Hatem Gaafar, Dr. Haidar Saeed Jalil, Dr. Mohamed Ramijian",
       },
       {
         type: "workshop",
@@ -500,13 +460,13 @@ const agendaDays: AgendaDayType[] = [
               "Energy settings & fiber selection",
               "Case selection criteria",
               "Complication management algorithm",
-              "Live or recorded video procedural demonstration",
+              "Live or recorded Video procedural demonstration",
               "Interactive discussion & troubleshooting",
               "Q&A",
             ],
           },
         ],
-      },
+      }
     ],
   },
 ];

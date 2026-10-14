@@ -4,7 +4,7 @@ import * as React from "react";
 import { Box, Container, Stack, Typography } from "@mui/material";
 
 const CME_IMAGE =
-  "https://res.cloudinary.com/medcon-dam/image/upload/v1785220963/EHS-surgery-conference/Group_737_qounhc.png";
+  "https://res.cloudinary.com/medcon-dam/image/upload/v1791896636/EHS-surgery-conference/CME_Accredited_glhofb.png";
 
 const attendancePoints = [
   "Attendance to the sessions will be monitored through scanning of the barcode on your conference badge at the entrance of the session hall.",
@@ -252,7 +252,7 @@ export default function CmeAccreditationComponent() {
             lineHeight: 1.15,
           }}
         >
-          CME Accreditation is in Progress
+          CME Accredited - 15.5 CME Points
         </Typography>
 
         <Box

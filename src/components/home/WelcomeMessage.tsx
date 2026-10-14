@@ -46,7 +46,7 @@ export default function WelcomeMessage() {
                 The conference brings together surgical experts, researchers, and healthcare professionals to explore evolving practices, precision-driven approaches, emerging technologies, enhanced recovery, perioperative excellence, and multidisciplinary surgical care.
                 <br /><br />
                 The event will be held on<br />
-                <strong>10<sup>th</sup> - 11<sup>th</sup> October 2026 at InterContinental Hotel - Events Center, Fujairah, UAE.</strong>
+                <strong>October 31<sup>st</sup> - November 1<sup>st</sup> 2026 at InterContinental Hotel - Events Center, Dibba Fujairah, UAE.</strong>
                 <br /><br />
                 The conference will provide a dynamic platform for knowledge exchange and professional collaboration, highlighting the latest advances shaping modern surgical care, including minimally invasive and robotic techniques, emerging technologies, and innovative approaches that support safer procedures and improved patient outcomes.
                 {/* We are pleased to invite selected partners to participate as sponsors. By supporting this event, you will demonstrate your commitment to surgical education and training, your contribution to knowledge exchange among healthcare practitioners, and your dedication to advancing surgical excellence across the UAE. */}

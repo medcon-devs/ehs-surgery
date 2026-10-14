@@ -14,8 +14,8 @@ const facultyLeft: FacultyMember[] = [
   {
     name: "Dr. Abdel Wahid Alwahidi",
     titleLines: [
-      "Consultant General Surgeon",
-      "Qassimi Hospital, EHS",
+      "Consultant General and Bariatric Surgeon",
+      "University Hospital Sharjah",
     ],
   },
   {
@@ -26,16 +26,22 @@ const facultyLeft: FacultyMember[] = [
     ],
   },
   {
+    name: "Dr. Abdalla Albloushi",
+    titleLines: [
+      "Consultant General Surgeon & Director of Khorfakkan Hospital EHS",
+    ],
+  },
+  {
     name: "Dr. Abobakr Omar",
     titleLines: [
-      "Specialist Emergency Physician",
-      "Dibba Hospital, EHS",
+      "Head of Emergency Department",
+      "Dibba Hospital",
     ],
   },
   {
     name: "Dr. Adel AlMaytamy",
     titleLines: [
-      "Consultant",
+      "Consultant Anesthesiologist",
       "Dibba Hospital",
     ],
   },
@@ -43,74 +49,71 @@ const facultyLeft: FacultyMember[] = [
     name: "Dr. Amr Arafa",
     titleLines: [
       "Consultant General and Bariatric Surgeon",
-      "Amina Hospital, Ajman",
+      "Amina Hospital",
     ],
   },
   {
-    name: "Ms. Aisha Mostafa Hassan",
+    name: "Ms. Aisha Mostafa",
     titleLines: [
-      "Wound, Ostomy and Continence Nurse",
-      "Sheikh Khalifa Hospital",
+      "Charge Nurse/Wound Management",
+      "Sheikh Khalifa Hospital Fujairah",
     ],
   },
   {
-    name: "Dr. Basim Al Khafajee",
+    name: "Dr Basem AlKhafaji",
     titleLines: [
-      "Consultant Surgeon",
-      "Canadian Specialist Hospital",
-    ],
-  },
-  {
-    name: "Prof. Denis Barritault",
-    titleLines: [
-      "Consultant Surgeon",
+      "Consultant Laparoscopic and Robotic",
+      "General and Bariatric Surgeon",
       "Canadian Specialist Hospital",
     ],
   },
   {
     name: "Dr. Essa Muallemi",
     titleLines: [
-      "Consultant",
-      "Sharjah, Kuwait Hospital",
+      "General and Bariatric Surgery Consultant",
+      "MOHAP/ EHS",
     ],
   },
   {
-    name: "Prof. Hatem Gaafar",
+    name: "Prof. Dr. Hatem Gaafar",
     titleLines: [
-      "Consultant Surgeon",
-      "Dibba Hospital",
+      "Professor and Consultant of Surgery",
+      "Dibba Hospital, Emirates Health Services",
     ],
   },
   {
     name: "Dr. Hatem Moussa",
     titleLines: [
-      "General Surgeon",
+      "Chief of Robotic Surgery Center of Excellence",
       "American Hospital Dubai",
     ],
   },
   {
-    name: "Dr. Haidar Saeed Jalil",
+    name: "Dr. Haidar Saeed Jalil Aal Mussa",
     titleLines: [
-      "Specialist Surgeon",
+      "Specialist General Surgeon",
       "Dibba Hospital",
     ],
   },
   {
-    name: "Dr. Haider Makki",
+    name: "Dr. Hayder Makki Hammadi Al-Masari",
     titleLines: [
-      "General Surgeon",
+      "Consultant General and Bariatric Surgery",
       "Al Qassimi Hospital",
     ],
   },
   {
-    name: "Mr. Hamza Al Shraileeh",
-    titleLines: [],
+    name: "Dr. Shafaat Syed Ali",
+    titleLines: [
+      "Physician – General Surgery",
+      "Dibba Hospital",
+    ],
   },
   {
-    name: "Dr. Jado Kamal",
+    name: "Dr. Yalda Z. A. Ziaei",
     titleLines: [
-      "General Surgeon",
-      "American Hospital Dubai",
+      "Consultant General Surgeon and Surgical Gastroenterologist",
+      "Al Qassimi Hospital",
     ],
   },
 ];
@@ -119,91 +122,98 @@ const facultyRight: FacultyMember[] = [
   {
     name: "Dr. Khaled Almuhtadi",
     titleLines: [
-      "Consultant General Surgeon",
+      "Consultant General & Thoracic Surgeon",
       "Dibba Hospital",
     ],
   },
   {
-    name: "Dr. Laurent Layani",
+    name: "Prof. Dr. Abd El Bary Hassan Gouda",
     titleLines: [
-      "Consultant Bariatric & Advance",
-      "Al Sharq Hospital",
+      "Consultant A Orthopedic Surgery EHS – Dibba Hospital – HOD",
+      "Professor of Orthopedic Surgery – Banha University- Egypt",
     ],
   },
   {
-    name: "Ms. Manal Masuod Al Nuaimi",
-    titleLines: [],
-  },
-  {
-    name: "Dr. Mehroon Rasheed Muhammad",
-    titleLines: [],
-  },
-  {
-    name: "Mr. Moyad Ahmad Wishah",
+    name: "Dr. Subash Gautam",
     titleLines: [
-      "Assistant Head of Nursing",
-      "Saqr Hospital",
+      "Senior Consultant Surgeon and Head of Department of General Surgery",
+      "Fujairah Hospital",
+    ],
+  },
+  {
+    name: "Prof. Laurent Layani",
+    titleLines: [
+      "Consultant Bariatric & Advanced Laparoscopic Surgeon",
+      "Al sharq hospital , Fujairah",
+    ],
+  },
+  {
+    name: "Ms. Manal Masoud Alnuaimi",
+    titleLines: ["ICU Unit Manager",
+      "Dibba Hospital"
+      ],
+  },
+  {
+    name: "Dr. Mehreen Rasheed Muhammad",
+    titleLines: ["General Practitioner",
+      "Dibba Hospital EHS"
+    ],
+  },
+  {
+    name: "Mr. Moayad Wishah",
+    titleLines: [
+      "Simulation Specialist",
+      "Emirates Health Services",
     ],
   },
   {
     name: "Prof. Mohamed Hassan",
     titleLines: [
-      "General Surgeon",
-      "Al Qassimi Hospital",
+      "Senior Consultant Pediatric",
+      "Surgeon & Deputy Head",
+      "Al Qassimi Women's & Children's Hospital",
     ],
   },
   {
-    name: "Dr. Mohammed Ramjiyan",
+    name: "Dr. Mohammed Ramjyan Bhati",
     titleLines: [
-      "Physician",
-      "Dibba Hospital",
+      "Surgical specialist",
+      "Emirates Health Services",
     ],
   },
   {
     name: "Prof. Mohammed Baguinde",
     titleLines: [
-      "Consultant and Chair Of The Vascular Surgery ",
-      "Sheikh Shakhbout Medical City (SSMC)",
+      "Consultant and Chair of the Vascular Surgery Division",
+      "Sheikh Shakhbout Medical City (SSMC), Abu Dhabi",
 
     ],
   },
   {
-    name: "Dr. Nafad El-Hadidi",
+    name: "Dr. Muna Al Ayyan",
     titleLines: [
-      "Consultant General Surgeon",
-      "Zulekha Hospital",
+      "Consultant, Breast surgeon, General Surgeon",
+      "Head of general surgery department CEO of Saqr Hospital",
+
     ],
   },
   {
-    name: "Ms. Nasreen Abdelatif",
+    name: "Dr. Nafad Elhadidi",
     titleLines: [
-      "Wound Care Specialist Nurse",
-      "Al Qassimi Hospital",
+      "HOD , Consultant General Laparoscopic and Vascular Surgeon",
+      "Zulekha Hospital, Sharjah",
     ],
   },
   {
-    name: "Prof. Safwan Taha",
+    name: "Ms. Nasreen Abdelatif Fadlelsid Khalid",
     titleLines: [
-      "General Practitioner",
-      "Dibba Hospital",
+      "Al Qassimi Hospital - Sharjah"
     ],
   },
   {
-    name: "Ms. Salma Saeed",
-    titleLines: [],
-  },
-  {
-    name: "Dr. Syed Shafaat",
-    titleLines: [
-      "General Practitioner Doctor",
-      "Dibba Hospital",
-    ],
-  },
-  {
-    name: "Dr. Wayne-George",
-    titleLines: [
-      "Plastic Surgeon",
-      "Sheikh Khalifa Hospital",
+    name: "Dr. Salma Saeed Harib Alketbi",
+    titleLines: ["Wound & Hyperbaric Physician",
+      "Al Qassimi Hospital"
     ],
   },
 ];
