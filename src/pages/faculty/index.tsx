@@ -116,6 +116,13 @@ const facultyLeft: FacultyMember[] = [
       "Al Qassimi Hospital",
     ],
   },
+  {
+    name: "Prof. Denis Barritault",
+    titleLines: [
+      "President / Chief Executive Officer",
+      "OTR3, Paris"
+    ],
+  }
 ];
 
 const facultyRight: FacultyMember[] = [
@@ -216,6 +223,18 @@ const facultyRight: FacultyMember[] = [
       "Al Qassimi Hospital"
     ],
   },
+  {
+    name: "Mr. Hamza Alshraiedeh",
+    titleLines: ["Wound Care Specialist Nurse – Senior Charge Nurse",
+      "Sheikh Khalifa Medical City, Ajman"
+    ],
+  },
+  {
+    name: "Prof. Safwan Abdul-Rahman Taha",
+    titleLines: ["Consultant Surgeon and Director of the Metabolic and Bariatric Surgery Center",
+      "Mediclinic Airport Road Hospital, Abu Dhabi"
+    ],
+  }
 ];
 
 const BAR_SVG =
